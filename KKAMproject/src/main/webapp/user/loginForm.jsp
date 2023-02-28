@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>LOGIN</h3>
-	<form action="loginPro.kkam" method="post">
+	<form action="LoginPro.kkam" id="login" method="post">
 		ID <input type="text" name="id"><br>
 		PW <input type="text" name="pw"><br>
 		<input type="submit">
