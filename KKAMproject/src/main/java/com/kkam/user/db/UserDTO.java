@@ -71,10 +71,10 @@ public class UserDTO {
 	public void setU_emailD(String u_emailD) {
 		U_emailD = u_emailD;
 	}
-	public String getU_grage() {
+	public String getU_grade() {
 		return U_grade;
 	}
-	public void setU_grage(String u_grage) {
+	public void setU_grade(String u_grage) {
 		U_grade = u_grage;
 	}
 	public String getU_address() {
