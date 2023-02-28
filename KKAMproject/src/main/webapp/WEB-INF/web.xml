@@ -24,7 +24,7 @@
   <!-- 굿즈샵 관련 -->
   <servlet>
   	<servlet-name>GoodsFrontController</servlet-name>
-  	<servlet-class>com.kkam.user.action.GoodsFrontController</servlet-class>
+  	<servlet-class>com.kkam.goods.action.GoodsFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
