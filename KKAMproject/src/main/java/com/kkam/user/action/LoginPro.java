@@ -7,7 +7,9 @@ public class LoginPro implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		// TODO Auto-generated method stub
+		String id=req.getParameter("id");
+		String pw=req.getParameter("pw");
+		
 		return null;
 	}
 
