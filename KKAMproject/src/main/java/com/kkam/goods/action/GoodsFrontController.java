@@ -12,13 +12,14 @@ import com.kkam.goods.action.Action;
 import com.kkam.goods.action.ActionForward;
 
 public class GoodsFrontController extends HttpServlet {
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doPost(req, resp);
+		doProcess(req, resp);
 	}
 	
 
@@ -29,9 +30,9 @@ public class GoodsFrontController extends HttpServlet {
 		Action action=null;
 
 
-		if(sPath.equals("/login.kkam")) {
+		if(sPath.equals("/Goods.kg")) {
 			forward=new ActionForward();
-			forward.setPath("user/loginForm.jsp");
+			forward.setPath("goods/goodsForm.jsp");
 			forward.setRedirect(false);
 
 		}

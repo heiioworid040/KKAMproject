@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itwillbs.member.action.ActionForward;
+
 public class UserFrontController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
@@ -25,11 +27,15 @@ public class UserFrontController extends HttpServlet {
 		ActionForward forward=null;
 		Action action=null;
 
-
-		if(sPath.equals("/JoinForm.kkam")) {
+		
+		if(sPath.equals("/Main.kkam")) {
+			forward=new ActionForward();
+			forward.setPath("home/main.jsp");
+			forward.setRedirect(false);
+			
+		}else if(sPath.equals("/Join.kkam")) {
 			resp.sendRedirect("user/joinForm.jsp");
-			RequestDispatcher dispatcher=
-					req.getRequestDispatcher("member/insertForm.jsp");
+			RequestDispatcher dispatcher=req.getRequestDispatcher("user/joinForm.jsp");
 			dispatcher.forward(req, resp);
 			
 			forward=new ActionForward();
@@ -42,8 +48,21 @@ public class UserFrontController extends HttpServlet {
 				forward=action.execute(req, resp);
 			} catch (Exception e) {
 				e.printStackTrace();
-			
 			}
+
+		}else if(sPath.equals("/Login.kkam")) {
+			forward=new ActionForward();
+			forward.setPath("user/loginForm.jsp");
+			forward.setRedirect(false);
+			
+		}else if(sPath.equals("/LoginPro.kkam")) {			
+			action=new LoginPro();
+			try {
+				forward=action.execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
 		
 		

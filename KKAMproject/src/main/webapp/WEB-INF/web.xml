@@ -21,4 +21,15 @@
    <url-pattern>*.kkam</url-pattern>
   </servlet-mapping>
 
+  <!-- 굿즈샵 관련 -->
+  <servlet>
+  	<servlet-name>GoodsFrontController</servlet-name>
+  	<servlet-class>com.kkam.user.action.GoodsFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>GoodsFrontController</servlet-name>
+   <url-pattern>*.kg</url-pattern>
+  </servlet-mapping>
+
 </web-app>

@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h2>KKAMpage</h2>
+	<button type="button" onclick="location.href='Login.kkam'">로그인폼</button>
 </body>
 </html>

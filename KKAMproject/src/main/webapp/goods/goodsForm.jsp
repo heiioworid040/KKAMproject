@@ -7,11 +7,6 @@
 <title>KKAMpage</title>
 </head>
 <body>
-	<h3>LOGIN</h3>
-	<form action="loginPro.kkam" method="post">
-		ID <input type="text" name="id"><br>
-		PW <input type="text" name="pw"><br>
-		<input type="submit">
-	</form>
+	<h2>GOODS SHOP</h2>
 </body>
 </html>
