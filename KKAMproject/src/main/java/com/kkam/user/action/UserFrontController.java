@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itwillbs.member.action.ActionForward;
 
 public class UserFrontController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,12 +33,8 @@ public class UserFrontController extends HttpServlet {
 			forward.setRedirect(false);
 			
 		}else if(sPath.equals("/Join.kkam")) {
-			resp.sendRedirect("user/joinForm.jsp");
-			RequestDispatcher dispatcher=req.getRequestDispatcher("user/joinForm.jsp");
-			dispatcher.forward(req, resp);
-			
 			forward=new ActionForward();
-			forward.setPath(sPath);
+			forward.setPath("user/joinForm.jsp");
 			forward.setRedirect(false);
 			
 		}else if(sPath.equals("/JoinPro.kkam")) {			
