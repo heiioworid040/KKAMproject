@@ -13,7 +13,7 @@ public class UserDTO {
 	private int U_phone;
 	private String U_email;
 	private String U_emailD;
-	private String U_grage;
+	private String U_grade;
 	private String U_address;
 	private String U_address2;
 	
@@ -72,10 +72,10 @@ public class UserDTO {
 		U_emailD = u_emailD;
 	}
 	public String getU_grage() {
-		return U_grage;
+		return U_grade;
 	}
 	public void setU_grage(String u_grage) {
-		U_grage = u_grage;
+		U_grade = u_grage;
 	}
 	public String getU_address() {
 		return U_address;
