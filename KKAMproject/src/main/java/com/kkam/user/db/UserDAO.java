@@ -16,18 +16,46 @@ public class UserDAO {
 		Connection con=ds.getConnection();
 		return con;
 	}
+	public void insertUser(UserDTO dto) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con=getConnection();
+			String sql="insert into user"
+				    	+ "(U_id, U_pw, U_name, U_nick, U_birth, U_phone, U_email, U_emailD,U_grade, U_address, U_addressD)"
+					    + "values(?,?,?,?,?,?,?,?,'일반',?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getU_id());
+			pstmt.setString(2, dto.getU_pw());
+			pstmt.setString(3, dto.getU_name());
+			pstmt.setString(4, dto.getU_nick());
+			pstmt.setInt(5, dto.getU_birth());
+			pstmt.setInt(6, dto.getU_phone());
+			pstmt.setString(7, dto.getU_email());
+			pstmt.setString(8, dto.getU_emailD());
+			pstmt.setString(9, dto.getU_address());
+			pstmt.setString(10, dto.getU_addressD());
+			pstmt.executeUpdate();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (pstmt != null) try {pstmt.close();} catch (Exception e2) {}
+			if (con != null) try {con.close();} catch (Exception e2) {}
+		}
+	}
 	
-	public UserDTO userCheck(String id, String pw) {
+
+	public UserDTO getUser(String id) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		UserDTO dto=null;
 		try {
 			con=getConnection();
-			String sql="select * from user where U_id=? and U_pw=?";
+			String sql="select * from user where U_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
+
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				dto = new UserDTO();
@@ -42,7 +70,7 @@ public class UserDAO {
 				dto.setU_emailD(rs.getString("emailD"));
 				dto.setU_grade(rs.getString("grade"));
 				dto.setU_address(rs.getString("address"));
-				dto.setU_address2(rs.getString("address2"));
+				dto.setU_addressD(rs.getString("addressD"));
 
 			}else{
 				
@@ -57,34 +85,8 @@ public class UserDAO {
 		return dto;
 	}
 		
-	public void insertUser(UserDTO dto) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		try {
-			con=getConnection();
-			String sql="insert into user"
-				    	+ "(U_id, U_pw, U_name, U_nick, U_birth, U_createdate, U_phone, U_email, U_emailD,U_grade, U_address, U_addressD)"
-					    + "values(?,?,?,?,?,?,?,?,?,'일반',?,?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getU_id());
-			pstmt.setString(2, dto.getU_pw());
-			pstmt.setString(3, dto.getU_name());
-			pstmt.setString(4, dto.getU_nick());
-			pstmt.setInt(5, dto.getU_birth());
-			pstmt.setTimestamp(6,dto.getU_createdate());
-			pstmt.setInt(7, dto.getU_phone());
-			pstmt.setString(8, dto.getU_email());
-			pstmt.setString(9, dto.getU_emailD());
-			pstmt.setString(10, dto.getU_address());
-			pstmt.setString(11, dto.getU_addressD());
-			pstmt.executeUpdate();	
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			if (pstmt != null) try {pstmt.close();} catch (Exception e2) {}
-			if (con != null) try {con.close();} catch (Exception e2) {}
-		}
-	}
+
+
 	
 
 	

@@ -86,7 +86,7 @@ public class UserDTO {
 	public String getU_addressD() {
 		return U_addressD;
 	}
-	public void setU_address2(String u_addressD) {
+	public void setU_addressD(String u_addressD) {
 		U_addressD = u_addressD;
 	}
 
