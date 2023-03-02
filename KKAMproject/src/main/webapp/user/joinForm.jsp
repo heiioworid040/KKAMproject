@@ -10,75 +10,75 @@
 	$(document).ready(function(){
 		alert("준비");
 		
-// 		$('#join').submit(function(){
+		$('#join').submit(function(){
 			
-// 			if($('.name').val()==""){
-// 				alert("이름을 입력하세요");
-// 				$('.name').focus();
-// 				return false;
-// 			}
+			if($('.name').val()==""){
+				alert("이름을 입력하세요");
+				$('.name').focus();
+				return false;
+			}
 			
-// 			if($('.id').val()==""){
-// 				alert("아이디를 입력하세요");
-// 				$('.id').focus();
-// 				return false;
-// 			}
+			if($('.id').val()==""){
+				alert("아이디를 입력하세요");
+				$('.id').focus();
+				return false;
+			}
 			
-//             if($('.pw').val()==""){
-//             	alert("비밀번호 입력하세요");
-// 				$('.pass').focus();
-// 				return false;
-//             }
+            if($('.pw').val()==""){
+            	alert("비밀번호 입력하세요");
+				$('.pass').focus();
+				return false;
+            }
           
-//             if($('.pw2').val()==""){
-//             	alert("비밀번호2 입력하세요");
-// 				$('.pw2').focus();
-// 				return false;
-//             }
+            if($('.pw2').val()==""){
+            	alert("비밀번호2 입력하세요");
+				$('.pw2').focus();
+				return false;
+            }
             
-//             if($('.pw').val() != $('.pw2').val()){
-//             	alert("비밀번호 다름");
-// 				$('.pw2').focus();
-// 				return false;
-//             }
+            if($('.pw').val() != $('.pw2').val()){
+            	alert("비밀번호 다름");
+				$('.pw2').focus();
+				return false;
+            }
             
-//             if($('.nick').val()==""){
-//             	alert("닉네임을 입력하세요");
-// 				$('.nick').focus();
-// 				return false;
-//             }
+            if($('.nick').val()==""){
+            	alert("닉네임을 입력하세요");
+				$('.nick').focus();
+				return false;
+            }
             
-//             if($('.birth').val()==""){
-//             	alert("생년월일을 입력하세요");
-// 				$('.birth').focus();
-// 				return false;
-//             }
+            if($('.birth').val()==""){
+            	alert("생년월일을 입력하세요");
+				$('.birth').focus();
+				return false;
+            }
             
-//             if($('.phone').val()==""){
-//             	alert("휴대폰 번호를 입력하세요");
-// 				$('.phone').focus();
-// 				return false;
-//             }
+            if($('.phone').val()==""){
+            	alert("휴대폰 번호를 입력하세요");
+				$('.phone').focus();
+				return false;
+            }
             
-//             if($('.email').val()==""){
-//             	alert("이메일을 입력하세요");
-// 				$('.email').focus();
-// 				return false;
-//             }
+            if($('.email').val()==""){
+            	alert("이메일을 입력하세요");
+				$('.email').focus();
+				return false;
+            }
             
-//             if($('.address').val()==""){
-//             	alert("주소를 입력하세요");
-// 				$('.address').focus();
-// 				return false;
-//             }
+            if($('.address').val()==""){
+            	alert("주소를 입력하세요");
+				$('.address').focus();
+				return false;
+            }
             
-//             if($('.addressD').val()==""){
-//             	alert("상세 주소를 입력하세요");
-// 				$('.addressD').focus();
-// 				return false;
-//             }
+            if($('.addressD').val()==""){
+            	alert("상세 주소를 입력하세요");
+				$('.addressD').focus();
+				return false;
+            }
           
-// 		});
+		});
 		
 	$('.dup').click(function(){
 		if($('.id').val()==""){
