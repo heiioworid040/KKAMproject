@@ -63,8 +63,8 @@ public class UserDAO {
 		try {
 			con=getConnection();
 			String sql="insert into user"
-				    	+ "(U_id, U_pw, U_name, U_nick, U_birth, U_createdate, U_phone, U_email, U_emailD, U_grade, U_address, U_address2"
-					    + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
+				    	+ "(U_id, U_pw, U_name, U_nick, U_birth, U_createdate, U_phone, U_email, U_emailD,U_grade, U_address, U_addressD)"
+					    + "values(?,?,?,?,?,?,?,?,?,'일반',?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getU_id());
 			pstmt.setString(2, dto.getU_pw());
@@ -75,9 +75,9 @@ public class UserDAO {
 			pstmt.setInt(7, dto.getU_phone());
 			pstmt.setString(8, dto.getU_email());
 			pstmt.setString(9, dto.getU_emailD());
-			pstmt.setString(10, dto.getU_grade());
-			pstmt.setString(11, dto.getU_address());
-			pstmt.setString(12, dto.getU_address2());
+			pstmt.setString(10, dto.getU_address());
+			pstmt.setString(11, dto.getU_addressD());
+			pstmt.executeUpdate();	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
