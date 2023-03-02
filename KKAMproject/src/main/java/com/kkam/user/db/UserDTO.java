@@ -15,7 +15,7 @@ public class UserDTO {
 	private String U_emailD;
 	private String U_grade;
 	private String U_address;
-	private String U_address2;
+	private String U_addressD;
 	
 	public String getU_id() {
 		return U_id;
@@ -83,11 +83,11 @@ public class UserDTO {
 	public void setU_address(String u_address) {
 		U_address = u_address;
 	}
-	public String getU_address2() {
-		return U_address2;
+	public String getU_addressD() {
+		return U_addressD;
 	}
-	public void setU_address2(String u_address2) {
-		U_address2 = u_address2;
+	public void setU_addressD(String u_addressD) {
+		U_addressD = u_addressD;
 	}
 
 	
