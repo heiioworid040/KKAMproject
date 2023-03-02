@@ -58,6 +58,14 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		}else if(sPath.equals("/LogoutPro.kkam")) {			
+			action=new LogoutPro();
+			try {
+				forward=action.execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
 		
 		
