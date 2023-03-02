@@ -9,6 +9,32 @@
 <title>KKAMpage</title>
 	<link href="assets/css/login.css" rel="stylesheet" type="text/css">
 </head>
+<script type="text/javascript" src="script/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#login').submit(function(){
+		if($('#id').val()==""){
+			$('.desc_error').html("아이디를 입력하세요.").css("color","red");
+			$('#id').focus();
+			return false;
+		}
+		if($('#pw').val()==""){
+			$('.desc_error').html("비밀번호를 입력하세요.").css("color","red");
+			$('#pw').focus();
+			return false;
+		}
+	$.ajax({
+		url:'LoginCk.kkam',
+		data:{'id':$('#id').val(), 'pw':$('#pw').val()},
+		success:function(result){
+			if(result.trim()=="아이디 혹은 비밀번호가 일치하지 않습니다."){
+				$('.desc_error').html(result).css("color","red");
+				}
+			}
+		});
+	});
+});
+</script>
 <body>
 <%
 UserDTO dto=new UserDTO();
@@ -24,11 +50,15 @@ String pw=(String)request.getAttribute("pw");
 				<div class="cont_login">
 					<form action="LoginPro.kkam" id="login" name="id" method="post">
 						<div class="box_tf">
-							<input type="text" name="id" placeholder="아이디" class="tf_g">
+							<input type="text" id="id" name="id" placeholder="아이디" class="tf_g">
 						</div>
 						<div class="box_tf">
-							<input type="password" name="pw" placeholder="비밀번호" class="tf_g">
+							<input type="password" id="pw" name="pw" placeholder="비밀번호" class="tf_g">
 						</div>
+							<div class="box_desc">
+							<p class="desc_error"></p>
+							</div>
+						
 							<button type="submit" class="btn_sub highlight submit">
 								로그인
 							</button>
