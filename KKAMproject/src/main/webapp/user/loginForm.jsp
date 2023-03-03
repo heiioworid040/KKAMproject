@@ -66,7 +66,7 @@ String pw=(String)request.getAttribute("pw");
 				</div>
 		</article>
 	<footer class="footer-doc">
-		<span>♡김까미 행복하자♡</span>
+		<a href="Main.kkam" style="text-decoration: none; color: gray;">♡김까미 행복하자♡</a></span>
 	</footer>
 	</div>
 </div>

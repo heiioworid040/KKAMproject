@@ -37,7 +37,6 @@ public class LoginPro implements Action {
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();
-			forward = null;
 		}
 		
 		return forward;
