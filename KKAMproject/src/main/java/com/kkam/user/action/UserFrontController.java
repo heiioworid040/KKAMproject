@@ -79,6 +79,13 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(sPath.equals("/NickCheck.kkam")) {			
+			action=new IdCheck();
+			try {
+				forward=action.execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
 	}
 		
 		
