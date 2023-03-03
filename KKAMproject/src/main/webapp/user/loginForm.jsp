@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>KKAMpage</title>
-	<link href="assets/css/login.css" rel="stylesheet" type="text/css">
+<link href="assets/css/login.css" rel="stylesheet" type="text/css">
 </head>
 <script type="text/javascript" src="script/jquery-3.6.3.js"></script>
 <script type="text/javascript">
