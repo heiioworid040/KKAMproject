@@ -24,6 +24,7 @@ public class GoodsWritePro implements Action {
 		String desc=multi.getParameter("desc");
 		int price=Integer.parseInt(multi.getParameter("price"));
 		String imgS=multi.getFilesystemName("imgS");
+		String img=multi.getFilesystemName("img");
 		
 		System.out.println(code);
 		GoodsDTO dto=new GoodsDTO();
@@ -33,7 +34,7 @@ public class GoodsWritePro implements Action {
 		dto.setG_desc(desc);
 		dto.setG_price(price);
 		dto.setG_imgS(imgS);
-//		dto.setG_img(img);
+		dto.setG_img(img);
 		
 		
 		GoodsDAO dao=new GoodsDAO();

@@ -33,10 +33,10 @@
 				<th>상품썸네일</th>
 				<td><input type="file" name="imgS"></td>
 			</tr>
-<!-- 			<tr> -->
-<!-- 				<th>상품사진</th> -->
-<!-- 				<td><input type="file" name="img"></td> -->
-<!-- 			</tr> -->
+			<tr>
+				<th>상품사진</th>
+				<td><input type="file" name="img"></td>
+			</tr>
 		</table>
 		
 		<button type="submit" class="btn_sub highlight submit">
