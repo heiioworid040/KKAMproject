@@ -21,10 +21,12 @@
 			<div id="login">
 				<button type="button" onclick="location.href='Login.kkam'">로그인폼</button> | 
 				<button type="button" onclick="location.href='Join.kkam'">회원가입폼</button>
+				
 			</div>
 		</c:if>
 	
 	<br>
 	<button type="button" onclick="location.href='Goods.kg'">굿즈샵</button>
+	<button type="button" onclick="location.href='noticeForm.no'">글쓰기</button>
 </body>
 </html>
