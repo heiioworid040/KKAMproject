@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kkam.goods.action.Action;
 import com.kkam.goods.action.ActionForward;
+import com.kkam.user.action.LoginCk;
 
 public class GoodsFrontController extends HttpServlet {
 	@Override
@@ -31,10 +32,31 @@ public class GoodsFrontController extends HttpServlet {
 
 
 		if(sPath.equals("/Goods.kg")) {
+			action=new GoodsPro();
+			try {
+				forward=action.execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(sPath.equals("/GoodsDetails.kg")) {
 			forward=new ActionForward();
-			forward.setPath("goods/goodsForm.jsp");
+			forward.setPath("goods/goodsDetails.jsp");
 			forward.setRedirect(false);
-
+			
+		}else if(sPath.equals("/GoodsWrite.kg")) {
+			forward=new ActionForward();
+			forward.setPath("goods/goodsWrite.jsp");
+			forward.setRedirect(false);
+			
+		}else if(sPath.equals("/GoodsWritePro.kg")) {			
+			action=new GoodsWritePro();
+			try {
+				forward=action.execute(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 
