@@ -29,7 +29,7 @@ public class UserDAO {
 			pstmt.setString(2, dto.getU_pw());
 			pstmt.setString(3, dto.getU_name());
 			pstmt.setString(4, dto.getU_nick());
-			pstmt.setInt(5, dto.getU_birth());
+			pstmt.setString(5, dto.getU_birth());
 			pstmt.setInt(6, dto.getU_phone());
 			pstmt.setString(7, dto.getU_email());
 			pstmt.setString(8, dto.getU_address());
@@ -62,7 +62,7 @@ public class UserDAO {
 				dto.setU_pw(rs.getString("pw"));
 				dto.setU_name(rs.getString("name"));
 				dto.setU_nick(rs.getString("nick"));
-				dto.setU_birth(rs.getInt("birth"));
+				dto.setU_birth(rs.getString("birth"));
 				dto.setU_createdate(rs.getTimestamp("createdate"));
 				dto.setU_phone(rs.getInt("phone"));
 				dto.setU_email(rs.getString("email"));
@@ -102,7 +102,7 @@ public class UserDAO {
 				dto.setU_pw(rs.getString("pw"));
 				dto.setU_name(rs.getString("name"));
 				dto.setU_nick(rs.getString("nick"));
-				dto.setU_birth(rs.getInt("birth"));
+				dto.setU_birth(rs.getString("birth"));
 				dto.setU_createdate(rs.getTimestamp("createdate"));
 				dto.setU_phone(rs.getInt("phone"));
 				dto.setU_email(rs.getString("email"));

@@ -17,7 +17,8 @@ public class JoinPro implements Action {
 		String pw=req.getParameter("pw");
 		String name=req.getParameter("name");
 		String nick=req.getParameter("nick");
-		int birth=Integer.parseInt(req.getParameter("birth"));
+		String birth=req.getParameter("birth");
+//		int birth=Integer.parseInt(req.getParameter("birth"));
 		int phone=Integer.parseInt(req.getParameter("phone"));
 		String email=req.getParameter("email");
 //		String emailD=req.getParameter("emailD");

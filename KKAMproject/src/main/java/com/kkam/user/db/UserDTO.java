@@ -8,11 +8,10 @@ public class UserDTO {
 	private String U_pw;
 	private String U_name;
 	private String U_nick;
-	private int U_birth;
+	private String U_birth;
 	private Timestamp U_createdate;
 	private int U_phone;
 	private String U_email;
-//	private String U_emailD;
 	private String U_grade;
 	private String U_address;
 	private String U_addressD;
@@ -43,10 +42,11 @@ public class UserDTO {
 	public void setU_nick(String u_nick) {
 		U_nick = u_nick;
 	}
-	public int getU_birth() {
+
+	public String getU_birth() {
 		return U_birth;
 	}
-	public void setU_birth(int u_birth) {
+	public void setU_birth(String u_birth) {
 		U_birth = u_birth;
 	}
 	public Timestamp getU_createdate() {
