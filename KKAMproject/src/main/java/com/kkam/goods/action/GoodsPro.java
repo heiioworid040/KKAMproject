@@ -13,7 +13,6 @@ public class GoodsPro implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		String code=req.getParameter("G_code");
-		System.out.println(code);
 		GoodsDAO dao=new GoodsDAO();
 		ArrayList<GoodsDTO> GoodsList=null;
 		

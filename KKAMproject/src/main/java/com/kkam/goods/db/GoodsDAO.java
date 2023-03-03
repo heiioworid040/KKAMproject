@@ -60,7 +60,7 @@ public class GoodsDAO {
 				dto.setG_code(rs.getString("G_code"));
 				dto.setG_product(rs.getString("G_product"));
 				dto.setG_desc(rs.getString("G_desc"));
-				dto.setG_price(rs.getInt("G_stop"));
+				dto.setG_stop(rs.getInt("G_stop"));
 				dto.setG_price(rs.getInt("G_price"));
 				GoodsList.add(dto);
 			 }
@@ -96,7 +96,7 @@ public class GoodsDAO {
 				dto.setG_code(rs.getString("G_code"));
 				dto.setG_product(rs.getString("G_product"));
 				dto.setG_desc(rs.getString("G_desc"));
-				dto.setG_price(rs.getInt("G_stop"));
+				dto.setG_stop(rs.getInt("G_stop"));
 				dto.setG_price(rs.getInt("G_price"));
 				GoodsList.add(dto);
 			 }
