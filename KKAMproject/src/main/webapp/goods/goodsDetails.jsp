@@ -32,7 +32,7 @@ GoodsDTO dto=new GoodsDTO();
 						<span>${dto.g_code }</span><br>
 						<span>${dto.g_stop }</span><br>
 						<span>${dto.g_desc }</span><br>
-<%-- 						<span>${dto.g_img }</span><br> --%>
+						<img src="img/goods/${dto.g_img }" width="1300px" height="2000px"><br>
 					</div>
 					</td>
 				</c:forEach>
