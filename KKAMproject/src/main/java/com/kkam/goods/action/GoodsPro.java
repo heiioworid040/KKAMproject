@@ -12,12 +12,22 @@ public class GoodsPro implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		String code=req.getParameter("G_code");
+		System.out.println(code);
 		GoodsDAO dao=new GoodsDAO();
-		ArrayList<GoodsDTO> GoodsList=dao.GoodsList();
+		ArrayList<GoodsDTO> GoodsList=null;
+		
+		
+		ActionForward forward=new ActionForward();
+		if(code==null) {
+			GoodsList=dao.GoodsList();
+			forward.setPath("goods/goodsForm.jsp");
+		} else {
+			GoodsList=dao.GoodsList(code);
+			forward.setPath("goods/goodsDetails.jsp");
+		}
 		
 		req.setAttribute("GoodsList", GoodsList);
-		ActionForward forward=new ActionForward();
-		forward.setPath("goods/goodsForm.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

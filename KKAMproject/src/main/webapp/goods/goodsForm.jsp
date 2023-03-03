@@ -16,6 +16,7 @@ ArrayList<GoodsDTO> GoodsList=(ArrayList<GoodsDTO>)request.getAttribute("GoodsLi
 GoodsDTO dto=new GoodsDTO();
 %>
 	<h2>GOODS SHOP</h2>
+	<form action="GoodsWrite.kg" method="get">
 	<div>
 		<table>
 			<thead>
@@ -25,16 +26,17 @@ GoodsDTO dto=new GoodsDTO();
 			<tbody>
 				<c:forEach var="dto" items="${GoodsList }">
 					<td>
-						<img src="img/goods/${dto.g_imgS }" width="300px" height="300px"><br>
+					<div onclick="location.href='Goods.kg?'">
+						<a href="Goods.kg?G_code=${dto.g_code }"><img src="img/goods/${dto.g_imgS }" width="300px" height="300px"></a><br>
 						<span>${dto.g_product }</span><br>
 						<span>${dto.g_price }</span>
+					</div>
 					</td>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 	
-	<form action="GoodsWrite.kg" method="get">
 		<button type="submit" class="btn_sub highlight submit">
 			글쓰기
 		</button>
