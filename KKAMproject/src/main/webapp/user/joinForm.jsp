@@ -100,29 +100,57 @@
 		});
 
 	});
+	
+	$('.nickcheck').click(function(){
+		if($('.nick').val()==""){
+			alert("닉네임 입력하세요");
+			$('.nick').focus();
+			return false;
+		}
 
+		$.ajax({
+			url:'NickCheck.kkam',
+			data:{'nick':$('.nick').val()},
+			success:function(result){
+				if(result.trim()=="닉네임 중복"){
+					$('.nickCK').html(result).css("color","red");
+				}else{
+					$('.nickCK').html(result).css("color","blue");
+				}
+			}
+		});
+
+	});
+	
+	
 	
 	});
 </script>
 </head>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <body>
 <h1>Join</h1>
 <form action="JoinPro.kkam" method="post" id="join">
 이름: <input type="text" name="name" class="name"><br>
 아이디: <input type="text" name="id" class="id">
 	  <input type="button" value="중복 확인" class="dup"><br>
-	  <div class="divresult">아이디 중복체크 결과</div><br>	  
+	  <div class="divresult"></div><br>	  
 비밀번호: <input type="password" name="pw" class="pw"><br>
 비밀번호 확인: <input type="password" name="pw2" class="pw2"><br>
-닉네임: <input type="text" name="nick" class="nick"><br>
-	  <input type="button" value="중복 확인" class="nickcheck"><br>
-	  <div class="nickcheckresult">닉네임 중복체크 결과</div><br>
-생년월일: <input type="text" name="birth" class="birth"><br>
+닉네임: <input type="text" name="nick" class="nick"><input type="button" value="중복 확인" class="nickcheck"><br>
+	  <div class="nickCK"></div><br>
+생년월일: <input type="date" name="birth" class="birth"><br>
 휴대폰 번호: <input type="tel" name="phone" class="phone"><br>
-이메일: <input type="text" name="email" class="email"> @ <input type="text" name="emailD" class="emailD"> 셀렉트로 변경할거임 <br>
-주소: <input type="text" name="address" class="address"> api 적용!<br>
-상세주소: <input type="text" name="addressD" class="addressD"><br>
-<input type="submit" value="회원가입">
+이메일: <input type="email" id="email" name="email" required><br>
+우편번호: <input type="text" id="pcode" placeholder="우편번호" onclick="DaumPostcode()" required> 
+	    <input type="button" value="우편번호 찾기" id="joinbutton" onclick="DaumPostcode()"><br>
+주소: <input type="text" name="address" id="address" placeholder="주소"><br>
+상세주소: <input type="text" name="addressD" id="addressD" placeholder="상세주소"><br>
+<%@include file="addressMap.jsp"%>
+<input type="submit" value="회원가입" class="join">
+
+
+
 
 </form>
 </body>

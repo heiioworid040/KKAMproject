@@ -1,7 +1,6 @@
 package com.kkam.user.action;
 
 import java.io.PrintWriter;
-import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,11 +20,11 @@ public class JoinPro implements Action {
 		int birth=Integer.parseInt(req.getParameter("birth"));
 		int phone=Integer.parseInt(req.getParameter("phone"));
 		String email=req.getParameter("email");
-		String emailD=req.getParameter("emailD");
+//		String emailD=req.getParameter("emailD");
 		String address=req.getParameter("address");
 		String addressD=req.getParameter("addressD");
-		
 
+		
 		UserDTO dto=new UserDTO();
 		dto.setU_id(id);
 		dto.setU_pw(pw);
@@ -34,23 +33,48 @@ public class JoinPro implements Action {
 		dto.setU_birth(birth);
 		dto.setU_phone(phone);
 		dto.setU_email(email);
-		dto.setU_emailD(emailD);
+//		dto.setU_emailD(emailD);
 		dto.setU_address(address);
 		dto.setU_addressD(addressD);
+
 		
 		UserDAO dao=new UserDAO();
-		dao.insertUser(dto);
-		ActionForward forward=new ActionForward();
-		forward.setPath("Login.kkam");
-		forward.setRedirect(true);	
+	
+		UserDTO idck=dao.getUser(id);
+		UserDTO nickck=dao.getUser_nick(nick);
 		
-		resp.setContentType("text/html; charset=UTF-8");
-		PrintWriter out=resp.getWriter();
-		out.println("<script type='text/javascript'>");
-		out.println("alert('회원가입 완료')");
-		out.println("location.href = document.referrer;");
-		out.println("</script>");
-		out.close();
+		ActionForward forward=null;
+		
+			if(idck!=null) {
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter out=resp.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('아이디 중복')");
+			out.println("history.back()");
+			out.println("</script>");
+			out.close();
+			
+			}else if(nickck!=null){
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter out=resp.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('닉네임 중복')");
+			out.println("history.back()");
+			out.println("</script>");
+			out.close();
+			
+			}else {
+			dao.insertUser(dto);
+			resp.setContentType("text/html; charset=UTF-8");
+			PrintWriter out=resp.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('회원가입 완료')");
+			out.println("location.href = 'Main.kkam'");
+			out.println("</script>");
+			out.close();
+			}
+		
+		
 		
 		return forward;
 	}
