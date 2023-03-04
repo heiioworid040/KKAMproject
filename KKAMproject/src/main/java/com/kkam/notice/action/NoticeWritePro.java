@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kkam.notice.db.NoticeDAO;
 import com.kkam.notice.db.NoticeDTO;
-import com.kkam.user.action.Action;
-import com.kkam.user.action.ActionForward;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -17,21 +15,20 @@ public class NoticeWritePro implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		System.out.println("NoticeWritePro execute()");
-		String uploadPath=req.getRealPath("img/upload");
+		String uploadPath=req.getRealPath("/img/notice");
 		System.out.println(uploadPath);
-	
 		int maxSize=10*1024*1024;
-		
 		MultipartRequest multi=new MultipartRequest(req, uploadPath, maxSize, "utf-8", new DefaultFileRenamePolicy());
-		String name=multi.getParameter("nick");
+	
+//		String name=multi.getParameter("name");
 		String title=multi.getParameter("title");
 		String text=multi.getParameter("text");
 		String nick=multi.getParameter("nick");
 		String id=multi.getParameter("id");
-		int view=0;
 		Timestamp date=new Timestamp(System.currentTimeMillis());
 		String img=multi.getFilesystemName("img");
-		
+		int view=0;
+				
 		NoticeDTO dto = new NoticeDTO();
 		dto.setN_date(date);
 		dto.setN_title(title);
@@ -45,7 +42,7 @@ public class NoticeWritePro implements Action {
 		dao.insertNotice(dto);
 		
 		ActionForward forward=new ActionForward();
-		forward.setPath("NoticeList.bo");
+		forward.setPath("NoticeList.no");
 		forward.setRedirect(true);
 		return forward;
 

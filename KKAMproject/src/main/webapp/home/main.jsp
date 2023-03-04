@@ -27,6 +27,6 @@
 	
 	<br>
 	<button type="button" onclick="location.href='Goods.kg'">굿즈샵</button>
-	<button type="button" onclick="location.href='noticeForm.no'">글쓰기</button>
+	<button type="button" onclick="location.href='NoticeForm.no'">글쓰기</button>
 </body>
 </html>

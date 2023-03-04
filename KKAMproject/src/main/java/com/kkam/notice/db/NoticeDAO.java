@@ -3,10 +3,12 @@ package com.kkam.notice.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
 
 public class NoticeDAO {
 	public Connection getConnection() throws Exception{
@@ -57,5 +59,43 @@ public class NoticeDAO {
 		return;
 	}
 		
+	public ArrayList<NoticeDTO> getNoticeList(){
+		ArrayList<NoticeDTO> NoticeList=new ArrayList<NoticeDTO>();
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			String sql="select * from notice order by num desc";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();	
+
+			while(rs.next()) {
+				NoticeDTO dto=new NoticeDTO();
+				dto.setU_id(rs.getString("U_id"));
+				dto.setU_nick(rs.getString("U_nick"));
+				dto.setN_num(rs.getInt("N_num"));
+				dto.setN_title(rs.getString("N_title"));
+				dto.setN_text(rs.getString("N_text"));
+				dto.setN_date(rs.getTimestamp("N_date"));
+				dto.setN_img(rs.getString("N_img"));
+				dto.setN_view(rs.getInt("N_view"));
+
+				NoticeList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return NoticeList;
+	}
+		
+	
+	
+
 	
 }

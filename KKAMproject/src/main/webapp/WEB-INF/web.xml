@@ -32,4 +32,15 @@
    <url-pattern>*.kg</url-pattern>
   </servlet-mapping>
 
+  <!-- 공지 관련 -->
+  <servlet>
+  	<servlet-name>NoticeFrontController</servlet-name>
+  	<servlet-class>com.kkam.notice.action.NoticeFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+   <servlet-name>NoticeFrontController</servlet-name>
+   <url-pattern>*.no</url-pattern>
+  </servlet-mapping>
+
 </web-app>
