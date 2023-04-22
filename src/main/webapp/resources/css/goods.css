@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.container-doc {
+	width: 1300px;
+	margin: auto;
+}
+.inner_container {
+	width: 1100px;
+	padding: 70px 0;
+	margin: auto;
+/* 	text-align: center; */
+}
+.cont_img {
+	width: 300px;
+	float: left;
+	margin: 30px;
+}

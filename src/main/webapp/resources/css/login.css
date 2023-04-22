@@ -1,0 +1,69 @@
+@charset "UTF-8";
+.container-doc {
+	width: 100%;
+	height: 100%;
+}
+.inner_container {
+	width: 100%;
+	height: 818px;
+}
+.main_article {
+	width: 660px;
+	height: 620px;
+	margin: 120px auto 20px;
+	box-sizing: border-box;
+	border: 2px dashed rgba(0,0,0,.12);
+	border-radius: 50px;
+	font-size: 12px;
+	text-align: center;
+}
+.cont_login {
+	width: 400px;
+	margin: auto;
+}
+.footer-doc {
+	text-align: center;
+	font-size: 12px;
+	color: #4c4c4c;	
+}
+
+/* 세부사항 */
+.btn_sub.highlight {
+	background-color: #5D5D5D;
+	color: white;
+}
+.btn_sub {
+	width: 100%;
+	height: 60px;
+	border: none;
+	margin-top: 30px;
+	font-size: 16px;
+	border-radius: 8px;
+}
+.box_tf {
+	width: 100%;
+	margin-bottom: 3px;
+	border: solid #ccc;
+	border-width: 0 0 2px;
+}
+.box_tf .tf_g {
+	width: 100%;
+	height: 50px;
+	font-size: 18px;
+	border: 0;
+	outline: 0 none;
+	padding: 5px 0;
+}
+.tit_KKAM {
+	margin: 80px;
+}
+.logo_KKAM {
+	font-size: 30px;
+}
+.box_desc {
+	margin-top: 20px;
+}
+.box_desc .desc_error {
+	color: #e65f3e;
+	font-size: 14px;
+}
