@@ -13,7 +13,7 @@
 	
 		<c:if test="${! empty sessionScope.id}">
 			<div id="login">${sessionScope.id } 님 | 
-				<button type="button" onclick="location.href='LogoutPro.kkam'">로그아웃</button>
+				<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/logout'">로그아웃</button>
 			</div>	
 		</c:if>
 		
