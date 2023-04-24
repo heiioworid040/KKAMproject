@@ -40,4 +40,10 @@ public class UserController {
 		return "redirect:/main";
 //		return "user/login";
 	}
+	
+	@RequestMapping(value = "/user/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/user/login";
+	}
 }
