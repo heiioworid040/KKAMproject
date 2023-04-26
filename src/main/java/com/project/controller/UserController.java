@@ -36,9 +36,12 @@ public class UserController {
 		userDTO.setU_pw(request.getParameter("pw"));
 		
 		UserDTO checkDTO = userService.userCheck(userDTO);
-		session.setAttribute("id", userDTO.getU_id());
-		return "redirect:/main";
-//		return "user/login";
+		if(checkDTO!=null) {
+			session.setAttribute("id", userDTO.getU_id());
+			return "redirect:/main";
+		}else {
+			return "user/login";
+		}
 	}
 	
 	@RequestMapping(value = "/user/logout", method = RequestMethod.GET)
