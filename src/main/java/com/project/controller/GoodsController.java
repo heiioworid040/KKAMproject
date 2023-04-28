@@ -14,7 +14,7 @@ public class GoodsController {
 	@Inject
 //	private GoodsService goodsService;
 	
-	@RequestMapping(value = "/goods/goodsForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/goods/form", method = RequestMethod.GET)
 	public String goods() {
 		
 		return "goods/form";

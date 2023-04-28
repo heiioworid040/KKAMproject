@@ -26,7 +26,7 @@
 		</c:if>
 	
 	<br>
-	<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/goods'">굿즈샵</button>
+	<button type="button" onclick="location.href='${pageContext.request.contextPath}/goods/form'">굿즈샵</button>
 	<button type="button" onclick="location.href='noticeForm.no'">글쓰기</button>
 </body>
 </html>
