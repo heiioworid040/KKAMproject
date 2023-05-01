@@ -28,9 +28,9 @@ public class UserController {
 	public String login() {
 		return "user/login";
 	}
-
+	
 	@RequestMapping(value = "/user/loginPro", method = RequestMethod.POST)
-	public String loginPro(HttpServletRequest request, HttpSession session) {
+	public String loginPro(HttpServletRequest request, HttpSession session, Model model) {
 		UserDTO userDTO=new UserDTO();
 		userDTO.setU_id(request.getParameter("id"));
 		userDTO.setU_pw(request.getParameter("pw"));
@@ -40,6 +40,8 @@ public class UserController {
 			session.setAttribute("id", userDTO.getU_id());
 			return "redirect:/main";
 		}else {
+			String result="null";
+			model.addAttribute("result", result);
 			return "user/login";
 		}
 	}
