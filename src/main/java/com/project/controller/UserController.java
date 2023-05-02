@@ -51,4 +51,20 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/user/login";
 	}
+	
+	@RequestMapping(value = "/user/join", method = RequestMethod.GET)
+	public String join(HttpSession session) {
+		
+		return "redirect:/user/join";
+	}
 }
+
+
+
+
+
+
+
+
+
+
