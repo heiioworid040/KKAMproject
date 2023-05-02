@@ -7,7 +7,7 @@
 <title>KKAMpage</title>
 </head>
 <body>
-	<form action="GoodsWritePro.kg" method="post" enctype="multipart/form-data">
+	<form action="${pageContext.request.contextPath }/goods/goodsWirtePro" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>상품코드</th>
