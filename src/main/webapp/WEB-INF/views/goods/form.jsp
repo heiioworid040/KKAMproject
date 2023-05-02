@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>KKAMpage</title>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link href="assets/css/goods.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -15,7 +17,7 @@
 	<h2>GOODS SHOP</h2>
 	<div class="container-doc">
 		<div class="inner_container">
-			<form action="GoodsWrite.kg" method="get">
+			<form action="${pageContext.request.contextPath }/goods/goodsWrite" method="get">
 				<table>
 					<c:forEach var="dto" items="${GoodsList }">
 						<tr class="cont_img">
