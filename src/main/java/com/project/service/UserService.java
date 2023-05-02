@@ -1,9 +1,10 @@
-package com.project.myweb;
+package com.project.service;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
 
+import com.project.dao.UserDAO;
 import com.project.domain.UserDTO;
 
 @Repository
