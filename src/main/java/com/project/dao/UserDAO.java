@@ -1,4 +1,4 @@
-package com.project.myweb;
+package com.project.dao;
 
 import javax.inject.Inject;
 
