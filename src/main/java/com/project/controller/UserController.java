@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.domain.UserDTO;
-import com.project.myweb.UserService;
+import com.project.service.UserService;
 
 @Controller
 public class UserController {
@@ -20,7 +20,6 @@ public class UserController {
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main() {
-		
 		return "main";
 	}
 	
@@ -63,13 +62,3 @@ public class UserController {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
