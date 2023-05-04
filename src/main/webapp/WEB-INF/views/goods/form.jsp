@@ -7,24 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>KKAMpage</title>
-<link href="assets/css/goods.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/resources/css/goods.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<%
-// ArrayList<GoodsDTO> GoodsList=(ArrayList<GoodsDTO>)request.getAttribute("GoodsList");
-// GoodsDTO dto=new GoodsDTO();
-%>
 	<h2>GOODS SHOP</h2>
 	<div class="container-doc">
 		<div class="inner_container">
 			<form action="${pageContext.request.contextPath }/goods/goodsWrite" method="get">
 				<table>
-					<c:forEach var="dto" items="${GoodsList }">
+					<c:forEach var="goods" items="${GoodsList }">
 						<tr class="cont_img">
 							<td>
-								<a href="Goods.kg?G_code=${dto.g_code }"><img src="img/goods/${dto.g_imgS }" width="300px" height="300px"></a><br>
-								<span>${dto.g_product }</span><br>
-								<span>${dto.g_price }</span>
+								<a href="${pageContext.request.contextPath }/goods/details?G_code=${goods.g_code }"><img src="${pageContext.request.contextPath }/img/goods/${goods.g_imgS }" width="300px" height="300px"></a><br>
+								<span>${goods.g_product }</span><br>
+								<span>${goods.g_price }</span>
 							</td>
 						</tr>
 					</c:forEach>
