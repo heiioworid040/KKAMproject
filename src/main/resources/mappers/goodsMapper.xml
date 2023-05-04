@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.mappers.goodsMapper">
+	<select id="goodsList" resultType="com.project.domain.GoodsDTO">
+		select * from goods
+		<if test="G_code!=null">
+			where G_code=#{G_code}
+		</if>
+	</select>
+
 	<insert id="goodsWrite">
 		insert into goods(G_code, G_stop, G_product, G_price, G_desc, G_imgS, G_img)
 		values(#{code}, #{stop}, #{product}, #{price}, #{desc}, #{imgS}, #{img})

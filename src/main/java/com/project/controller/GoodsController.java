@@ -1,9 +1,12 @@
 package com.project.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,8 +20,26 @@ public class GoodsController {
 	private GoodsService goodsService;
 	
 	@RequestMapping(value = "/goods/form", method = RequestMethod.GET)
-	public String goods() {
+	public String goodsForm(Model model) {
+		GoodsDTO goodsDTO=new GoodsDTO();
+		//검색 추가 예정
+		
+		List<GoodsDTO> GoodsList=goodsService.goodsList(goodsDTO);
+		
+		model.addAttribute("GoodsList", GoodsList);
 		return "goods/form";
+	}
+	
+	@RequestMapping(value = "/goods/details", method = RequestMethod.GET)
+	public String goodsDetails(HttpServletRequest request, Model model) {
+		GoodsDTO goodsDTO=new GoodsDTO();
+		goodsDTO.setG_code(request.getParameter("G_code"));
+		//검색 추가 예정
+
+		List<GoodsDTO> GoodsList=goodsService.goodsList(goodsDTO);
+		
+		model.addAttribute("GoodsList", GoodsList);
+		return "goods/details";
 	}
 
 	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)
