@@ -42,6 +42,11 @@ public class GoodsController {
 		return "goods/details";
 	}
 
+	@RequestMapping(value = "/goods/buy", method = RequestMethod.GET)
+	public String goodsBuy() {
+		return "goods/buy";
+	}
+
 	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)
 	public String goodsWrite() {
 		return "goods/goodsWrite";

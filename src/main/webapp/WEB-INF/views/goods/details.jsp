@@ -13,6 +13,7 @@
 	<h2>GOODS SHOP</h2>
 	<div class="container-doc">
 		<div class="inner_container">
+		<form action="${pageContext.request.contextPath }/goods/buy" method="get">
 		<table>
 				<c:forEach var="goods" items="${GoodsList }">
 					<tr>
@@ -52,8 +53,16 @@
 							<span>${goods.g_desc }</span><br>
 						</td>
 					</tr>
+					<tr>
+						<th>
+							<input type="submit" value="구매하기">
+							<input type="submit" value="장바구니">
+<!-- 							링크 수정 -->
+						</th>
+					</tr>
 				</c:forEach>
 		</table>
+		</form>
 		</div>
 		<table>
 				<c:forEach var="goods" items="${GoodsList }">
