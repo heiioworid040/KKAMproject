@@ -53,12 +53,13 @@ public class UserController {
 	
 	@RequestMapping(value = "/user/join", method = RequestMethod.GET)
 	public String join() {		
-		return "redirect:/user/join";
+		return "user/join";
 	}
 	
-	@RequestMapping(value = "/user/joinPro", method = RequestMethod.GET)
-	public String joinPro() {		
-		return "user/login";
+	@RequestMapping(value = "/user/joinPro", method = RequestMethod.POST)
+	public String joinPro(UserDTO userDTO) {
+		userService.insertUser(userDTO);
+		return "redirect:/user/login";
 	}
 	
 }
