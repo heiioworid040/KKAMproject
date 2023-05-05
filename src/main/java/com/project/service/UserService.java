@@ -16,5 +16,9 @@ public class UserService {
 	public UserDTO userCheck(UserDTO userDTO) {
 		return userDAO.userCheck(userDTO);
 	}
+
+	public void insertUser(UserDTO userDTO) {
+		userDAO.insertUser(userDTO);
+	}
 	
 }

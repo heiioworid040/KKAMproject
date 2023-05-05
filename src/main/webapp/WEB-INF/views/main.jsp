@@ -20,7 +20,7 @@
 		<c:if test="${empty sessionScope.id }">
 			<div id="login">
 				<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/login'">로그인폼</button> | 
-				<button type="button" onclick="location.href='Join.kkam'">회원가입폼</button>
+				<button type="button" onclick="location.href='${pageContext.request.contextPath}/user/join'">회원가입폼</button>
 				
 			</div>
 		</c:if>

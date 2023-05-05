@@ -1,5 +1,7 @@
 package com.project.dao;
 
+import java.sql.Timestamp;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,6 +18,10 @@ public class UserDAO {
 	
 	public UserDTO userCheck(UserDTO userDTO) {
 		return sqlSession.selectOne(namespace+".userCheck",userDTO);
+	}
+
+	public void insertUser(UserDTO userDTO) {
+		sqlSession.insert(namespace+".insertUser", userDTO);
 	}
 
 }
