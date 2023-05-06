@@ -1,4 +1,4 @@
-package com.project.myweb;
+package com.project.kkam;
 
 import java.text.DateFormat;
 import java.util.Date;
