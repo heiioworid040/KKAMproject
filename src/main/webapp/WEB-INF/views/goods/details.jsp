@@ -18,7 +18,7 @@
 				<c:forEach var="goods" items="${GoodsList }">
 					<tr>
 						<td rowspan='5'>
-							<img src="${pageContext.request.contextPath }/resources/img/goods/${goods.g_imgS }" width="300px" height="300px"><br>
+							<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="300px" height="300px"><br>
 						</td>
 						<th colspan='2'>
 							<span>${goods.g_product }</span><br>
@@ -68,7 +68,7 @@
 				<c:forEach var="goods" items="${GoodsList }">
 					<tr>
 						<td>
-							<img src="img/goods/${goods.g_img }" width="1300px" height="2000px"><br>
+							<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_img }" width="1300px" height="2000px"><br>
 						</td>
 					</tr>
 				</c:forEach>

@@ -7,7 +7,8 @@
 <title>KKAMpage</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/goods/goodsWirtePro" method="post" enctype="multipart/form-data">
+<!-- 관리자 계정 아닐 시 화면제어 추가 -->
+	<form action="${pageContext.request.contextPath }/goods/goodsWritePro" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>상품코드</th>

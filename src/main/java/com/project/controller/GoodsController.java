@@ -1,14 +1,19 @@
 package com.project.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.GoodsDTO;
 import com.project.service.GoodsService;
@@ -18,6 +23,9 @@ public class GoodsController {
 	
 	@Inject
 	private GoodsService goodsService;
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 	
 	@RequestMapping(value = "/goods/form", method = RequestMethod.GET)
 	public String goodsForm(Model model) {
@@ -52,20 +60,28 @@ public class GoodsController {
 		return "goods/goodsWrite";
 	}
 	
-	@RequestMapping(value = "/goods/goodsWritePro", method = RequestMethod.GET)
-	public String goodsWritePro(HttpServletRequest request) {
+	@RequestMapping(value = "/goods/goodsWritePro", method = RequestMethod.POST)
+	public String goodsWritePro(HttpServletRequest request, MultipartFile img, MultipartFile imgS)throws Exception {
 		GoodsDTO goodsDTO=new GoodsDTO();
 		goodsDTO.setG_code(request.getParameter("code"));
 		goodsDTO.setG_stop(Integer.parseInt(request.getParameter("stop")));
 		goodsDTO.setG_product(request.getParameter("product"));
 		goodsDTO.setG_price(Integer.parseInt(request.getParameter("price")));
 		goodsDTO.setG_desc(request.getParameter("desc"));
-		goodsDTO.setG_imgS(request.getParameter("imgS"));
-		goodsDTO.setG_img(request.getParameter("img"));
+		
+		//파일 이름 수정 예정
+		UUID uuid=UUID.randomUUID();
+		String imgName=uuid.toString()+"_"+img.getOriginalFilename();
+		String imgSName=uuid.toString()+"_"+imgS.getOriginalFilename();
+		FileCopyUtils.copy(img.getBytes(), new File(uploadPath, imgName));
+		FileCopyUtils.copy(imgS.getBytes(), new File(uploadPath, imgSName));
+		
+		goodsDTO.setG_img(imgName);
+		goodsDTO.setG_imgS(imgSName);
 		
 		goodsService.goodsWrite(goodsDTO);
 		
-		return "redirect:/goods/goodsWrite";
+		return "redirect:/goods/form";
 	}
 	
 }

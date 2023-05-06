@@ -18,7 +18,7 @@
 					<c:forEach var="goods" items="${GoodsList }">
 						<tr class="cont_img">
 							<td>
-								<a href="${pageContext.request.contextPath }/goods/details?G_code=${goods.g_code }"><img src="${pageContext.request.contextPath }/img/goods/${goods.g_imgS }" width="300px" height="300px"></a><br>
+								<a href="${pageContext.request.contextPath }/goods/details?G_code=${goods.g_code }"><img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="300px" height="300px"></a><br>
 								<span>${goods.g_product }</span><br>
 								<span>${goods.g_price }</span>
 							</td>

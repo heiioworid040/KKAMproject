@@ -11,6 +11,6 @@
 
 	<insert id="goodsWrite">
 		insert into goods(G_code, G_stop, G_product, G_price, G_desc, G_imgS, G_img)
-		values(#{code}, #{stop}, #{product}, #{price}, #{desc}, #{imgS}, #{img})
+		values(#{G_code}, #{G_stop}, #{G_product}, #{G_price}, #{G_desc}, #{G_imgS}, #{G_img})
 	</insert>
 </mapper>
