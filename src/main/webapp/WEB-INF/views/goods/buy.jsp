@@ -13,7 +13,30 @@
 	<h2>GOODS SHOP</h2>
 	<div class="container-doc">
 		<div class="inner_container">
-			
+			<table>
+				<thead>
+					<tr>
+						<th>제품사진</th>
+						<th>제품명</th>
+						<th>제품코드</th>
+						<th>가격</th>
+						<th>개수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="goods" items="${GoodsList }">
+						<tr>
+							<td rowspan='5'>
+								<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="300px" height="300px"><br>
+							</td>
+							<td>${goods.g_product }</td>
+							<td>${goods.g_code }</td>
+							<td>${goods.g_price }</td>
+<%-- 							<td>${goods.g_구매개수 }</td> --%> 
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>

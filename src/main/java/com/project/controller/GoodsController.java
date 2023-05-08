@@ -51,7 +51,15 @@ public class GoodsController {
 	}
 
 	@RequestMapping(value = "/goods/buy", method = RequestMethod.GET)
-	public String goodsBuy() {
+	public String goodsBuy(HttpServletRequest request, Model model) {
+		GoodsDTO goodsDTO=new GoodsDTO();
+		goodsDTO.setG_code(request.getParameter("G_code"));
+		//검색 추가 예정
+
+		List<GoodsDTO> GoodsList=goodsService.goodsList(goodsDTO);
+		
+		//장바구니 리스트로 수정 예정
+		model.addAttribute("GoodsList", GoodsList);
 		return "goods/buy";
 	}
 
