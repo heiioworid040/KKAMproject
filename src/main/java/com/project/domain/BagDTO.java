@@ -2,12 +2,13 @@ package com.project.domain;
 
 import com.google.protobuf.Timestamp;
 
-public class BagDTO {
+public class BagDTO extends GoodsDTO{
 	private int B_num;
 	private String U_id;
 	private String G_code;
-	private String B_count;
+	private int B_count;
 	private Timestamp B_date;
+	
 	public int getB_num() {
 		return B_num;
 	}
@@ -26,10 +27,10 @@ public class BagDTO {
 	public void setG_code(String g_code) {
 		G_code = g_code;
 	}
-	public String getB_count() {
+	public int getB_count() {
 		return B_count;
 	}
-	public void setB_count(String b_count) {
+	public void setB_count(int b_count) {
 		B_count = b_count;
 	}
 	public Timestamp getB_date() {
