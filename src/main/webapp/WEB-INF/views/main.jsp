@@ -27,6 +27,7 @@
 	
 	<br>
 	<button type="button" onclick="location.href='${pageContext.request.contextPath}/goods/form'">굿즈샵</button>
+	<button type="button" onclick="location.href='${pageContext.request.contextPath}/goods/cart'">장바구니</button>
 	<button type="button" onclick="location.href='noticeForm.no'">글쓰기</button>
 </body>
 </html>
