@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.domain.BagDTO;
 import com.project.domain.GoodsDTO;
 import com.project.service.GoodsService;
 
@@ -48,6 +50,30 @@ public class GoodsController {
 		
 		model.addAttribute("GoodsList", GoodsList);
 		return "goods/details";
+	}
+	
+	@RequestMapping(value = "/goods/cart", method = RequestMethod.GET)
+	public String goodsCart(HttpSession session, Model model) {
+		BagDTO bagDTO=new BagDTO();
+		bagDTO.setU_id((String)session.getAttribute("id"));
+		//수정 예정
+		
+		List<BagDTO> CartList=goodsService.cartList(bagDTO);
+		
+		model.addAttribute("CartList", CartList);
+		return "goods/cart";
+	}
+	
+	@RequestMapping(value = "/goods/cartPro", method = RequestMethod.GET)
+	public String goodsCartPro(HttpSession session, HttpServletRequest request, Model model) {
+		BagDTO bagDTO=new BagDTO();
+		bagDTO.setU_id((String)session.getAttribute("id"));
+		bagDTO.setG_code(request.getParameter("G_code"));
+//		bagDTO.setB_count(request.getParameter("B_count"));
+
+		goodsService.cartPro(bagDTO);
+		
+		return "redirect:/goods/cart";
 	}
 
 	@RequestMapping(value = "/goods/buy", method = RequestMethod.GET)
