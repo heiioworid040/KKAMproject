@@ -12,6 +12,7 @@ public class UserDTO {
 	private Timestamp U_createdate;
 	private int U_phone;
 	private String U_email;
+	private String U_emailD;
 	private String U_grade;
 	private String U_address;
 	private String U_addressD;
@@ -67,12 +68,12 @@ public class UserDTO {
 	public void setU_email(String u_email) {
 		U_email = u_email;
 	}
-//	public String getU_emailD() {
-//		return U_emailD;
-//	}
-//	public void setU_emailD(String u_emailD) {
-//		U_emailD = u_emailD;
-//	}
+	public String getU_emailD() {
+		return U_emailD;
+	}
+	public void setU_emailD(String u_emailD) {
+		U_emailD = u_emailD;
+	}
 	public String getU_grade() {
 		return U_grade;
 	}
