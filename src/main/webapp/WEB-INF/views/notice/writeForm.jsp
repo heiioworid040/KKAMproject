@@ -14,25 +14,27 @@
 
 <h1>글쓰기</h1>
 <form action = "${pageContext.request.contextPath}/notice/writePro" method="post">
+<input type="hidden" name="id" value="${sessionScope.U_id }">
+		
 <table border = "1">
 <tr>
 	<td>글쓴이</td>
-	<td><input type = "text" name = "u_nick" value = "${sessionScope.U_nick }" readonly></td>
+	<td><input type="text" name="nick" value = "${sessionScope.U_nick }" readonly></td>
 </tr>
 <tr>
 	<td>글제목</td>
-	<td><input type = "text" name = "n_title"></td>
+	<td><input type="text" name="title"></td>
 </tr>
 <tr>
 	<td>첨부파일</td>
-	<td><input type = "file" name = "n_file"></td>
+	<td><input type="file" name="img"></td>
 </tr>
 <tr>
 	<td>글내용</td>
-	<td><textarea name = "n_content" rows = "10" cols = "20"></textarea></td>
+	<td><textarea name="text" rows="10" cols="20"></textarea></td>
 </tr>
 <tr>
-	<td colspan = "2"><input type="submit" value = "글쓰기"></td>
+	<td colspan="2"><input type="submit" value="글쓰기"></td>
 </tr>
 
 </table>
