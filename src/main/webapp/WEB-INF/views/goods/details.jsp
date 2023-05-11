@@ -9,6 +9,16 @@
 <title>KKAMpage</title>
 <link href="${pageContext.request.contextPath }/resources/css/goods.css" rel="stylesheet" type="text/css">
 </head>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/script/jquery-3.6.3.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#count').change(function(){
+			var price = $('#G_price').val();
+			var count = $('#count').val();
+			$('#price, #total').text(price*count+"원");
+		});
+	});
+</script>
 <script>
 	function fun1(index) {
 		if(index==1) {
@@ -39,6 +49,7 @@
 							</th>
 							<td>
 								<span>${goods.g_price }</span><br>
+								<input type="hidden" id="G_price" value="${goods.g_price }">
 							</td>
 						</tr>
 						<tr>
@@ -59,8 +70,20 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan='2'>
-								<span>${goods.g_desc }</span><br>
+							<th>
+								<span>${goods.g_product }</span>
+								<input type="number" id="count" name="count" max="${goods.g_stop }" min="1" value="1">
+							</th>
+							<td>
+								<span id="price">${goods.g_price }원</span>
+							</td>
+						</tr>
+						<tr>
+							<th>
+							<span>총 합계 금액</span>
+							</th>
+							<td>
+								<span id="total">${goods.g_price }원</span>
 							</td>
 						</tr>
 						<tr>
@@ -69,6 +92,11 @@
 								<input type="submit" value="장바구니" onclick="fun1(2)">
 <!-- 							링크 수정 -->
 							</th>
+						</tr>
+						<tr>
+							<td colspan='2'>
+								<span>${goods.g_desc }</span><br>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
