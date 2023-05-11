@@ -10,6 +10,6 @@
 	
 	<insert id="insertUser">
 		insert into user(U_id, U_pw, U_name, U_nick, U_birth, U_phone, U_email, U_emailD, U_address, U_addressD)
-		values(#{id}, #{pw}, #{name}, #{nick}, #{birth}, #{phone}, #{email}, #{emailD}, #{address}, #{addressD} )
+		values(#{U_id}, #{U_pw}, #{U_name}, #{U_nick}, #{U_birth}, #{U_phone}, #{U_email}, #{U_emailD}, #{U_address}, #{U_addressD} )
 	</insert>
 </mapper>
