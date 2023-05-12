@@ -27,12 +27,12 @@
 					<c:forEach var="goods" items="${GoodsList }">
 						<tr>
 							<td rowspan='5'>
-								<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="300px" height="300px"><br>
+								<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px" height="100px"><br>
 							</td>
 							<td>${goods.g_product }</td>
 							<td>${goods.g_code }</td>
 							<td>${goods.g_price }</td>
-<%-- 							<td>${goods.g_구매개수 }</td> --%> 
+							<td>${goods.g_count }</td> 
 						</tr>
 					</c:forEach>
 				</tbody>
