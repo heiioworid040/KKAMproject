@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.project.mappers.noticeMapper">
+	
+	<insert id = "insertNotice">
+		insert into notice(N_num, U_nick, U_id, N_title, N_text, N_date, N_img, N_view)
+		values (#{N_num}, #{U_nick}, #{U_id}, #{N_title}, #{N_text}, #{N_date}, #{N_img}, #{N_view});
+	</insert>
+
+
+</mapper>
