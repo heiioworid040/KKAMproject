@@ -22,7 +22,7 @@
 <script>
 	function fun1(index) {
 		if(index==1) {
-			document.details.action="${pageContext.request.contextPath }/goods/buy";
+			document.details.action="${pageContext.request.contextPath }/goods/order";
 		}else {
 			document.details.action="${pageContext.request.contextPath }/goods/basketPro";
 		}
@@ -72,7 +72,7 @@
 						<tr>
 							<th>
 								<span>${goods.g_product }</span>
-								<input type="number" id="count" name="G_count" max="${goods.g_stop }" min="1" value="1">
+								<input type="number" id="count" name="count" max="${goods.g_stop }" min="1" value="1">
 							</th>
 							<td>
 								<span id="price">${goods.g_price }원</span>
