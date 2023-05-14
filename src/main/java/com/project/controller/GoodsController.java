@@ -52,28 +52,28 @@ public class GoodsController {
 		return "goods/details";
 	}
 	
-	@RequestMapping(value = "/goods/cart", method = RequestMethod.GET)
-	public String goodsCart(HttpSession session, Model model) {
+	@RequestMapping(value = "/goods/basket", method = RequestMethod.GET)
+	public String goodsbasket(HttpSession session, Model model) {
 		BasketDTO bagDTO=new BasketDTO();
 		bagDTO.setU_id((String)session.getAttribute("id"));
 		//수정 예정
 		
-		List<BasketDTO> CartList=goodsService.cartList(bagDTO);
+		List<BasketDTO> BasketList=goodsService.basketList(bagDTO);
 		
-		model.addAttribute("CartList", CartList);
-		return "goods/cart";
+		model.addAttribute("BasketList", BasketList);
+		return "goods/basket";
 	}
 	
-	@RequestMapping(value = "/goods/cartPro", method = RequestMethod.GET)
-	public String goodsCartPro(HttpSession session, HttpServletRequest request, Model model) {
+	@RequestMapping(value = "/goods/basketPro", method = RequestMethod.GET)
+	public String goodsbasketPro(HttpSession session, HttpServletRequest request, Model model) {
 		BasketDTO bagDTO=new BasketDTO();
 		bagDTO.setU_id((String)session.getAttribute("id"));
 		bagDTO.setG_code(request.getParameter("G_code"));
 //		bagDTO.setB_count(request.getParameter("B_count"));
 
-		goodsService.cartPro(bagDTO);
+		goodsService.basketPro(bagDTO);
 		
-		return "redirect:/goods/cart";
+		return "redirect:/goods/basket";
 	}
 
 	@RequestMapping(value = "/goods/buy", method = RequestMethod.GET)

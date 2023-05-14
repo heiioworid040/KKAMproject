@@ -24,7 +24,7 @@
 						<th>총 금액</th>
 					</tr>
 				</thead>
-				<c:forEach var="goods" items="${CartList }">
+				<c:forEach var="goods" items="${BasketList }">
 					<tbody>
 						<tr>
 							<td>

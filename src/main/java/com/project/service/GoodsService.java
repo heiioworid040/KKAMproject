@@ -20,11 +20,11 @@ public class GoodsService {
 		return goodsDAO.goodsList(goodsDTO);
 	}
 	
-	public List<BasketDTO> cartList(BasketDTO bagDTO) {
-		return goodsDAO.cartList(bagDTO);
+	public List<BasketDTO> basketList(BasketDTO bagDTO) {
+		return goodsDAO.basketList(bagDTO);
 	}
 	
-	public void cartPro(BasketDTO bagDTO) {
+	public void basketPro(BasketDTO bagDTO) {
 		if(goodsDAO.maxB_num()==null) {
 			bagDTO.setB_num(1);
 		}else {
@@ -32,14 +32,14 @@ public class GoodsService {
 		}
 
 		if(goodsDAO.getG_code(bagDTO)==null) {
-			goodsDAO.cartAdd(bagDTO);
+			goodsDAO.basketAdd(bagDTO);
 		}else {
 			if(goodsDAO.maxB_count(bagDTO)!=null) {
 				//+1 대신 request.B_count 으로 수정 예정
 				//제한 수량 이상 구매 시 제한
 				bagDTO.setB_count(goodsDAO.maxB_count(bagDTO)+1);
 			}
-			goodsDAO.cartUpdate(bagDTO);
+			goodsDAO.basketUpdate(bagDTO);
 		}
 	}
 

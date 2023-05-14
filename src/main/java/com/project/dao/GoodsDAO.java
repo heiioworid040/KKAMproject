@@ -21,16 +21,16 @@ public class GoodsDAO {
 		return sqlSession.selectList(namespace+".goodsList", goodsDTO);
 	}
 	
-	public List<BasketDTO> cartList(BasketDTO bagDTO) {
-		return sqlSession.selectList(namespace+".cartList", bagDTO);
+	public List<BasketDTO> basketList(BasketDTO bagDTO) {
+		return sqlSession.selectList(namespace+".basketList", bagDTO);
 	}
 	
-	public void cartAdd(BasketDTO bagDTO) {
-		sqlSession.insert(namespace+".cartAdd", bagDTO);
+	public void basketAdd(BasketDTO bagDTO) {
+		sqlSession.insert(namespace+".basketAdd", bagDTO);
 	}
 	
-	public void cartUpdate(BasketDTO bagDTO) {
-		sqlSession.update(namespace+".cartUpdate", bagDTO);
+	public void basketUpdate(BasketDTO bagDTO) {
+		sqlSession.update(namespace+".basketUpdate", bagDTO);
 	}
 	
 	public void goodsWrite(GoodsDTO goodsDTO) {

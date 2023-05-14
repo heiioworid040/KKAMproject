@@ -9,18 +9,18 @@
 		</if>
 	</select>
 
-	<select id="cartList" resultType="com.project.domain.BasketDTO">
+	<select id="basketList" resultType="com.project.domain.BasketDTO">
 		select b.G_code, G_imgS, G_product, G_price, B_count from goods g join basket b on g.G_code=b.G_code
 		where U_id=#{U_id}
 		order by B_date
 	</select>
 
-	<insert id="cartAdd">
+	<insert id="basketAdd">
 		insert basket(B_num, U_id, G_code, B_count)
 		values(#{B_num}, #{U_id}, #{G_code}, #{B_count})
 	</insert>
 	
-	<update id="cartUpdate">
+	<update id="basketUpdate">
 		update basket set B_count=#{B_count} where U_id=#{U_id} and G_code=#{G_code}
 	</update>
 

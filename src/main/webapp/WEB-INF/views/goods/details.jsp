@@ -24,7 +24,7 @@
 		if(index==1) {
 			document.details.action="${pageContext.request.contextPath }/goods/buy";
 		}else {
-			document.details.action="${pageContext.request.contextPath }/goods/cartPro";
+			document.details.action="${pageContext.request.contextPath }/goods/basketPro";
 		}
 	}
 </script>
