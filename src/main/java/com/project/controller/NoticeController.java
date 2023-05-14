@@ -32,21 +32,26 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "/notice/writePro", method = RequestMethod.POST)
-	public String writePro(HttpServletRequest request, MultipartFile file) throws Exception {
-	
+	public String writePro(HttpServletRequest request, MultipartFile img) throws Exception {
+		
+		System.out.println(request.getParameter("text"));
+		System.out.println(request.getParameter("title"));
+		System.out.println(request.getParameter("id"));
+		System.out.println(request.getParameter("img"));
+		
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setN_text(request.getParameter("text"));
 		noticeDTO.setN_title(request.getParameter("title"));
 		noticeDTO.setU_id(request.getParameter("id"));
-		noticeDTO.setU_nick(request.getParameter("nick"));
 		
 		UUID uuid = UUID.randomUUID();
-		String filename = uuid.toString() + "_" + file.getOriginalFilename();
-		FileCopyUtils.copy(file.getBytes(), new File(uploadPath,filename));
+		String filename = uuid.toString() + "_" + img.getOriginalFilename();
+		FileCopyUtils.copy(img.getBytes(), new File(uploadPath,filename));
 		noticeDTO.setN_img(filename);
 		
 		noticeService.insertNotice(noticeDTO);
-		return "redirect/notice/list";
+//		return "redirect/notice/list";
+		return "redirect:/main";
 	
 	}
 
