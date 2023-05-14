@@ -32,7 +32,7 @@
 							<td>${goods.g_product }</td>
 							<td>${goods.g_code }</td>
 							<td>${goods.g_price }</td>
-							<td>${goods.g_count }</td> 
+							<td>${OD_count }</td> 
 						</tr>
 					</c:forEach>
 				</tbody>
