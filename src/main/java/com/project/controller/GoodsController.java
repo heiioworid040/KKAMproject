@@ -69,15 +69,17 @@ public class GoodsController {
 		BasketDTO bagDTO=new BasketDTO();
 		bagDTO.setU_id((String)session.getAttribute("id"));
 		bagDTO.setG_code(request.getParameter("G_code"));
-//		bagDTO.setB_count(request.getParameter("B_count"));
+		bagDTO.setB_count(Integer.parseInt(request.getParameter("count")));
 
 		goodsService.basketPro(bagDTO);
 		
 		return "redirect:/goods/basket";
 	}
 
-	@RequestMapping(value = "/goods/buy", method = RequestMethod.GET)
-	public String goodsBuy(HttpServletRequest request, Model model) {
+	@RequestMapping(value = "/goods/order", method = RequestMethod.GET)
+	public String goodsOrder(HttpServletRequest request, Model model) {
+		int OD_count=Integer.parseInt(request.getParameter("count"));
+		
 		GoodsDTO goodsDTO=new GoodsDTO();
 		goodsDTO.setG_code(request.getParameter("G_code"));
 		//검색 추가 예정
@@ -86,7 +88,8 @@ public class GoodsController {
 		
 		//장바구니 리스트로 수정 예정
 		model.addAttribute("GoodsList", GoodsList);
-		return "goods/buy";
+		model.addAttribute("OD_count", OD_count);
+		return "goods/order";
 	}
 
 	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)

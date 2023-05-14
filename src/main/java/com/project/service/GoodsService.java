@@ -35,9 +35,8 @@ public class GoodsService {
 			goodsDAO.basketAdd(bagDTO);
 		}else {
 			if(goodsDAO.maxB_count(bagDTO)!=null) {
-				//+1 대신 request.B_count 으로 수정 예정
 				//제한 수량 이상 구매 시 제한
-				bagDTO.setB_count(goodsDAO.maxB_count(bagDTO)+1);
+				bagDTO.setB_count(goodsDAO.maxB_count(bagDTO)+bagDTO.getB_count());
 			}
 			goodsDAO.basketUpdate(bagDTO);
 		}
@@ -46,5 +45,9 @@ public class GoodsService {
 	public void goodsWrite(GoodsDTO goodsDTO) {
 		goodsDAO.goodsWrite(goodsDTO);
 	}
+
+//	public List<OrderDTO> orderList(OrderDTO orderDTO) {
+//		return goodsDAO.orderList(orderDTO);
+//	}
 	
 }
