@@ -9,19 +9,19 @@
 		</if>
 	</select>
 
-	<select id="cartList" resultType="com.project.domain.BagDTO">
-		select b.G_code, G_imgS, G_product, G_price, B_count from goods g join bag b on g.G_code=b.G_code
+	<select id="cartList" resultType="com.project.domain.BasketDTO">
+		select b.G_code, G_imgS, G_product, G_price, B_count from goods g join basket b on g.G_code=b.G_code
 		where U_id=#{U_id}
 		order by B_date
 	</select>
 
 	<insert id="cartAdd">
-		insert bag(B_num, U_id, G_code, B_count)
+		insert basket(B_num, U_id, G_code, B_count)
 		values(#{B_num}, #{U_id}, #{G_code}, #{B_count})
 	</insert>
 	
 	<update id="cartUpdate">
-		update bag set B_count=#{B_count} where U_id=#{U_id} and G_code=#{G_code}
+		update basket set B_count=#{B_count} where U_id=#{U_id} and G_code=#{G_code}
 	</update>
 
 	<insert id="goodsWrite">
@@ -30,15 +30,15 @@
 	</insert>
 	
 	<select id="maxB_num" resultType="java.lang.Integer">
-		select max(B_num) from bag
+		select max(B_num) from basket
 	</select>
 	
 	<select id="maxB_count" resultType="java.lang.Integer">
-		select max(B_count) from bag where U_id=#{U_id} and G_code=#{G_code}
+		select max(B_count) from basket where U_id=#{U_id} and G_code=#{G_code}
 	</select>
 	
 	<select id="getG_code" resultType="java.lang.String">
-		select G_code from bag
+		select G_code from basket
 		where U_id=#{U_id} and G_code=#{G_code}
 	</select>
 </mapper>

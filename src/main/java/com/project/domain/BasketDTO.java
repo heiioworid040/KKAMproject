@@ -2,7 +2,7 @@ package com.project.domain;
 
 import com.google.protobuf.Timestamp;
 
-public class BagDTO extends GoodsDTO{
+public class BasketDTO extends GoodsDTO{
 	private int B_num;
 	private String U_id;
 	private String G_code;

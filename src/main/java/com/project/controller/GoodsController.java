@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.project.domain.BagDTO;
+import com.project.domain.BasketDTO;
 import com.project.domain.GoodsDTO;
 import com.project.service.GoodsService;
 
@@ -54,11 +54,11 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/cart", method = RequestMethod.GET)
 	public String goodsCart(HttpSession session, Model model) {
-		BagDTO bagDTO=new BagDTO();
+		BasketDTO bagDTO=new BasketDTO();
 		bagDTO.setU_id((String)session.getAttribute("id"));
 		//수정 예정
 		
-		List<BagDTO> CartList=goodsService.cartList(bagDTO);
+		List<BasketDTO> CartList=goodsService.cartList(bagDTO);
 		
 		model.addAttribute("CartList", CartList);
 		return "goods/cart";
@@ -66,7 +66,7 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/cartPro", method = RequestMethod.GET)
 	public String goodsCartPro(HttpSession session, HttpServletRequest request, Model model) {
-		BagDTO bagDTO=new BagDTO();
+		BasketDTO bagDTO=new BasketDTO();
 		bagDTO.setU_id((String)session.getAttribute("id"));
 		bagDTO.setG_code(request.getParameter("G_code"));
 //		bagDTO.setB_count(request.getParameter("B_count"));
