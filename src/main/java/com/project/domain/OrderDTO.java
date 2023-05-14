@@ -4,10 +4,7 @@ import com.google.protobuf.Timestamp;
 
 public class OrderDTO extends BasketDTO{
 	private int O_code;
-	private String U_id;
-	private String O_address;
-	private String O_addressD;
-	private int O_zipcode;
+	private String O_name;
 	private int O_phone;
 	private int O_delivery;
 	private int O_price;
@@ -16,9 +13,18 @@ public class OrderDTO extends BasketDTO{
 	
 	//상세
 	private int OD_num;
-	private String G_code;
 	private int OD_price;
 	private int OD_count;
+	
+	//배송
+	private int D_num;
+	private String D_name;
+	private String D_address;
+	private String D_addressD;
+	private int D_zipcode;
+	private int D_phone;
+	private String D_desc;
+	
 	
 	public int getO_code() {
 		return O_code;
@@ -26,29 +32,11 @@ public class OrderDTO extends BasketDTO{
 	public void setO_code(int o_code) {
 		O_code = o_code;
 	}
-	public String getU_id() {
-		return U_id;
+	public String getO_name() {
+		return O_name;
 	}
-	public void setU_id(String u_id) {
-		U_id = u_id;
-	}
-	public String getO_address() {
-		return O_address;
-	}
-	public void setO_address(String o_address) {
-		O_address = o_address;
-	}
-	public String getO_addressD() {
-		return O_addressD;
-	}
-	public void setO_addressD(String o_addressD) {
-		O_addressD = o_addressD;
-	}
-	public int getO_zipcode() {
-		return O_zipcode;
-	}
-	public void setO_zipcode(int o_zipcode) {
-		O_zipcode = o_zipcode;
+	public void setO_name(String o_name) {
+		O_name = o_name;
 	}
 	public int getO_phone() {
 		return O_phone;
@@ -86,12 +74,6 @@ public class OrderDTO extends BasketDTO{
 	public void setOD_num(int oD_num) {
 		OD_num = oD_num;
 	}
-	public String getG_code() {
-		return G_code;
-	}
-	public void setG_code(String g_code) {
-		G_code = g_code;
-	}
 	public int getOD_price() {
 		return OD_price;
 	}
@@ -103,5 +85,47 @@ public class OrderDTO extends BasketDTO{
 	}
 	public void setOD_count(int oD_count) {
 		OD_count = oD_count;
+	}
+	public int getD_num() {
+		return D_num;
+	}
+	public void setD_num(int d_num) {
+		D_num = d_num;
+	}
+	public String getD_name() {
+		return D_name;
+	}
+	public void setD_name(String d_name) {
+		D_name = d_name;
+	}
+	public String getD_address() {
+		return D_address;
+	}
+	public void setD_address(String d_address) {
+		D_address = d_address;
+	}
+	public String getD_addressD() {
+		return D_addressD;
+	}
+	public void setD_addressD(String d_addressD) {
+		D_addressD = d_addressD;
+	}
+	public int getD_zipcode() {
+		return D_zipcode;
+	}
+	public void setD_zipcode(int d_zipcode) {
+		D_zipcode = d_zipcode;
+	}
+	public int getD_phone() {
+		return D_phone;
+	}
+	public void setD_phone(int d_phone) {
+		D_phone = d_phone;
+	}
+	public String getD_desc() {
+		return D_desc;
+	}
+	public void setD_desc(String d_desc) {
+		D_desc = d_desc;
 	}
 }
