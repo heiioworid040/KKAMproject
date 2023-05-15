@@ -20,8 +20,12 @@ public class GoodsService {
 		return goodsDAO.goodsList(goodsDTO);
 	}
 	
-	public List<BasketDTO> basketList(BasketDTO bagDTO) {
-		return goodsDAO.basketList(bagDTO);
+	public List<GoodsDTO> goodsList(String G_code) {
+		return goodsDAO.goodsList(G_code);
+	}
+	
+	public List<BasketDTO> basketList(String id) {
+		return goodsDAO.basketList(id);
 	}
 	
 	public void basketPro(BasketDTO bagDTO) {
@@ -40,6 +44,10 @@ public class GoodsService {
 			}
 			goodsDAO.basketUpdate(bagDTO);
 		}
+	}
+	
+	public Integer basketAllPrice(String id) {
+		return goodsDAO.basketAllPrice(id);
 	}
 
 	public void goodsWrite(GoodsDTO goodsDTO) {

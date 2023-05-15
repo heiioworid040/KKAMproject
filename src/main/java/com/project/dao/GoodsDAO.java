@@ -21,8 +21,12 @@ public class GoodsDAO {
 		return sqlSession.selectList(namespace+".goodsList", goodsDTO);
 	}
 	
-	public List<BasketDTO> basketList(BasketDTO bagDTO) {
-		return sqlSession.selectList(namespace+".basketList", bagDTO);
+	public List<GoodsDTO> goodsList(String G_code) {
+		return sqlSession.selectList(namespace+".goodsDetail", G_code);
+	}
+	
+	public List<BasketDTO> basketList(String id) {
+		return sqlSession.selectList(namespace+".basketList", id);
 	}
 	
 	public void basketAdd(BasketDTO bagDTO) {
@@ -31,6 +35,10 @@ public class GoodsDAO {
 	
 	public void basketUpdate(BasketDTO bagDTO) {
 		sqlSession.update(namespace+".basketUpdate", bagDTO);
+	}
+
+	public Integer basketAllPrice(String id) {
+		return sqlSession.selectOne(namespace+".basketAllPrice", id);
 	}
 	
 	public void goodsWrite(GoodsDTO goodsDTO) {
