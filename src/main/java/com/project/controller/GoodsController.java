@@ -42,11 +42,7 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/details", method = RequestMethod.GET)
 	public String goodsDetails(HttpServletRequest request, Model model) {
-		GoodsDTO goodsDTO=new GoodsDTO();
-		goodsDTO.setG_code(request.getParameter("G_code"));
-		//검색 추가 예정
-
-		List<GoodsDTO> GoodsList=goodsService.goodsList(goodsDTO);
+		List<GoodsDTO> GoodsList=goodsService.goodsList(request.getParameter("G_code"));
 		
 		model.addAttribute("GoodsList", GoodsList);
 		return "goods/details";
@@ -54,13 +50,20 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/basket", method = RequestMethod.GET)
 	public String goodsbasket(HttpSession session, Model model) {
-		BasketDTO bagDTO=new BasketDTO();
-		bagDTO.setU_id((String)session.getAttribute("id"));
-		//수정 예정
+		String id=(String)session.getAttribute("id");
+		int delivery;
 		
-		List<BasketDTO> BasketList=goodsService.basketList(bagDTO);
+		List<BasketDTO> BasketList=goodsService.basketList(id);
+		int price=goodsService.basketAllPrice(id);
+		if(price>100000) {
+			delivery=0;
+		}else {
+			delivery=2500;
+		}
 		
 		model.addAttribute("BasketList", BasketList);
+		model.addAttribute("price", price);
+		model.addAttribute("delivery", delivery);
 		return "goods/basket";
 	}
 	
@@ -77,18 +80,34 @@ public class GoodsController {
 	}
 
 	@RequestMapping(value = "/goods/order", method = RequestMethod.GET)
-	public String goodsOrder(HttpServletRequest request, Model model) {
+	public String goodsOrder(HttpSession session, HttpServletRequest request, Model model) {
+		String G_code=request.getParameter("G_code");
 		int OD_count=Integer.parseInt(request.getParameter("count"));
+		String id=(String)session.getAttribute("id");
+		int price=0;
+		int delivery=0;
 		
 		GoodsDTO goodsDTO=new GoodsDTO();
-		goodsDTO.setG_code(request.getParameter("G_code"));
+		goodsDTO.setG_code(request.getParameter(G_code));
 		//검색 추가 예정
-
-		List<GoodsDTO> GoodsList=goodsService.goodsList(goodsDTO);
+		if(G_code!=null) {
+			List<GoodsDTO> GoodsList=goodsService.goodsList(G_code);
+			model.addAttribute("GoodsList", GoodsList);
+			model.addAttribute("OD_count", OD_count);
+		}else {
+			
+		List<BasketDTO> BasketList=goodsService.basketList(id);
+		price=goodsService.basketAllPrice(id);
+		if(price<100000) {
+			delivery=2500;
+		}
+		model.addAttribute("GoodsList", BasketList);
+		}
+		
 		
 		//장바구니 리스트로 수정 예정
-		model.addAttribute("GoodsList", GoodsList);
-		model.addAttribute("OD_count", OD_count);
+		model.addAttribute("price", price);
+		model.addAttribute("delivery", delivery);
 		return "goods/order";
 	}
 
