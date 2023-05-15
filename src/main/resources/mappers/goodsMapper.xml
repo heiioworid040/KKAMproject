@@ -9,9 +9,14 @@
 		</if>
 	</select>
 
+	<select id="goodsDetail" resultType="com.project.domain.GoodsDTO">
+		select * from goods
+		where G_code=#{G_code}
+	</select>
+
 	<select id="basketList" resultType="com.project.domain.BasketDTO">
-		select b.G_code, G_imgS, G_product, G_price, B_count from goods g join basket b on g.G_code=b.G_code
-		where U_id=#{U_id}
+		select b.G_code, G_imgS, G_product, G_price, B_count, G_stop from goods g join basket b on g.G_code=b.G_code
+		where U_id=#{id}
 		order by B_date
 	</select>
 
@@ -23,6 +28,10 @@
 	<update id="basketUpdate">
 		update basket set B_count=#{B_count} where U_id=#{U_id} and G_code=#{G_code}
 	</update>
+	
+	<select id="basketAllPrice" resultType="java.lang.Integer">
+		select sum(G_price*B_count) from basket b join Goods g on b.G_code=g.G_code where U_id=#{id}
+	</select>
 
 	<insert id="goodsWrite">
 		insert into goods(G_code, G_stop, G_product, G_price, G_desc, G_imgS, G_img)
