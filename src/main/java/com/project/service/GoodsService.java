@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.project.dao.GoodsDAO;
 import com.project.domain.BasketDTO;
 import com.project.domain.GoodsDTO;
+import com.project.domain.OrderDTO;
 
 @Repository
 public class GoodsService {
@@ -52,6 +53,11 @@ public class GoodsService {
 
 	public void goodsWrite(GoodsDTO goodsDTO) {
 		goodsDAO.goodsWrite(goodsDTO);
+	}
+
+	public void orderPro(OrderDTO orderDTO) {
+//		orderDTO.setO_code(0); //주문날짜 O20230516000, string으로 변경, O_code=D_num 예정
+		goodsDAO.orderAdd(orderDTO);
 	}
 
 //	public List<OrderDTO> orderList(OrderDTO orderDTO) {

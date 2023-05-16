@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.BasketDTO;
 import com.project.domain.GoodsDTO;
+import com.project.domain.OrderDTO;
 import com.project.service.GoodsService;
 
 @Controller
@@ -69,13 +70,15 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/basketPro", method = RequestMethod.GET)
 	public String goodsbasketPro(HttpSession session, HttpServletRequest request, Model model) {
-		BasketDTO bagDTO=new BasketDTO();
-		bagDTO.setU_id((String)session.getAttribute("id"));
-		bagDTO.setG_code(request.getParameter("G_code"));
-		bagDTO.setB_count(Integer.parseInt(request.getParameter("count")));
-
-		goodsService.basketPro(bagDTO);
-		
+//		BasketDTO bagDTO=new BasketDTO();
+//		bagDTO.setU_id((String)session.getAttribute("id"));
+//		bagDTO.setG_code(request.getParameter("G_code"));
+//		bagDTO.setB_count(Integer.parseInt(request.getParameter("count")));
+//
+//		goodsService.basketPro(bagDTO);
+		System.out.println(session.getAttribute("id"));
+		System.out.println(request.getParameter("G_code"));
+		System.out.println(request.getParameter("count"));
 		return "redirect:/goods/basket";
 	}
 
@@ -109,6 +112,32 @@ public class GoodsController {
 		model.addAttribute("price", price);
 		model.addAttribute("delivery", delivery);
 		return "goods/order";
+	}
+	
+	@RequestMapping(value = "/goods/orderPro", method = RequestMethod.GET)
+	public String goodsOrder(HttpSession session, HttpServletRequest request) {
+		OrderDTO orderDTO=new OrderDTO();
+		orderDTO.setU_id((String)session.getAttribute("id"));
+		orderDTO.setO_name(request.getParameter("O_name"));
+		orderDTO.setO_phone(Integer.parseInt(request.getParameter("O_phone")));
+		orderDTO.setO_delivery(Integer.parseInt(request.getParameter("O_delivery")));
+		orderDTO.setO_price(Integer.parseInt(request.getParameter("O_price")));
+		orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count")));
+		//orderD 배열
+		orderDTO.setG_code(request.getParameter("G_code"));
+		orderDTO.setOD_price(Integer.parseInt(request.getParameter("OD_price")));
+		orderDTO.setOD_count(Integer.parseInt(request.getParameter("OD_count")));
+		//delivery
+		orderDTO.setD_name(request.getParameter("D_name"));
+		orderDTO.setD_address(request.getParameter("D_address"));
+		orderDTO.setD_addressD(request.getParameter("D_addressD"));
+		orderDTO.setD_zipcode(Integer.parseInt(request.getParameter("D_zipcode")));
+		orderDTO.setD_phone(Integer.parseInt(request.getParameter("D_phone")));
+		orderDTO.setD_desc(request.getParameter("D_desc"));
+		
+		goodsService.orderPro(orderDTO);
+		
+		return "redirect:/goods/form";
 	}
 
 	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)

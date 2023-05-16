@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.domain.BasketDTO;
 import com.project.domain.GoodsDTO;
+import com.project.domain.OrderDTO;
 
 @Repository
 public class GoodsDAO {
@@ -55,6 +56,10 @@ public class GoodsDAO {
 	
 	public String getG_code(BasketDTO bagDTO) {
 		return sqlSession.selectOne(namespace+".getG_code", bagDTO);
+	}
+
+	public void orderAdd(OrderDTO orderDTO) {
+		sqlSession.insert(namespace+".orderAdd", orderDTO);
 	}
 
 }
