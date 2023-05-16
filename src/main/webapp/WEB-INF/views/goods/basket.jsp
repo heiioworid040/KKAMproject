@@ -11,6 +11,19 @@
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/script/jquery-3.6.3.js"></script>
 <script>
+	$(document).ready(function(){
+// 		수량 변경 수정 중
+		$('#count').change(function(){
+			last=$('#ck').length;
+			document.basket.action="${pageContext.request.contextPath}/goods/basketPro?G_code=";
+			document.basket.submit();
+		});
+		
+		$('#order, #orderAll').click(function(){
+		 	document.basket.action="${pageContext.request.contextPath }/goods/order"
+		});
+	});
+	
 	function ckAll() {
 		if($("input:checked[id='ckAll']").prop("checked")) {
 			$("input:[id=ck]").prop("checked", true);
@@ -18,12 +31,14 @@
 			$("input:[id=ck]").prop("checked", false);
 		}
 	}
+	
+
 </script>
 <body>
 	<h2>GOODS SHOP</h2>
 	<div class="container-doc">
 		<div class="inner_container">
-			<form action="${pageContext.request.contextPath }/goods/order" method="get">
+			<form name="basket" method="get">
 				<table>
 					<thead>
 						<tr>
@@ -36,7 +51,7 @@
 							<th>합계</th>
 						</tr>
 					</thead>
-					<c:forEach var="goods" items="${BasketList }">
+					<c:forEach var="goods" items="${BasketList }" varStatus="c">
 						<tbody>
 							<tr>
 								<td><input type="checkbox" id="ck"></td>
@@ -44,9 +59,9 @@
 									<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px" height="100px"><br>
 								</td>
 								<td>${goods.g_product }</td>
-								<td>${goods.g_code }</td>
+								<td>${goods.g_code }<input type="hidden" name="G_code" value="${goods.g_code }"></td>
 								<td>${goods.g_price }원</td>
-								<td><input type="number" name="count" max="${goods.g_stop }" min="1" value="${goods.b_count }"></td>
+								<td><input type="number" id="count${c.index }" name="count" max="${goods.g_stop }" min="1" value="${goods.b_count }"></td>
 	<!-- 						수량 조절 수정 예정 -->
 								<td>${goods.g_price * goods.b_count }원</td>
 							</tr>
@@ -75,8 +90,8 @@
 					</tr>
 				</table>
 <br><br>
-				<input type="submit" value="전체 상품 주문">
-				<input type="submit" value="선택 상품 주문">
+				<input type="submit" id="orderAll" value="전체 상품 주문">
+				<input type="submit" id="order" value="선택 상품 주문">
 			</form>
 		</div>
 	</div>
