@@ -20,7 +20,7 @@
 		});
 		
 		$('#order, #orderAll').click(function(){
-		 	document.basket.action="${pageContext.request.contextPath }/goods/order"
+		 	document.basket.action="${pageContext.request.contextPath }/goods/order";
 		});
 	});
 	
@@ -90,6 +90,7 @@
 					</tr>
 				</table>
 <br><br>
+				<input type="hidden" name="order" value="basket">
 				<input type="submit" id="orderAll" value="전체 상품 주문">
 				<input type="submit" id="order" value="선택 상품 주문">
 			</form>

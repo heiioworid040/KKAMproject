@@ -76,28 +76,32 @@ public class GoodsController {
 //		bagDTO.setB_count(Integer.parseInt(request.getParameter("count")));
 //
 //		goodsService.basketPro(bagDTO);
-		System.out.println(session.getAttribute("id"));
-		System.out.println(request.getParameter("G_code"));
-		System.out.println(request.getParameter("count"));
+//		System.out.println(session.getAttribute("id"));
+//		System.out.println(request.getParameter("G_code"));
+//		System.out.println(request.getParameter("count"));
 		return "redirect:/goods/basket";
 	}
 
 	@RequestMapping(value = "/goods/order", method = RequestMethod.GET)
 	public String goodsOrder(HttpSession session, HttpServletRequest request, Model model) {
-		String G_code=request.getParameter("G_code");
-		int OD_count=Integer.parseInt(request.getParameter("count"));
+		String order=request.getParameter("order");
 		String id=(String)session.getAttribute("id");
+
 		int price=0;
 		int delivery=0;
 		
-		GoodsDTO goodsDTO=new GoodsDTO();
-		goodsDTO.setG_code(request.getParameter(G_code));
-		//검색 추가 예정
-		if(G_code!=null) {
+		if(order.equals("details")) {
+			String G_code=request.getParameter("G_code");
+			int OD_count=Integer.parseInt(request.getParameter("count"));
+
 			List<GoodsDTO> GoodsList=goodsService.goodsList(G_code);
 			model.addAttribute("GoodsList", GoodsList);
 			model.addAttribute("OD_count", OD_count);
-		}else {
+
+			GoodsDTO goodsDTO=new GoodsDTO();
+			goodsDTO.setG_code(request.getParameter(G_code));
+		} else {
+			System.out.println("전체구매");
 			List<BasketDTO> BasketList=goodsService.basketList(id);
 			price=goodsService.basketAllPrice(id);
 			
