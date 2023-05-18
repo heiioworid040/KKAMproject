@@ -98,13 +98,13 @@ public class GoodsController {
 			model.addAttribute("GoodsList", GoodsList);
 			model.addAttribute("OD_count", OD_count);
 		}else {
+			List<BasketDTO> BasketList=goodsService.basketList(id);
+			price=goodsService.basketAllPrice(id);
 			
-		List<BasketDTO> BasketList=goodsService.basketList(id);
-		price=goodsService.basketAllPrice(id);
-		if(price<100000) {
-			delivery=2500;
-		}
-		model.addAttribute("GoodsList", BasketList);
+			if(price<100000) {
+				delivery=2500;
+			}
+			model.addAttribute("GoodsList", BasketList);
 		}
 		
 		
