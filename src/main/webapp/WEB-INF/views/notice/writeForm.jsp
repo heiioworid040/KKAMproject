@@ -14,13 +14,10 @@
 
 <h1>글쓰기</h1>
 <form action = "${pageContext.request.contextPath}/notice/writePro" method="post">
-<input type="hidden" name="id" value="${sessionScope.U_id }">
+<input type="hidden" name="id" value="${sessionScope.id }">
 		
 <table border = "1">
-<tr>
-	<td>글쓴이</td>
-	<td><input type="text" name="nick" value = "${sessionScope.U_nick }" readonly></td>
-</tr>
+
 <tr>
 	<td>글제목</td>
 	<td><input type="text" name="title"></td>
