@@ -12,6 +12,9 @@
 		insert into notice(N_num, U_id, N_title, N_text, N_date, N_img, N_view)
 		values (#{N_num}, #{U_id}, #{N_title}, #{N_text}, #{N_date}, #{N_img}, #{N_view});
 	</insert>
-
+	
+	<select id = "getMaxNum" resultType = "java.lang.Integer">
+		select max(N_num) from notice
+	</select>
 
 </mapper>
