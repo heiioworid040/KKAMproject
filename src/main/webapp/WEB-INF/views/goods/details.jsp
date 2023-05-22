@@ -88,6 +88,7 @@
 						</tr>
 						<tr>
 							<th>
+								<input type="hidden" name="order" value="details">
 								<input type="submit" value="구매하기" onclick="fun1(1)">
 								<input type="submit" value="장바구니" onclick="fun1(2)">
 <!-- 							링크 수정 -->

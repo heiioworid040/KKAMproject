@@ -38,59 +38,34 @@
 				<c:forEach var="goods" items="${GoodsList }">
 					<tbody>
 							<tr>
-								<td>
-									<input type="checkbox" id="ck">
-								</td>
+								<td><input type="checkbox" id="ck"></td>
 								<td rowspan='5'>
 									<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px" height="100px"><br>
 								</td>
 								<td>${goods.g_product }</td>
 								<td>${goods.g_code }</td>
 								<td>${goods.g_price }</td>
+								<c:if test="${OD_count!=null }">
 								<td>${OD_count }</td> 
 								<td>${goods.g_price*OD_count }원</td>
+								</c:if>
+								<c:if test="${OD_count==null }">
+								<td>${goods.b_count }</td>
+								<td>${goods.g_price * goods.b_count }</td>
+								</c:if>
 							</tr>
 					</tbody>
-					<tfoot>
-						<tr>
-							<td>
-								상품구매금액 ${goods.g_price*OD_count }
-							</td>
-							<td>
-								+
-							</td>
-							<td>
-								<c:choose>
-									<c:when test="${goods.g_price*OD_count>100000 }">
-										배송비 0 (무료)
-										<input type="hidden" name="O_delivery" value="무료">
-									</c:when>
-									<c:otherwise>
-										배송비 2500
-										<input type="hidden" name="O_delivery" value="2500">
-									</c:otherwise>
-								</c:choose>
-							</td>
-							<td>
-								=
-							</td>
-							<td>
-								<c:choose>
-									<c:when test="${goods.g_price*OD_count>100000 }">
-										합계 : ${goods.g_price*OD_count }원
-										<input type="hidden" name="O_price" value="${goods.g_price*OD_count }">
-									</c:when>
-									<c:otherwise>
-										합계 : ${goods.g_price*OD_count+2500 }원
-										<input type="hidden" name="O_price" value="${goods.g_price*OD_count+2500 }">
-									</c:otherwise>
-								</c:choose>
-							</td>
-						</tr>
-					</tfoot>
 				</c:forEach>
 			</table>
-<!-- 			상품 하나면 historyback, 여러개면 해당 상품 삭제 -->
+<!-- 		상품 상세 페이지에서 구매하기 버튼 바로 눌렀을 때 (수정 예정) -->
+<%-- 			<c:if test="${OD_count!=null }"> --%>
+<%-- 			총 상품 금액 ${ } + 배송비 ${ }원 = 합계 금액 ${ } --%>
+<%-- 			</c:if> --%>
+			<c:if test="${OD_count==null }">
+			총 상품 금액 ${price } + 배송비 ${delivery }원 = 합계 금액 ${price+delivery }
+			</c:if>
+<br><br>
+<!-- 			상품 하나거나 0개면 historyback, 여러개면 해당 상품 삭제 -->
 			<input type="submit" value="삭제하기">
 <br><br>
 			주문자 정보
