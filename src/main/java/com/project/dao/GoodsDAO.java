@@ -30,12 +30,12 @@ public class GoodsDAO {
 		return sqlSession.selectList(namespace+".basketList", id);
 	}
 	
-	public void basketAdd(BasketDTO bagDTO) {
-		sqlSession.insert(namespace+".basketAdd", bagDTO);
+	public void basketAdd(BasketDTO basketDTO) {
+		sqlSession.insert(namespace+".basketAdd", basketDTO);
 	}
 	
-	public void basketUpdate(BasketDTO bagDTO) {
-		sqlSession.update(namespace+".basketUpdate", bagDTO);
+	public void basketUpdate(BasketDTO basketDTO) {
+		sqlSession.update(namespace+".basketUpdate", basketDTO);
 	}
 
 	public Integer basketAllPrice(String id) {
@@ -50,12 +50,12 @@ public class GoodsDAO {
 		return sqlSession.selectOne(namespace+".maxB_num");
 	}
 	
-	public Integer maxB_count(BasketDTO bagDTO) {
-		return sqlSession.selectOne(namespace+".maxB_count", bagDTO);
+	public Integer maxB_count(BasketDTO basketDTO) {
+		return sqlSession.selectOne(namespace+".maxB_count", basketDTO);
 	}
 	
-	public String getG_code(BasketDTO bagDTO) {
-		return sqlSession.selectOne(namespace+".getG_code", bagDTO);
+	public String getG_code(BasketDTO basketDTO) {
+		return sqlSession.selectOne(namespace+".getG_code", basketDTO);
 	}
 
 	public void orderAdd(OrderDTO orderDTO) {

@@ -29,22 +29,25 @@ public class GoodsService {
 		return goodsDAO.basketList(id);
 	}
 	
-	public void basketPro(BasketDTO bagDTO) {
+	public void basketPro(BasketDTO basketDTO) {
 		if(goodsDAO.maxB_num()==null) {
-			bagDTO.setB_num(1);
+			basketDTO.setB_num(1);
 		}else {
-			bagDTO.setB_num(goodsDAO.maxB_num()+1);
+			basketDTO.setB_num(goodsDAO.maxB_num()+1);
 		}
 
-		if(goodsDAO.getG_code(bagDTO)==null) {
-			goodsDAO.basketAdd(bagDTO);
+		if(goodsDAO.getG_code(basketDTO)==null) {
+			goodsDAO.basketAdd(basketDTO);
 		}else {
-			if(goodsDAO.maxB_count(bagDTO)!=null) {
+			if(goodsDAO.maxB_count(basketDTO)!=null) {
 				//제한 수량 이상 구매 시 제한
-				bagDTO.setB_count(goodsDAO.maxB_count(bagDTO)+bagDTO.getB_count());
+				basketDTO.setB_count(goodsDAO.maxB_count(basketDTO)+basketDTO.getB_count());
 			}
-			goodsDAO.basketUpdate(bagDTO);
 		}
+	}
+	
+	public void basketUpdate(BasketDTO basketDTO) {
+		goodsDAO.basketUpdate(basketDTO);
 	}
 	
 	public Integer basketAllPrice(String id) {
