@@ -18,17 +18,30 @@
 						
 						<c:forEach var = "noticeDTO" items = "${noticeList }">
 							
-							<tr><td>${noticeDTO.N_num }</td>
-								<td>${noticeDTO.U_id }</td>
-								<td><a href = "${pageContext.request.contextPath}/notice/content?N_num = ${noticeDTO.N_num }"></a>
-									${noticeDTO.N_title }</td>
-								<td>${noticeDTO.N_date }</td>
-								<td>${noticeDTO.N_view }</td>
+							<tr>
+								<td>${noticeDTO.n_num }</td>
+								<td>${noticeDTO.u_id }</td>
+								<td><a href = "${pageContext.request.contextPath}/notice/content?N_num = ${noticeDTO.n_num }"></a>
+									${noticeDTO.n_title }</td>
+								<td>${noticeDTO.n_date }</td>
+								<td>${noticeDTO.n_view }</td>
 							</tr>
 						
 						</c:forEach>
 	
 		</table>
+
+		<c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
+				<a href="${pageContext.request.contextPath}/notice/notice?pageNum=${pageDTO.startPage - pageDTO.pageBlock}">◀</a>
+		</c:if>
+
+			<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
+				<a href="${pageContext.request.contextPath}/notice/notice?pageNum=${i}">${i}</a>
+			</c:forEach>
+
+		<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
+			<a href="${pageContext.request.contextPath}/notice/notice?pageNum=${pageDTO.startPage + pageDTO.pageBlock}">▶</a>
+		</c:if>
 	
 </body>
 </html>
