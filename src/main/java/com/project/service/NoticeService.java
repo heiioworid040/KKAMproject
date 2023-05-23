@@ -19,6 +19,7 @@ public class NoticeService {
 	private NoticeDAO noticeDAO;
 
 	public void insertNotice(NoticeDTO noticeDTO) {
+		System.out.println("NoticeService insertNotice");
 		if(noticeDAO.getMaxNum()==null) {
 			noticeDTO.setN_num(1);
 		}else {

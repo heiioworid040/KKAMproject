@@ -36,10 +36,11 @@ public class NoticeController {
 		return "notice/writeForm";
 	}
 	
-	
+
 	@RequestMapping(value = "/notice/writePro", method = RequestMethod.POST)
 	public String writePro(HttpServletRequest request, MultipartFile img) throws Exception {
 		
+
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setN_text(request.getParameter("text"));
 		noticeDTO.setN_title(request.getParameter("title"));
