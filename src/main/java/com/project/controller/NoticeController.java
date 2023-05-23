@@ -33,14 +33,13 @@ public class NoticeController {
 	
 	@RequestMapping(value = "/notice/write", method = RequestMethod.GET)
 	public String write() {
-		return "notice/writeForm";
+		return "notice/write";
 	}
 	
-
+	
 	@RequestMapping(value = "/notice/writePro", method = RequestMethod.POST)
 	public String writePro(HttpServletRequest request, MultipartFile img) throws Exception {
 		
-
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setN_text(request.getParameter("text"));
 		noticeDTO.setN_title(request.getParameter("title"));
@@ -89,7 +88,7 @@ public class NoticeController {
 		pageDTO.setEndPage(endPage);
 		pageDTO.setPageCount(pageCount);
 		
-		model.addAttribute("noitceList", noticeList);
+		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("pageDTO", pageDTO);
 		
 		return "notice/notice";
