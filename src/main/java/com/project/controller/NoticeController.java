@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -8,12 +9,14 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.NoticeDTO;
+import com.project.domain.PageDTO;
 import com.project.service.NoticeService;
 
 
@@ -23,22 +26,21 @@ public class NoticeController {
 	@Inject
 	private NoticeService noticeService;
 	
+	
 	@Resource(name = "uploadPath")
 	private String uploadPath;
+	
 	
 	@RequestMapping(value = "/notice/write", method = RequestMethod.GET)
 	public String write() {
 		return "notice/writeForm";
 	}
 	
+
 	@RequestMapping(value = "/notice/writePro", method = RequestMethod.POST)
 	public String writePro(HttpServletRequest request, MultipartFile img) throws Exception {
 		
-		System.out.println(request.getParameter("text"));
-		System.out.println(request.getParameter("title"));
-		System.out.println(request.getParameter("id"));
-		System.out.println(request.getParameter("img"));
-		
+
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setN_text(request.getParameter("text"));
 		noticeDTO.setN_title(request.getParameter("title"));
@@ -50,10 +52,50 @@ public class NoticeController {
 		noticeDTO.setN_img(filename);
 		
 		noticeService.insertNotice(noticeDTO);
-//		return "redirect/notice/list";
-		return "redirect:/main";
+		return "redirect:/notice/notice";	
+	}
 	
+	
+	@RequestMapping(value = "/notice/notice", method =  RequestMethod.GET)
+	public String list(HttpServletRequest request, Model model) {
+		
+		int pageSize = 10;
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		
+		int currentPage = Integer.parseInt(pageNum);
+		
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setCurrentPage(currentPage);
+		
+		List<NoticeDTO> noticeList = noticeService.getNoticeList(pageDTO);
+		
+		int count = noticeService.getNoticeCount(pageDTO);
+		int pageBlock=10;
+		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
+		int endPage=startPage+pageBlock-1;
+		int pageCount=count/pageSize+(count%pageSize==0?0:1);
+		if(endPage > pageCount){
+			endPage = pageCount;
+		}
+		
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+		
+		model.addAttribute("noitceList", noticeList);
+		model.addAttribute("pageDTO", pageDTO);
+		
+		return "notice/notice";
 	}
 
+	
+	
 	
 }

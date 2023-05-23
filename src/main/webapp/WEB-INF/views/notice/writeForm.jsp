@@ -13,7 +13,9 @@
 </c:if>
 
 <h1>글쓰기</h1>
-<form action = "${pageContext.request.contextPath}/notice/writePro" method="post">
+
+<form action = "${pageContext.request.contextPath}/notice/writePro" method="post" enctype="multipart/form-data">
+  
 <input type="hidden" name="id" value="${sessionScope.id }">
 		
 <table border = "1">
