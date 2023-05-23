@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -27,7 +28,7 @@ public class GoodsController {
 	@Inject
 	private GoodsService goodsService;
 	
-	@Resource(name = "uploadPath")
+	@Value("${upload.path}")
 	private String uploadPath;
 	
 	@RequestMapping(value = "/goods/form", method = RequestMethod.GET)
@@ -68,17 +69,14 @@ public class GoodsController {
 		return "goods/basket";
 	}
 	
-	@RequestMapping(value = "/goods/basketPro", method = RequestMethod.GET)
+	@RequestMapping(value = "/goods/basketPro", method = RequestMethod.POST)
 	public String goodsbasketPro(HttpSession session, HttpServletRequest request, Model model) {
-//		BasketDTO bagDTO=new BasketDTO();
-//		bagDTO.setU_id((String)session.getAttribute("id"));
-//		bagDTO.setG_code(request.getParameter("G_code"));
-//		bagDTO.setB_count(Integer.parseInt(request.getParameter("count")));
-//
-//		goodsService.basketPro(bagDTO);
-//		System.out.println(session.getAttribute("id"));
-//		System.out.println(request.getParameter("G_code"));
-//		System.out.println(request.getParameter("count"));
+		BasketDTO bagDTO=new BasketDTO();
+		bagDTO.setU_id((String)session.getAttribute("id"));
+		bagDTO.setG_code(request.getParameter("G_code"));
+		bagDTO.setB_count(Integer.parseInt(request.getParameter("count")));
+
+		goodsService.basketUpdate(bagDTO);
 		return "redirect:/goods/basket";
 	}
 
