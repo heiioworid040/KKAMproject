@@ -1,11 +1,14 @@
 package com.project.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.project.domain.NoticeDTO;
+import com.project.domain.PageDTO;
 
 @Repository
 public class NoticeDAO {
@@ -21,5 +24,16 @@ public class NoticeDAO {
 	public void insertNotice(NoticeDTO noticeDTO) {
 		sqlSession.insert(namespace + ".insertNotice", noticeDTO);
 	}
+
+	public List<NoticeDTO> getNoticeList(PageDTO pageDTO) {
+		pageDTO.setStartRow(pageDTO.getStartRow()-1);
+		return sqlSession.selectList(namespace+".getNoticeList", pageDTO);
+	}
+
+	public int getNoticeCount(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace+".getNoticeCount", pageDTO);
+	}
+
+
 	
 }

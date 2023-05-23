@@ -17,4 +17,12 @@
 		select max(N_num) from notice
 	</select>
 
+	<select id = "getNoticeList" resultType = "com.project.domain.NoticeDTO">
+		select * from notice
+	</select>
+	
+	<select id = "getNoticeCount" resultType = "java.lang.Integer">
+		select count(*) from notice
+	</select>
+	
 </mapper>
