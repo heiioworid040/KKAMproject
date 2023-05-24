@@ -25,4 +25,9 @@
 		select count(*) from notice
 	</select>
 	
+	<select id = "getNotice" resultType = "com.project.domain.NoticeDTO">
+		select * from notice
+		where N_num = #{N_num}
+	</select>
+	
 </mapper>

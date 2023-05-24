@@ -94,7 +94,17 @@ public class NoticeController {
 		return "notice/notice";
 	}
 
-	
+	@RequestMapping(value = "/notice/content", method =  RequestMethod.GET)
+	public String content(HttpServletRequest request, Model model) {
+		int N_num = Integer.parseInt(request.getParameter("N_num"));
+		
+		NoticeDTO noticeDTO = noticeService.getNotice(N_num);
+		
+		model.addAttribute("noticeDTO", noticeDTO);
+		
+		return "notice/content";
+		
+	}
 	
 	
 }
