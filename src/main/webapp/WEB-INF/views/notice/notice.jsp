@@ -21,8 +21,8 @@
 							<tr>
 								<td>${noticeDTO.n_num }</td>
 								<td>${noticeDTO.u_id }</td>
-								<td><a href = "${pageContext.request.contextPath}/notice/content?N_num = ${noticeDTO.n_num }"></a>
-									${noticeDTO.n_title }</td>
+								<td><a href = "${pageContext.request.contextPath}/notice/content?N_num=${noticeDTO.n_num }">
+									${noticeDTO.n_title }</a></td>
 								<td>${noticeDTO.n_date }</td>
 								<td>${noticeDTO.n_view }</td>
 							</tr>

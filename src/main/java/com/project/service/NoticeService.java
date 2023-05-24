@@ -47,5 +47,9 @@ public class NoticeService {
 		return noticeDAO.getNoticeCount(pageDTO);
 	}
 
+	public NoticeDTO getNotice(int n_num) {
+		return noticeDAO.getNotice(n_num);
+	}
+
 
 }
