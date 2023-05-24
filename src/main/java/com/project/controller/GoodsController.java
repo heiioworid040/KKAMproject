@@ -71,24 +71,32 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/basketPro", method = RequestMethod.POST)
 	public String goodsbasketPro(HttpSession session, HttpServletRequest request, Model model) {
+		String details=request.getParameter("details");
+		
 		BasketDTO bagDTO=new BasketDTO();
 		bagDTO.setU_id((String)session.getAttribute("id"));
 		bagDTO.setG_code(request.getParameter("G_code"));
 		bagDTO.setB_count(Integer.parseInt(request.getParameter("count")));
-
-		goodsService.basketUpdate(bagDTO);
+		
+		//basketPro로 중복 코드 제거 예정
+		if(details!=null) {
+			goodsService.basketPro(bagDTO);
+		}else {
+			goodsService.basketUpdate(bagDTO);
+		}
+		
 		return "redirect:/goods/basket";
 	}
 
 	@RequestMapping(value = "/goods/order", method = RequestMethod.GET)
 	public String goodsOrder(HttpSession session, HttpServletRequest request, Model model) {
-		String order=request.getParameter("order");
+		String details=request.getParameter("details");
 		String id=(String)session.getAttribute("id");
 
 		int price=0;
 		int delivery=0;
 		
-		if(order.equals("details")) {
+		if(details!=null) {
 			String G_code=request.getParameter("G_code");
 			int OD_count=Integer.parseInt(request.getParameter("count"));
 
@@ -98,8 +106,7 @@ public class GoodsController {
 
 			GoodsDTO goodsDTO=new GoodsDTO();
 			goodsDTO.setG_code(request.getParameter(G_code));
-		} else {
-			System.out.println("전체구매");
+		}else {
 			List<BasketDTO> BasketList=goodsService.basketList(id);
 			price=goodsService.basketAllPrice(id);
 			

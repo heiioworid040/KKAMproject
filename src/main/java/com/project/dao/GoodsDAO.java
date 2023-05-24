@@ -31,6 +31,7 @@ public class GoodsDAO {
 	}
 	
 	public void basketAdd(BasketDTO basketDTO) {
+		System.out.println("DAO");
 		sqlSession.insert(namespace+".basketAdd", basketDTO);
 	}
 	

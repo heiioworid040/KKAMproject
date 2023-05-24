@@ -42,6 +42,7 @@ public class GoodsService {
 			if(goodsDAO.maxB_count(basketDTO)!=null) {
 				//제한 수량 이상 구매 시 제한
 				basketDTO.setB_count(goodsDAO.maxB_count(basketDTO)+basketDTO.getB_count());
+				goodsDAO.basketUpdate(basketDTO);
 			}
 		}
 	}

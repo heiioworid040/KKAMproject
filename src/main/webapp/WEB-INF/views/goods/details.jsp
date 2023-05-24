@@ -22,8 +22,10 @@
 <script>
 	function fun1(index) {
 		if(index==1) {
+			document.details.method="get"
 			document.details.action="${pageContext.request.contextPath }/goods/order";
 		}else {
+			document.details.method="post"
 			document.details.action="${pageContext.request.contextPath }/goods/basketPro";
 		}
 	}
@@ -32,7 +34,7 @@
 	<h2>GOODS SHOP</h2>
 	<div class="container-doc">
 		<div class="inner_container">
-			<form name="details" method="get">
+			<form name="details">
 				<table>
 					<c:forEach var="goods" items="${GoodsList }">
 						<tr>
@@ -88,7 +90,7 @@
 						</tr>
 						<tr>
 							<th>
-								<input type="hidden" name="order" value="details">
+								<input type="hidden" name="details" value="details">
 								<input type="submit" value="구매하기" onclick="fun1(1)">
 								<input type="submit" value="장바구니" onclick="fun1(2)">
 <!-- 							링크 수정 -->
