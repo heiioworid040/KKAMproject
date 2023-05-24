@@ -17,8 +17,9 @@
 			<tr><td>조회수</td><td>${noticeDTO.n_view }</td></tr>
 			<tr><td>글제목</td><td>${noticeDTO.n_title }</td></tr>
 			<tr><td>글내용</td><td>${noticeDTO.n_text }</td></tr>
-			<tr><td>첨부파일</td></tr>
-			
+			<tr><td>첨부파일</td>
+				<td><img src="${pageContext.request.contextPath}/resources/upload/${noticeDTO.n_img }" width="100" height="100">
+						  </td></tr>
 		</table>
 	
 </body>

@@ -34,6 +34,10 @@ public class NoticeDAO {
 		return sqlSession.selectOne(namespace+".getNoticeCount", pageDTO);
 	}
 
+	public NoticeDTO getNotice(int n_num) {
+		return sqlSession.selectOne(namespace+".getNotice", n_num);
+	}
+
 
 	
 }
