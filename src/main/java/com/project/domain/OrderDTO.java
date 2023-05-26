@@ -1,9 +1,9 @@
 package com.project.domain;
 
-import com.google.protobuf.Timestamp;
+import java.sql.Timestamp;
 
 public class OrderDTO extends BasketDTO{
-	private int O_code;
+	private String O_code;
 	private String O_name;
 	private int O_phone;
 	private int O_delivery;
@@ -26,10 +26,10 @@ public class OrderDTO extends BasketDTO{
 	private String D_desc;
 	
 	
-	public int getO_code() {
+	public String getO_code() {
 		return O_code;
 	}
-	public void setO_code(int o_code) {
+	public void setO_code(String o_code) {
 		O_code = o_code;
 	}
 	public String getO_name() {
