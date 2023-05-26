@@ -54,14 +54,38 @@ public class GoodsService {
 	public Integer basketAllPrice(String id) {
 		return goodsDAO.basketAllPrice(id);
 	}
+	
+	public void orderAdd(OrderDTO orderDTO) {
+		String num;
+		if(goodsDAO.maxOD_num()==null) {
+			orderDTO.setOD_num(1);
+		}else {
+			orderDTO.setOD_num(goodsDAO.maxOD_num()+1);
+		}
+		if(goodsDAO.maxD_num()==null) {
+			orderDTO.setD_num(1);
+		}else {
+			orderDTO.setD_num(goodsDAO.maxD_num()+1);
+		}
+		if(goodsDAO.maxO_code(orderDTO)==null) {
+			num="001";
+		}else {
+			Integer max=goodsDAO.maxO_code(orderDTO);
+			if(max<9) {
+				num="00"+(max+1);
+			}else if(max<99) {
+				num="0"+(max+1);
+			}else {
+				num=""+(max+1);
+			}
+		}
+		String date=(String.valueOf(orderDTO.getO_date()).substring(0,10).replace("-",""));
+		orderDTO.setO_code(date+num);
+		goodsDAO.orderAdd(orderDTO);
+	}
 
 	public void goodsWrite(GoodsDTO goodsDTO) {
 		goodsDAO.goodsWrite(goodsDTO);
-	}
-
-	public void orderPro(OrderDTO orderDTO) {
-//		orderDTO.setO_code(0); //주문날짜 O20230516000, string으로 변경, O_code=D_num 예정
-		goodsDAO.orderAdd(orderDTO);
 	}
 
 //	public List<OrderDTO> orderList(OrderDTO orderDTO) {
