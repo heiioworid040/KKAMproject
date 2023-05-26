@@ -1,6 +1,6 @@
 package com.project.domain;
 
-import com.google.protobuf.Timestamp;
+import java.sql.Timestamp;
 
 public class BasketDTO extends GoodsDTO{
 	private int B_num;
