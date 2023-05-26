@@ -31,7 +31,6 @@ public class GoodsDAO {
 	}
 	
 	public void basketAdd(BasketDTO basketDTO) {
-		System.out.println("DAO");
 		sqlSession.insert(namespace+".basketAdd", basketDTO);
 	}
 	
@@ -41,6 +40,12 @@ public class GoodsDAO {
 
 	public Integer basketAllPrice(String id) {
 		return sqlSession.selectOne(namespace+".basketAllPrice", id);
+	}
+	
+	public void orderAdd(OrderDTO orderDTO) {
+		sqlSession.insert(namespace+".ordersAdd", orderDTO);
+		sqlSession.insert(namespace+".ordersDAdd", orderDTO);
+		sqlSession.insert(namespace+".deliveryAdd", orderDTO);
 	}
 	
 	public void goodsWrite(GoodsDTO goodsDTO) {
@@ -58,9 +63,20 @@ public class GoodsDAO {
 	public String getG_code(BasketDTO basketDTO) {
 		return sqlSession.selectOne(namespace+".getG_code", basketDTO);
 	}
-
-	public void orderAdd(OrderDTO orderDTO) {
-		sqlSession.insert(namespace+".orderAdd", orderDTO);
+	
+	public Integer maxOD_num() {
+		return sqlSession.selectOne(namespace+".maxOD_num");
 	}
-
+	
+	public Integer maxD_num() {
+		return sqlSession.selectOne(namespace+".maxD_num");
+	}
+	
+	public String getO_code(OrderDTO orderDTO) {
+		return sqlSession.selectOne(namespace+".getO_code", orderDTO);
+	}
+	
+	public Integer maxO_code(OrderDTO orderDTO) {
+		return sqlSession.selectOne(namespace+".maxO_code", orderDTO);
+	}
 }

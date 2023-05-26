@@ -21,8 +21,8 @@
 	</select>
 
 	<insert id="basketAdd">
-		insert basket(B_num, U_id, G_code, B_count)
-		values(#{B_num}, #{U_id}, #{G_code}, #{B_count})
+		insert into basket
+		values(#{B_num}, #{U_id}, #{G_code}, #{B_count}, #{B_date})
 	</insert>
 	
 	<update id="basketUpdate">
@@ -32,6 +32,21 @@
 	<select id="basketAllPrice" resultType="java.lang.Integer">
 		select sum(G_price*B_count) from basket b join Goods g on b.G_code=g.G_code where U_id=#{id}
 	</select>
+	
+	<insert id="ordersAdd">
+		insert into orders
+		values (#{O_code}, #{U_id}, #{O_name}, #{O_phone}, #{O_delivery}, #{O_price}, #{O_count}, #{O_date}) 
+	</insert>
+	
+	<insert id="ordersDAdd">
+		insert into ordersD
+		values (#{OD_num}, #{O_code}, #{G_code}, #{OD_price}, #{OD_count}) 
+	</insert>
+
+	<insert id="deliveryAdd">
+		insert into delivery
+		values (#{D_num}, #{O_code}, #{D_name}, #{D_address}, #{D_addressD}, #{D_zipcode}, #{D_phone}, #{D_desc}) 
+	</insert>
 
 	<insert id="goodsWrite">
 		insert into goods(G_code, G_stop, G_product, G_price, G_desc, G_imgS, G_img)
@@ -49,5 +64,23 @@
 	<select id="getG_code" resultType="java.lang.String">
 		select G_code from basket
 		where U_id=#{U_id} and G_code=#{G_code}
+	</select>
+
+	<select id="maxOD_num" resultType="java.lang.Integer">
+		select max(OD_num) from ordersD
+	</select>
+
+	<select id="maxD_num" resultType="java.lang.Integer">
+		select max(D_num) from delivery
+	</select>
+	
+	<select id="getO_code" resultType="java.lang.String">
+		select O_code from orders
+		where date(O_date)=date(#{O_date})
+	</select>
+	
+	<select id="maxO_code" resultType="java.lang.Integer">
+		select max(cast(substring(O_code,9,3) as unsigned)) from orders
+		where date(O_date)=date(#{O_date})
 	</select>
 </mapper>
