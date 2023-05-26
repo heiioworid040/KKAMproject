@@ -1,14 +1,16 @@
 package com.project.controller;
 
 import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -27,7 +29,10 @@ public class GoodsController {
 	@Inject
 	private GoodsService goodsService;
 	
-	@Value("${upload.path}")
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	String today=sdf.format(System.currentTimeMillis());
+	
+	@Resource(name = "uploadPath")
 	private String uploadPath;
 	
 	@RequestMapping(value = "/goods/form", method = RequestMethod.GET)
@@ -72,16 +77,17 @@ public class GoodsController {
 	public String goodsbasketPro(HttpSession session, HttpServletRequest request, Model model) {
 		String details=request.getParameter("details");
 		
-		BasketDTO bagDTO=new BasketDTO();
-		bagDTO.setU_id((String)session.getAttribute("id"));
-		bagDTO.setG_code(request.getParameter("G_code"));
-		bagDTO.setB_count(Integer.parseInt(request.getParameter("count")));
+		BasketDTO basketDTO=new BasketDTO();
+		basketDTO.setU_id((String)session.getAttribute("id"));
+		basketDTO.setG_code(request.getParameter("G_code"));
+		basketDTO.setB_count(Integer.parseInt(request.getParameter("count")));
+		basketDTO.setB_date(Timestamp.valueOf(today));
 		
 		//basketPro로 중복 코드 제거 예정
 		if(details!=null) {
-			goodsService.basketPro(bagDTO);
+			goodsService.basketPro(basketDTO);
 		}else {
-			goodsService.basketUpdate(bagDTO);
+			goodsService.basketUpdate(basketDTO);
 		}
 		
 		return "redirect:/goods/basket";
@@ -122,7 +128,7 @@ public class GoodsController {
 		return "goods/order";
 	}
 	
-	@RequestMapping(value = "/goods/orderPro", method = RequestMethod.GET)
+	@RequestMapping(value = "/goods/orderPro", method = RequestMethod.POST)
 	public String goodsOrder(HttpSession session, HttpServletRequest request) {
 		OrderDTO orderDTO=new OrderDTO();
 		orderDTO.setU_id((String)session.getAttribute("id"));
@@ -130,7 +136,9 @@ public class GoodsController {
 		orderDTO.setO_phone(Integer.parseInt(request.getParameter("O_phone")));
 		orderDTO.setO_delivery(Integer.parseInt(request.getParameter("O_delivery")));
 		orderDTO.setO_price(Integer.parseInt(request.getParameter("O_price")));
-		orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count")));
+//		orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count"))); 수정예정
+		orderDTO.setO_count(100);
+		orderDTO.setO_date(Timestamp.valueOf(today));
 		//orderD 배열
 		orderDTO.setG_code(request.getParameter("G_code"));
 		orderDTO.setOD_price(Integer.parseInt(request.getParameter("OD_price")));
@@ -143,7 +151,7 @@ public class GoodsController {
 		orderDTO.setD_phone(Integer.parseInt(request.getParameter("D_phone")));
 		orderDTO.setD_desc(request.getParameter("D_desc"));
 		
-		goodsService.orderPro(orderDTO);
+		goodsService.orderAdd(orderDTO);
 		
 		return "redirect:/goods/form";
 	}
