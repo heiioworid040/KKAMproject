@@ -30,4 +30,14 @@
 		where N_num = #{N_num}
 	</select>
 	
+	<update id = "update">
+		update notice set N_title = #{N_title}, N_text = #{N_text}, N_img = #{N_img}
+		where N_num = #{N_num}
+	</update>
+	
+	<delete id = "delete">
+		delete from notice
+		where N_num = #{n_num}
+	</delete>
+	
 </mapper>

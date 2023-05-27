@@ -38,6 +38,14 @@ public class NoticeDAO {
 		return sqlSession.selectOne(namespace+".getNotice", n_num);
 	}
 
+	public void update(NoticeDTO noticeDTO) {
+		sqlSession.update(namespace+".update", noticeDTO);
+	}
+
+	public void delete(int n_num) {
+		sqlSession.delete(namespace+".delete", n_num);
+	}
+
 
 	
 }

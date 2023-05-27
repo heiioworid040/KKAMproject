@@ -51,5 +51,14 @@ public class NoticeService {
 		return noticeDAO.getNotice(n_num);
 	}
 
+	public void update(NoticeDTO noticeDTO) {
+		noticeDAO.update(noticeDTO);
+		
+	}
+
+	public void delete(int n_num) {
+		noticeDAO.delete(n_num);
+	}
+
 
 }

@@ -106,5 +106,53 @@ public class NoticeController {
 		
 	}
 	
+	@RequestMapping(value = "/notice/update", method = RequestMethod.GET)
+	public String update(HttpServletRequest request, Model model) {
+		int N_num = Integer.parseInt(request.getParameter("N_num"));
+		
+		NoticeDTO noticeDTO=noticeService.getNotice(N_num);
+		
+		model.addAttribute("noticeDTO", noticeDTO);
+
+		return "notice/update";
+	}
+	
+	@RequestMapping(value = "/notice/updatePro", method = RequestMethod.POST)
+	public String updatePro(HttpServletRequest request, MultipartFile img) throws Exception{
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setN_num(Integer.parseInt(request.getParameter("num")));
+		noticeDTO.setN_text(request.getParameter("text"));
+		noticeDTO.setN_title(request.getParameter("title"));
+		noticeDTO.setU_id(request.getParameter("id"));				
+		
+		if(img.isEmpty()) {
+			noticeDTO.setN_img(request.getParameter("oldimg"));
+		}else {
+			UUID uuid=UUID.randomUUID();
+			String imgname=uuid.toString()+"_"+img.getOriginalFilename();
+			FileCopyUtils.copy(img.getBytes(), new File(uploadPath,imgname));
+			
+			noticeDTO.setN_img(imgname);
+		}
+				
+		noticeService.update(noticeDTO);
+		return "redirect:/notice/notice";
+	}
+	
+	@RequestMapping(value = "/notice/delete", method = RequestMethod.GET)
+	public String delete(HttpServletRequest request) {
+		int N_num=Integer.parseInt(request.getParameter("N_num"));
+		
+		noticeService.delete(N_num);
+		
+		// 주소변경 하면서 이동
+		return "redirect:/notice/notice";
+	}
+	
+	
+	
+	
+	
+	
 	
 }
