@@ -57,11 +57,6 @@ public class GoodsService {
 	
 	public void orderAdd(OrderDTO orderDTO) {
 		String num;
-		if(goodsDAO.maxOD_num()==null) {
-			orderDTO.setOD_num(1);
-		}else {
-			orderDTO.setOD_num(goodsDAO.maxOD_num()+1);
-		}
 		if(goodsDAO.maxD_num()==null) {
 			orderDTO.setD_num(1);
 		}else {
@@ -82,6 +77,20 @@ public class GoodsService {
 		String date=(String.valueOf(orderDTO.getO_date()).substring(0,10).replace("-",""));
 		orderDTO.setO_code(date+num);
 		goodsDAO.orderAdd(orderDTO);
+	}
+	
+	public void orderDAdd(OrderDTO orderDTO) {
+		if(goodsDAO.maxOD_num()==null) {
+			orderDTO.setOD_num(1);
+		}else {
+			orderDTO.setOD_num(goodsDAO.maxOD_num()+1);
+		}
+		orderDTO.setO_code(goodsDAO.getO_code(orderDTO));
+		goodsDAO.orderDAdd(orderDTO);
+	}
+	
+	public void basketDel(OrderDTO orderDTO) {
+		goodsDAO.basketDel(orderDTO);
 	}
 
 	public void goodsWrite(GoodsDTO goodsDTO) {
