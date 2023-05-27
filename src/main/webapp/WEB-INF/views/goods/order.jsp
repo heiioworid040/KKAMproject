@@ -58,7 +58,7 @@
 						</tbody>
 					<input type="hidden" name="G_code" value="${goods.g_code }">
 					<input type="hidden" name="OD_price" value="${goods.g_price }">
-					<input type="hidden" name="OD_count" value="${OD_count }">
+					<input type="hidden" name="OD_count" value="${goods.b_count }">
 					</c:forEach>
 				</table>
 <!-- 		상품 상세 페이지에서 구매하기 버튼 바로 눌렀을 때 (수정 예정) -->
