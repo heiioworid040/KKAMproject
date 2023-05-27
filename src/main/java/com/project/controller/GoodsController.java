@@ -130,6 +130,8 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/orderPro", method = RequestMethod.POST)
 	public String goodsOrder(HttpSession session, HttpServletRequest request) {
+		String[] G_code=request.getParameterValues("G_code");
+
 		OrderDTO orderDTO=new OrderDTO();
 		orderDTO.setU_id((String)session.getAttribute("id"));
 		orderDTO.setO_name(request.getParameter("O_name"));
@@ -139,10 +141,6 @@ public class GoodsController {
 //		orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count"))); 수정예정
 		orderDTO.setO_count(100);
 		orderDTO.setO_date(Timestamp.valueOf(today));
-		//orderD 배열
-		orderDTO.setG_code(request.getParameter("G_code"));
-		orderDTO.setOD_price(Integer.parseInt(request.getParameter("OD_price")));
-		orderDTO.setOD_count(Integer.parseInt(request.getParameter("OD_count")));
 		//delivery
 		orderDTO.setD_name(request.getParameter("D_name"));
 		orderDTO.setD_address(request.getParameter("D_address"));
@@ -150,8 +148,20 @@ public class GoodsController {
 		orderDTO.setD_zipcode(Integer.parseInt(request.getParameter("D_zipcode")));
 		orderDTO.setD_phone(Integer.parseInt(request.getParameter("D_phone")));
 		orderDTO.setD_desc(request.getParameter("D_desc"));
-		
+
 		goodsService.orderAdd(orderDTO);
+		
+		//orderD 배열
+		for(int i=0;i<G_code.length;i++) {
+			String[] OD_price=request.getParameterValues("OD_price");
+			String[] OD_count=request.getParameterValues("OD_count");
+
+			orderDTO.setG_code(G_code[i]);
+			orderDTO.setOD_price(Integer.parseInt(OD_price[i]));
+			orderDTO.setOD_count(Integer.parseInt(OD_count[i]));
+			goodsService.orderDAdd(orderDTO);
+			goodsService.basketDel(orderDTO);
+		}
 		
 		return "redirect:/goods/form";
 	}
