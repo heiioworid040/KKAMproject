@@ -44,8 +44,15 @@ public class GoodsDAO {
 	
 	public void orderAdd(OrderDTO orderDTO) {
 		sqlSession.insert(namespace+".ordersAdd", orderDTO);
-		sqlSession.insert(namespace+".ordersDAdd", orderDTO);
 		sqlSession.insert(namespace+".deliveryAdd", orderDTO);
+	}
+	
+	public void orderDAdd(OrderDTO orderDTO) {
+		sqlSession.insert(namespace+".ordersDAdd", orderDTO);
+	}
+	
+	public void basketDel(OrderDTO orderDTO) {
+		sqlSession.delete(namespace+".basketDel", orderDTO);
 	}
 	
 	public void goodsWrite(GoodsDTO goodsDTO) {

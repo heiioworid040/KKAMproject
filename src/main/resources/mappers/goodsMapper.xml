@@ -47,6 +47,11 @@
 		insert into delivery
 		values (#{D_num}, #{O_code}, #{D_name}, #{D_address}, #{D_addressD}, #{D_zipcode}, #{D_phone}, #{D_desc}) 
 	</insert>
+	
+	<delete id="basketDel">
+		delete from basket
+		where U_id=#{U_id} and G_code=#{G_code};
+	</delete>
 
 	<insert id="goodsWrite">
 		insert into goods(G_code, G_stop, G_product, G_price, G_desc, G_imgS, G_img)
@@ -75,8 +80,8 @@
 	</select>
 	
 	<select id="getO_code" resultType="java.lang.String">
-		select O_code from orders
-		where date(O_date)=date(#{O_date})
+		select max(O_code) from orders
+		where U_id=#{U_id}
 	</select>
 	
 	<select id="maxO_code" resultType="java.lang.Integer">
