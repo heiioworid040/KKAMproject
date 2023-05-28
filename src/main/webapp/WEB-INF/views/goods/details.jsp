@@ -51,7 +51,7 @@
 							</th>
 							<td>
 								<span>${goods.g_price }</span><br>
-								<input type="hidden" id="G_price" value="${goods.g_price }">
+								<input type="hidden" id="G_price" name="price" value="${goods.g_price }">
 							</td>
 						</tr>
 						<tr>

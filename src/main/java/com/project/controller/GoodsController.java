@@ -97,32 +97,36 @@ public class GoodsController {
 	public String goodsOrder(HttpSession session, HttpServletRequest request, Model model) {
 		String details=request.getParameter("details");
 		String id=(String)session.getAttribute("id");
-
+		
+		int count=0;
 		int price=0;
 		int delivery=0;
 		
 		if(details!=null) {
 			String G_code=request.getParameter("G_code");
-			int OD_count=Integer.parseInt(request.getParameter("count"));
+			count=Integer.parseInt(request.getParameter("count"));
+			price=Integer.parseInt(request.getParameter("price"))*count;
 
 			List<GoodsDTO> GoodsList=goodsService.goodsList(G_code);
 			model.addAttribute("GoodsList", GoodsList);
-			model.addAttribute("OD_count", OD_count);
 
 			GoodsDTO goodsDTO=new GoodsDTO();
 			goodsDTO.setG_code(request.getParameter(G_code));
 		}else {
 			List<BasketDTO> BasketList=goodsService.basketList(id);
 			price=goodsService.basketAllPrice(id);
+			count=goodsService.basketAllCount(id);
 			
-			if(price<100000) {
-				delivery=2500;
-			}
 			model.addAttribute("GoodsList", BasketList);
 		}
 		
+		if(price<100000) {
+			delivery=2500;
+		}
 		
 		//장바구니 리스트로 수정 예정
+		model.addAttribute("details", details);
+		model.addAttribute("count", count);
 		model.addAttribute("price", price);
 		model.addAttribute("delivery", delivery);
 		return "goods/order";
@@ -138,8 +142,7 @@ public class GoodsController {
 		orderDTO.setO_phone(Integer.parseInt(request.getParameter("O_phone")));
 		orderDTO.setO_delivery(Integer.parseInt(request.getParameter("O_delivery")));
 		orderDTO.setO_price(Integer.parseInt(request.getParameter("O_price")));
-//		orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count"))); 수정예정
-		orderDTO.setO_count(100);
+		orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count")));
 		orderDTO.setO_date(Timestamp.valueOf(today));
 		//delivery
 		orderDTO.setD_name(request.getParameter("D_name"));

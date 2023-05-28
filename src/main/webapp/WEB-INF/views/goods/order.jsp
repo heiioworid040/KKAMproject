@@ -11,11 +11,11 @@
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/script/jquery-3.6.3.js"></script>
 <script>
-	function ckAll() {
+	function check() {
 		if($("input:checked[id='ckAll']").prop("checked")) {
-			$("input:[id=ck]").prop("checked", true);
+			$("input[id=ck]").prop("checked", true); 
 		}else {
-			$("input:[id=ck]").prop("checked", false);
+			$("input[id=ck]").prop("checked", false); 
 		}
 	}
 </script>
@@ -27,7 +27,7 @@
 				<table>
 					<thead>
 						<tr>
-							<th><input type="checkbox" id="ckAll" onclick="ckAll()"></th>
+							<th><input type="checkbox" id="ckAll" onclick="check()"></th>
 							<th>이미지</th>
 							<th>상품정보</th>
 							<th>상품코드</th>
@@ -46,28 +46,24 @@
 									<td>${goods.g_product }</td>
 									<td>${goods.g_code }</td>
 									<td>${goods.g_price }</td>
-									<c:if test="${OD_count!=null }">
-									<td>${OD_count }</td> 
-									<td>${goods.g_price*OD_count }원</td>
+									<c:if test="${details!=null }">
+										<td>${count }</td>
+										<td>${goods.g_price*count }원</td>
+										<input type="hidden" name="OD_count" value="${count }">
 									</c:if>
-									<c:if test="${OD_count==null }">
-									<td>${goods.b_count }</td>
-									<td>${goods.g_price * goods.b_count }</td>
+									<c:if test="${details==null }">
+										<td>${goods.b_count }</td>
+										<td>${goods.g_price * goods.b_count }</td>
+										<input type="hidden" name="OD_count" value="${goods.b_count }">
 									</c:if>
 								</tr>
 						</tbody>
 					<input type="hidden" name="G_code" value="${goods.g_code }">
 					<input type="hidden" name="OD_price" value="${goods.g_price }">
-					<input type="hidden" name="OD_count" value="${goods.b_count }">
 					</c:forEach>
 				</table>
-<!-- 		상품 상세 페이지에서 구매하기 버튼 바로 눌렀을 때 (수정 예정) -->
-<%-- 			<c:if test="${OD_count!=null }"> --%>
-<%-- 			총 상품 금액 ${ } + 배송비 ${ }원 = 합계 금액 ${ } --%>
-<%-- 			</c:if> --%>
-				<c:if test="${OD_count==null }">
 				총 상품 금액 ${price } + 배송비 ${delivery }원 = 합계 금액 ${price+delivery }
-				</c:if>
+				<input type="hidden" name="O_count" value="${count }">
 				<input type="hidden" name="O_price" value="${price }">
 				<input type="hidden" name="O_delivery" value="${delivery }">
 <br><br>
