@@ -55,6 +55,10 @@ public class GoodsService {
 		return goodsDAO.basketAllPrice(id);
 	}
 	
+	public Integer basketAllCount(String id) {
+		return goodsDAO.basketAllCount(id);
+	}
+	
 	public void orderAdd(OrderDTO orderDTO) {
 		String num;
 		if(goodsDAO.maxD_num()==null) {

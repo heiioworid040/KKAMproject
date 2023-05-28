@@ -42,6 +42,10 @@ public class GoodsDAO {
 		return sqlSession.selectOne(namespace+".basketAllPrice", id);
 	}
 	
+	public Integer basketAllCount(String id) {
+		return sqlSession.selectOne(namespace+".basketAllCount", id);
+	}
+	
 	public void orderAdd(OrderDTO orderDTO) {
 		sqlSession.insert(namespace+".ordersAdd", orderDTO);
 		sqlSession.insert(namespace+".deliveryAdd", orderDTO);
