@@ -24,16 +24,15 @@
 		 	document.basket.action="${pageContext.request.contextPath }/goods/order";
 		});
 	});
-	
-	function ckAll() {
+</script>
+<script>
+	function check() {
 		if($("input:checked[id='ckAll']").prop("checked")) {
-			$("input:[id=ck]").prop("checked", true);
+			$("input[id=ck]").prop("checked", true); 
 		}else {
-			$("input:[id=ck]").prop("checked", false);
+			$("input[id=ck]").prop("checked", false); 
 		}
 	}
-	
-
 </script>
 <body>
 	<h2>GOODS SHOP</h2>
@@ -43,7 +42,7 @@
 				<table>
 					<thead>
 						<tr>
-							<th><input type="checkbox" id="ckAll" onclick="ckAll()"></th>
+							<th><input type="checkbox" id="ckAll" onclick="check()"></th>
 							<th>이미지</th>
 							<th>상품정보</th>
 							<th>제품코드</th>
@@ -79,8 +78,8 @@
 					<tr>
 						<td>총 상품 금액</td>
 						<td>배송비</td>
-	<!-- 				<td>총 할인+적립금 사용 금액</td> -->
-	<!-- 				할인/적립금 관련은 수정 예정 -->
+<!-- 					<td>총 할인+적립금 사용 금액</td> -->
+<!-- 					할인/적립금 관련은 수정 예정 -->
 						<td>결제 예정 금액</td>
 					</tr>
 					<tr>
