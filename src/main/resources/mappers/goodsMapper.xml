@@ -33,6 +33,10 @@
 		select sum(G_price*B_count) from basket b join Goods g on b.G_code=g.G_code where U_id=#{id}
 	</select>
 	
+	<select id="basketAllCount" resultType="java.lang.Integer">
+		select sum(B_count) from basket where U_id=#{id}
+	</select>
+	
 	<insert id="ordersAdd">
 		insert into orders
 		values (#{O_code}, #{U_id}, #{O_name}, #{O_phone}, #{O_delivery}, #{O_price}, #{O_count}, #{O_date}) 
