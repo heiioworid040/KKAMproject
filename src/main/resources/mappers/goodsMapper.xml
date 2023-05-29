@@ -20,6 +20,16 @@
 		order by B_date
 	</select>
 
+	<select id="basketCkList" resultType="com.project.domain.BasketDTO">
+		select b.G_code, G_imgS, G_product, G_price, B_count, G_stop from goods g join basket b on g.G_code=b.G_code
+		where U_id=#{id}
+		and b.G_code in
+		<foreach collection="ck" item="ck" open="(" close=")" separator=",">
+			#{ck}
+		</foreach>
+		order by B_date
+	</select>
+
 	<insert id="basketAdd">
 		insert into basket
 		values(#{B_num}, #{U_id}, #{G_code}, #{B_count}, #{B_date})
@@ -28,6 +38,16 @@
 	<update id="basketUpdate">
 		update basket set B_count=#{B_count} where U_id=#{U_id} and G_code=#{G_code}
 	</update>
+	
+	<delete id="basketDel">
+		delete from basket
+		where U_id=#{U_id} and G_code=#{G_code};
+	</delete>
+	
+	<delete id="basketAllDel">
+		delete from basket
+		where U_id=#{U_id};
+	</delete>
 	
 	<select id="basketAllPrice" resultType="java.lang.Integer">
 		select sum(G_price*B_count) from basket b join Goods g on b.G_code=g.G_code where U_id=#{id}
@@ -51,11 +71,6 @@
 		insert into delivery
 		values (#{D_num}, #{O_code}, #{D_name}, #{D_address}, #{D_addressD}, #{D_zipcode}, #{D_phone}, #{D_desc}) 
 	</insert>
-	
-	<delete id="basketDel">
-		delete from basket
-		where U_id=#{U_id} and G_code=#{G_code};
-	</delete>
 
 	<insert id="goodsWrite">
 		insert into goods(G_code, G_stop, G_product, G_price, G_desc, G_imgS, G_img)
