@@ -29,6 +29,10 @@ public class GoodsService {
 		return goodsDAO.basketList(id);
 	}
 	
+	public List<BasketDTO> basketList(String id, List<String> ck) {
+		return goodsDAO.basketList(id, ck);
+	}
+	
 	public void basketPro(BasketDTO basketDTO) {
 		if(goodsDAO.maxB_num()==null) {
 			basketDTO.setB_num(1);
@@ -49,6 +53,14 @@ public class GoodsService {
 	
 	public void basketUpdate(BasketDTO basketDTO) {
 		goodsDAO.basketUpdate(basketDTO);
+	}
+	
+	public void basketDel(BasketDTO basketDTO) {
+		goodsDAO.basketDel(basketDTO);
+	}
+	
+	public void basketAllDel(BasketDTO basketDTO) {
+		goodsDAO.basketAllDel(basketDTO);
 	}
 	
 	public Integer basketAllPrice(String id) {
@@ -91,10 +103,6 @@ public class GoodsService {
 		}
 		orderDTO.setO_code(goodsDAO.getO_code(orderDTO));
 		goodsDAO.orderDAdd(orderDTO);
-	}
-	
-	public void basketDel(OrderDTO orderDTO) {
-		goodsDAO.basketDel(orderDTO);
 	}
 
 	public void goodsWrite(GoodsDTO goodsDTO) {

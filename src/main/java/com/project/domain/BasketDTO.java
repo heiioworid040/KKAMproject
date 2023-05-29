@@ -1,6 +1,7 @@
 package com.project.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class BasketDTO extends GoodsDTO{
 	private int B_num;
@@ -8,6 +9,29 @@ public class BasketDTO extends GoodsDTO{
 	private String G_code;
 	private int B_count;
 	private Timestamp B_date;
+	
+	public static class BasketQuery {
+	    private String id;
+	    private List<String> ck;
+
+	    public BasketQuery(String id, List<String> ck) {
+	        this.id = id;
+	        this.ck = ck;
+	    }
+	    
+	    public String getId() {
+	        return id;
+	    }
+		public void setU_id(String id) {
+			this.id = id;
+		}
+		public List<String> getCk() {
+			return ck;
+		}
+		public void setCk(List<String> ck) {
+			this.ck = ck;
+		}
+	}
 	
 	public int getB_num() {
 		return B_num;
