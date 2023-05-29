@@ -11,17 +11,21 @@
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/script/jquery-3.6.3.js"></script>
 <script>
-		function updateCount(G_code, count){
-			$.post("${pageContext.request.contextPath}/goods/basketPro", { G_code: G_code, count: count }, function() {
+		function updateCount(G_code, count, basket){
+			$.post("${pageContext.request.contextPath}/goods/basketPro", { G_code: G_code, count: count, basket: basket }, function() {
 				document.basket.submit();
 			});
 		};
 		
 	$(document).ready(function(){
-// 		수량 변경 수정 중 (숫자 변수 변경하기)
-		
 		$('#order, #orderAll').click(function(){
+			document.basket.method="get"
 		 	document.basket.action="${pageContext.request.contextPath }/goods/order";
+		});
+
+		$('#basketDel, #basketAllDel').click(function(){
+			document.basket.method="post"
+		 	document.basket.action="${pageContext.request.contextPath }/goods/basketPro";
 		});
 	});
 </script>
@@ -38,7 +42,7 @@
 	<h2>GOODS SHOP</h2>
 	<div class="container-doc">
 		<div class="inner_container">
-			<form name="basket" method="get">
+			<form name="basket">
 				<table>
 					<thead>
 						<tr>
@@ -54,14 +58,14 @@
 					<c:forEach var="goods" items="${BasketList }" varStatus="c">
 						<tbody>
 							<tr>
-								<td><input type="checkbox" id="ck"></td>
+								<td><input type="checkbox" id="ck" name="ck" value="${goods.g_code }"></td>
 								<td>
 									<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px" height="100px"><br>
 								</td>
 								<td>${goods.g_product }</td>
 								<td>${goods.g_code }<input type="hidden" name="G_code" value="${good.g_code }"></td>
 								<td>${goods.g_price }원</td>
-								<td><input type="number" id="count${c.index }" name="count" max="${goods.g_stop }" min="1" value="${goods.b_count }" onchange="updateCount('${goods.g_code }', this.value)"></td>
+								<td><input type="number" id="count${c.index }" name="count" max="${goods.g_stop }" min="1" value="${goods.b_count }" onchange="updateCount('${goods.g_code }', this.value, 'basketUp')"></td>
 	<!-- 						수량 조절 수정 예정 -->
 								<td>${goods.g_price * goods.b_count }원</td>
 							</tr>
@@ -71,8 +75,8 @@
 				총 상품 금액 ${price } + 배송비 ${delivery }원 = 합계 금액 ${price+delivery }
 <br><br>
 <!-- 			상품 하나거나 0개면 historyback, 여러개면 해당 상품 삭제 -->
-				<input type="submit" value="삭제하기">
-				<input type="submit" value="장바구니 비우기">
+				<button type="submit" id="basketDel" name="basket" value="basketDel">삭제하기</button>
+				<button type="submit" id="basketAllDel" name="basket" value="basketAllDel">비우기</button>
 <br><br>
 				<table>
 					<tr>
@@ -90,8 +94,8 @@
 					</tr>
 				</table>
 <br><br>
-				<input type="submit" id="orderAll" value="전체 상품 주문">
-				<input type="submit" id="order" value="선택 상품 주문">
+				<button type="submit" id="orderAll" name="basket" value="orderAll">전체 상품 주문</button>
+				<button type="submit" id="order" name="basket" value="order">선택 상품 주문</button>
 			</form>
 		</div>
 	</div>

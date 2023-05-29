@@ -39,7 +39,7 @@
 					<c:forEach var="goods" items="${GoodsList }">
 						<tbody>
 								<tr>
-									<td><input type="checkbox" id="ck"></td>
+									<td><input type="checkbox" id="ck" name="ck" value="${goods.g_code }"></td>
 									<td rowspan='5'>
 										<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px" height="100px"><br>
 									</td>
@@ -68,7 +68,7 @@
 				<input type="hidden" name="O_delivery" value="${delivery }">
 <br><br>
 <!-- 			상품 하나거나 0개면 historyback, 여러개면 해당 상품 삭제 -->
-				<input type="submit" value="삭제하기">
+				<button type="submit" id="orderDel" name="order" value="orderDel">삭제하기</button>
 <br><br>
 				주문자 정보
 				<table>
