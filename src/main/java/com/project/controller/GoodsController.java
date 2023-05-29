@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.BasketDTO;
@@ -76,26 +77,36 @@ public class GoodsController {
 	@RequestMapping(value = "/goods/basketPro", method = RequestMethod.POST)
 	public String goodsbasketPro(HttpSession session, HttpServletRequest request, Model model) {
 		String details=request.getParameter("details");
+		String basket=request.getParameter("basket");
+		String ck[]=request.getParameterValues("ck");
+		
 		
 		BasketDTO basketDTO=new BasketDTO();
 		basketDTO.setU_id((String)session.getAttribute("id"));
 		basketDTO.setG_code(request.getParameter("G_code"));
 		basketDTO.setB_count(Integer.parseInt(request.getParameter("count")));
 		basketDTO.setB_date(Timestamp.valueOf(today));
-		
+
 		//basketPro로 중복 코드 제거 예정
 		if(details!=null) {
 			goodsService.basketPro(basketDTO);
-		}else {
+		}else if(basket.equals("basketUp")) {
 			goodsService.basketUpdate(basketDTO);
+		}else if(basket.equals("basketDel")) {
+			for(int i=0;i<ck.length;i++) {
+				basketDTO.setG_code(ck[i]);
+				goodsService.basketDel(basketDTO);
+			}
+		}else {
+			goodsService.basketAllDel(basketDTO);
 		}
-		
 		return "redirect:/goods/basket";
 	}
 
 	@RequestMapping(value = "/goods/order", method = RequestMethod.GET)
-	public String goodsOrder(HttpSession session, HttpServletRequest request, Model model) {
+	public String goodsOrder(@RequestParam(value = "ck", required = false) List<String> ck, HttpSession session, HttpServletRequest request, Model model) {
 		String details=request.getParameter("details");
+		String basket=request.getParameter("basket");
 		String id=(String)session.getAttribute("id");
 		
 		int count=0;
@@ -113,7 +124,13 @@ public class GoodsController {
 			GoodsDTO goodsDTO=new GoodsDTO();
 			goodsDTO.setG_code(request.getParameter(G_code));
 		}else {
-			List<BasketDTO> BasketList=goodsService.basketList(id);
+			List<BasketDTO> BasketList;
+			System.out.println(basket);
+			if(basket.equals("order")) {
+				BasketList=goodsService.basketList(id, ck);
+			}else {
+				BasketList=goodsService.basketList(id);
+			}
 			price=goodsService.basketAllPrice(id);
 			count=goodsService.basketAllCount(id);
 			
@@ -134,39 +151,49 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/orderPro", method = RequestMethod.POST)
 	public String goodsOrder(HttpSession session, HttpServletRequest request) {
+		String order=request.getParameter("order");
 		String[] G_code=request.getParameterValues("G_code");
-
+		String[] ck=request.getParameterValues("ck");
+		
 		OrderDTO orderDTO=new OrderDTO();
 		orderDTO.setU_id((String)session.getAttribute("id"));
-		orderDTO.setO_name(request.getParameter("O_name"));
-		orderDTO.setO_phone(Integer.parseInt(request.getParameter("O_phone")));
-		orderDTO.setO_delivery(Integer.parseInt(request.getParameter("O_delivery")));
-		orderDTO.setO_price(Integer.parseInt(request.getParameter("O_price")));
-		orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count")));
-		orderDTO.setO_date(Timestamp.valueOf(today));
-		//delivery
-		orderDTO.setD_name(request.getParameter("D_name"));
-		orderDTO.setD_address(request.getParameter("D_address"));
-		orderDTO.setD_addressD(request.getParameter("D_addressD"));
-		orderDTO.setD_zipcode(Integer.parseInt(request.getParameter("D_zipcode")));
-		orderDTO.setD_phone(Integer.parseInt(request.getParameter("D_phone")));
-		orderDTO.setD_desc(request.getParameter("D_desc"));
-
-		goodsService.orderAdd(orderDTO);
 		
-		//orderD 배열
-		for(int i=0;i<G_code.length;i++) {
-			String[] OD_price=request.getParameterValues("OD_price");
-			String[] OD_count=request.getParameterValues("OD_count");
-
-			orderDTO.setG_code(G_code[i]);
-			orderDTO.setOD_price(Integer.parseInt(OD_price[i]));
-			orderDTO.setOD_count(Integer.parseInt(OD_count[i]));
-			goodsService.orderDAdd(orderDTO);
-			goodsService.basketDel(orderDTO);
+		if(order.equals("orderDel")) {
+			for(int i=0;i<ck.length;i++) {
+				orderDTO.setG_code(ck[i]);
+				goodsService.basketDel(orderDTO);
+			}
+			return "redirect:/goods/order";
+		}else {
+			orderDTO.setO_name(request.getParameter("O_name"));
+			orderDTO.setO_phone(Integer.parseInt(request.getParameter("O_phone")));
+			orderDTO.setO_delivery(Integer.parseInt(request.getParameter("O_delivery")));
+			orderDTO.setO_price(Integer.parseInt(request.getParameter("O_price")));
+			orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count")));
+			orderDTO.setO_date(Timestamp.valueOf(today));
+			//delivery
+			orderDTO.setD_name(request.getParameter("D_name"));
+			orderDTO.setD_address(request.getParameter("D_address"));
+			orderDTO.setD_addressD(request.getParameter("D_addressD"));
+			orderDTO.setD_zipcode(Integer.parseInt(request.getParameter("D_zipcode")));
+			orderDTO.setD_phone(Integer.parseInt(request.getParameter("D_phone")));
+			orderDTO.setD_desc(request.getParameter("D_desc"));
+	
+			goodsService.orderAdd(orderDTO);
+			
+			//orderD 배열
+			for(int i=0;i<G_code.length;i++) {
+				String[] OD_price=request.getParameterValues("OD_price");
+				String[] OD_count=request.getParameterValues("OD_count");
+	
+				orderDTO.setG_code(G_code[i]);
+				orderDTO.setOD_price(Integer.parseInt(OD_price[i]));
+				orderDTO.setOD_count(Integer.parseInt(OD_count[i]));
+				goodsService.orderDAdd(orderDTO);
+				goodsService.basketDel(orderDTO);
+			}
+			return "redirect:/goods/form";
 		}
-		
-		return "redirect:/goods/form";
 	}
 
 	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)
