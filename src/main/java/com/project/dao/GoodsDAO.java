@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.project.domain.BasketDTO;
+import com.project.domain.BasketDTO.BasketQuery;
 import com.project.domain.GoodsDTO;
 import com.project.domain.OrderDTO;
 
@@ -28,6 +29,12 @@ public class GoodsDAO {
 	
 	public List<BasketDTO> basketList(String id) {
 		return sqlSession.selectList(namespace+".basketList", id);
+	}
+	
+	
+	public List<BasketDTO> basketList(String id, List<String> ck) {
+		BasketQuery query = new BasketQuery(id, ck);
+		return sqlSession.selectList(namespace+".basketCkList", query);
 	}
 	
 	public void basketAdd(BasketDTO basketDTO) {
@@ -55,8 +62,12 @@ public class GoodsDAO {
 		sqlSession.insert(namespace+".ordersDAdd", orderDTO);
 	}
 	
-	public void basketDel(OrderDTO orderDTO) {
-		sqlSession.delete(namespace+".basketDel", orderDTO);
+	public void basketDel(BasketDTO basketDTO) {
+		sqlSession.delete(namespace+".basketDel", basketDTO);
+	}
+	
+	public void basketAllDel(BasketDTO basketDTO) {
+		sqlSession.delete(namespace+".basketAllDel", basketDTO);
 	}
 	
 	public void goodsWrite(GoodsDTO goodsDTO) {
