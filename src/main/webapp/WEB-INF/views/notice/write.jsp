@@ -18,25 +18,25 @@
   
 <input type="hidden" name="id" value="${sessionScope.id }">
 		
-<table border = "1">
+	<table border = "1">
 
-<tr>
-	<td>글제목</td>
-	<td><input type="text" name="title"></td>
-</tr>
-<tr>
-	<td>첨부파일</td>
-	<td><input type="file" name="img"></td>
-</tr>
-<tr>
-	<td>글내용</td>
-	<td><textarea name="text" rows="10" cols="20"></textarea></td>
-</tr>
-<tr>
-	<td colspan="2"><input type="submit" value="글쓰기"></td>
-</tr>
+		<tr>
+			<td>글제목</td>
+			<td><input type="text" name="title"></td>
+		</tr>
+		<tr>
+			<td>첨부파일</td>
+			<td><input type="file" name="img"></td>
+		</tr>
+		<tr>
+			<td>글내용</td>
+			<td><textarea name="text" rows="10" cols="20"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="글쓰기"></td>
+		</tr>
 
-</table>
+	</table>
 </form>
 
 </body>

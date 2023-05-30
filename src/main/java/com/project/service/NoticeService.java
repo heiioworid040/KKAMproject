@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.project.dao.NoticeDAO;
+import com.project.domain.CommentDTO;
 import com.project.domain.NoticeDTO;
 import com.project.domain.PageDTO;
 
@@ -19,7 +20,6 @@ public class NoticeService {
 	private NoticeDAO noticeDAO;
 
 	public void insertNotice(NoticeDTO noticeDTO) {
-		System.out.println("NoticeService insertNotice");
 		if(noticeDAO.getMaxNum()==null) {
 			noticeDTO.setN_num(1);
 		}else {
@@ -58,6 +58,11 @@ public class NoticeService {
 
 	public void delete(int n_num) {
 		noticeDAO.delete(n_num);
+	}
+
+	public void insertComment(CommentDTO commentDTO) {
+		
+		
 	}
 
 
