@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.domain.CommentDTO;
 import com.project.domain.NoticeDTO;
 import com.project.domain.PageDTO;
 import com.project.service.NoticeService;
@@ -149,7 +150,18 @@ public class NoticeController {
 		return "redirect:/notice/notice";
 	}
 	
-	
+	@RequestMapping(value = "/notice/noticePro", method = RequestMethod.POST)
+	public String noticePro(HttpServletRequest request) throws Exception {
+		
+		CommentDTO commentDTO = new CommentDTO();
+		
+		commentDTO.setU_id(request.getParameter("id"));
+		commentDTO.setC_cont(request.getParameter("cont"));
+		commentDTO.setN_num(Integer.parseInt(request.getParameter("num")));
+		
+		noticeService.insertComment(commentDTO);
+		return "redirect:/notice/notice";	
+	}
 	
 	
 	
