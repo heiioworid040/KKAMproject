@@ -125,7 +125,6 @@ public class GoodsController {
 			goodsDTO.setG_code(request.getParameter(G_code));
 		}else {
 			List<BasketDTO> BasketList;
-			System.out.println(basket);
 			if(basket.equals("order")) {
 				BasketList=goodsService.basketList(id, ck);
 			}else {
