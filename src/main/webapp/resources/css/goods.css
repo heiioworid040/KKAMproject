@@ -4,16 +4,19 @@
 	margin: auto;
 }
 .inner_container {
-	width: 1100px;
-	margin: auto;
-	float: left;
-/* 	text-align: center; */
+	margin-left: 300px;
+}
+.contents {
+	margin: 0 auto;
+	padding-top: 50px;
 }
 .cont_img {
 	width: 300px;
 	float: left;
 	margin: 30px;
 }
+
+/* details */
 .details-area {
 	width: 50%;
 	float: left;
@@ -91,4 +94,32 @@
 	width: 10%;
 	border: 1px solid;
 	background: none;
+}
+
+/* order */
+.base-table.typeList table {
+	border-top: 1px #999 solid;
+	border-collapse: collapse;
+	text-align: center;
+}
+.base-table {
+	border: 1px #999 solid;
+	border-bottom: 0;
+	border-top: 0;
+}
+.base-table thead th{
+	border-right: 1px #999 solid;
+	padding: 15px 0;
+	background: #fafafa;
+	font-weight: normal;
+}
+.base-table td {
+	border-right: 1px #999 solid;
+	border-top: 1px #999 solid;
+}
+.base-table td:last-child {
+	border-bottom: 1px #999 solid;
+}
+.base-table tfoot td {
+	padding: 15px 20px 17px;
 }
