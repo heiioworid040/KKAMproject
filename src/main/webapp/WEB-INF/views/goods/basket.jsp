@@ -83,32 +83,32 @@
 						</table>
 					</div>
 	<!-- 			상품 하나거나 0개면 historyback, 여러개면 해당 상품 삭제 -->
-				<div class="base-button">
-					<button type="submit" id="basketDel" name="basket" value="basketDel" class="order-btn">삭제하기</button>
-					<button type="submit" id="basketAllDel" name="basket" value="basketAllDel" class="order-btn">비우기</button>
-				</div>
-				<div class="base-table typeList">
-					<table>
-						<tr>
-							<th>총 상품 금액</th>
-							<th>배송비</th>
-	<!-- 					<th>총 할인+적립금 사용 금액</th> -->
-	<!-- 					할인/적립금 관련은 수정 예정 -->
-							<th>결제 예정 금액</th>
-						</tr>
-						<tr>
-							<td>${price }원</td>
-							<td>+${delivery }원</td>
-		<!--				<td>0원</td> -->
-							<td>=${price+delivery }원</td>
-						</tr>
-					</table>
-				</div>
+					<div class="base-button">
+						<button type="submit" id="basketDel" name="basket" value="basketDel" class="order-btn">삭제하기</button>
+						<button type="submit" id="basketAllDel" name="basket" value="basketAllDel" class="order-btn">비우기</button>
+					</div>
+					<div class="base-table typeList">
+						<table>
+							<tr>
+								<th>총 상품 금액</th>
+								<th>배송비</th>
+	<!-- 						<th>총 할인+적립금 사용 금액</th> -->
+	<!-- 						할인/적립금 관련은 수정 예정 -->
+								<th>결제 예정 금액</th>
+							</tr>
+							<tr>
+								<td>${price }원</td>
+								<td>+${delivery }원</td>
+		<!--					<td>0원</td> -->
+								<td>=${price+delivery }원</td>
+							</tr>
+						</table>
+					</div>
 	<br><br>
-				<div class="details-buyArea">
-					<button type="submit" id="orderAll" name="basket" value="orderAll" class="details-buyWrap order-orderAll">전체 상품 주문</button>
-					<button type="submit" id="order" name="basket" value="order" class="details-buyWrap order-order">선택 상품 주문</button>
-				</div>
+					<div class="details-buyArea">
+						<button type="submit" id="orderAll" name="basket" value="orderAll" class="details-buyWrap order-orderAll">전체 상품 주문</button>
+						<button type="submit" id="order" name="basket" value="order" class="details-buyWrap order-order">선택 상품 주문</button>
+					</div>
 				</form>
 			</div>
 		</div>
