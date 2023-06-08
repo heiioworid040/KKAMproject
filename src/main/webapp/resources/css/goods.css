@@ -1,13 +1,9 @@
 @charset "UTF-8";
 #wrap {
 	width: 90%;
-	max-width: 1300px;
+	max-width: 1600px;
 	margin: 0 auto;
 	margin-top: 20px;
-}
-.container-doc {
-	width: 1300px;
-	margin: auto;
 }
 .inner_container {
 	margin-left: 300px;
@@ -102,16 +98,15 @@
 	background: none;
 }
 
-/* order */
-.base-table.typeList table {
+/* basket */
+.base-table {
 	border: 1px #999 solid;
-	border-left: 0;
+	border-right: 0;
+}
+.base-table table {
 	border-collapse: collapse;
 	text-align: center;
 	width: 100%;
-}
-.base-table {
-	border-left: 1px #999 solid;
 }
 .base-table th{
 	border-right: 1px #999 solid;
@@ -119,13 +114,12 @@
 	background: #fafafa;
 	font-weight: normal;
 }
-.base-table td {
+.base-table.typeList td {
 	border-right: 1px #999 solid;
 	border-top: 1px #999 solid;
 	padding: 10px 15px;
 }
 .base-table tfoot td {
-	border-bottom: 1px #999 solid;
 	padding: 15px 20px 17px;
 }
 .base-button {
@@ -147,3 +141,9 @@
 	border: 1px solid;
 	background: none;
 }
+
+/* order */
+.orderList table th, td {
+/* 	border-bottom: 1px #999 solid; */
+}
+/* class 입력하지 않은 곳도 적용되는 이유 찾기 */
