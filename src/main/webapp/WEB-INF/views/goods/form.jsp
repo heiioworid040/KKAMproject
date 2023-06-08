@@ -11,8 +11,8 @@
 </head>
 <body>
 	<h2>GOODS SHOP</h2>
-	<div class="container-doc">
-		<div class="inner_container">
+	<div class="inner_container">
+		<div class="contents">
 			<form action="${pageContext.request.contextPath }/goods/goodsWrite" method="get">
 				<table>
 					<c:forEach var="goods" items="${GoodsList }">
@@ -26,9 +26,9 @@
 					</c:forEach>
 				</table>
 	
-			<button type="submit" class="btn_sub highlight submit">
-				글쓰기
-			</button>
+				<button type="submit" class="btn_sub highlight submit">
+					글쓰기
+				</button>
 			</form>
 		</div>
 	</div>
