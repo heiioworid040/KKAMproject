@@ -80,90 +80,104 @@
 					<div class="base-button">
 						<button type="submit" id="orderDel" name="order" value="orderDel" class="order-btn">삭제하기</button>
 					</div>
-		<br><br>
-					주문자 정보
-					<div class="base-table orderList">
+					<div class="order-area">
+						<div class="order-title">
+							주문자 정보
+						</div>
+						<div class="base-table orderList">
+							<table>
+								<tr>
+									<th>주문하시는 분</th>
+									<td>
+										<input type="text" name="O_name">
+									</td>
+								</tr>
+								<tr>
+									<th>휴대폰 번호</th>
+									<td>
+										<input type="text" name="O_phone">
+									</td>
+								</tr>
+				<!-- 		<tr> -->
+				<!-- 			<th>이메일</th> -->
+				<!-- 			<td> -->
+				<!-- 				<input type="text" name="O_email"> -->
+				<!-- 			</td> -->
+				<!-- 		</tr> -->
+							</table>
+						</div>
+					</div>
+					<div class="order-area">
+						<div class="order-title">
+							택배 정보
+						</div>
+						<div class="base-table orderList">
+							<table>
+								<tr>
+									<th>받으시는 분</th>
+									<td>
+										<input type="text" name="D_name">
+									</td>
+								</tr>
+								<tr>
+									<th>주소</th>
+									<td>
+										<input type="text" name="D_zipcode">
+			<br>
+										<input type="text" name="D_address"><input type="text" name="D_addressD">
+			<!-- 					주소 API -->
+									</td>
+								</tr>
+								<tr>
+									<th>휴대폰 번호</th>
+									<td>
+										<input type="text" name="D_phone">
+									</td>
+								</tr>
+								<tr>
+									<th>배송 메시지</th>
+									<td>
+										<input type="text" name="D_desc">
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="order-area">
+						<div class="order-title">
+							결제 정보
+						</div>
+						<div class="base-table typeList">
+							<table>
+								<tr>
+									<th>총 주문 금액</th>
+									<th>총 할인+적립금 사용 금액</th>
+			<!-- 				할인/적립금 관련은 수정 예정 -->
+									<th>총 결제 예정 금액</th>
+								</tr>
+								<tr>
+									<td>${price+delivery }원</td>
+									<td>0원</td>
+									<td>${price+delivery }원</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="order-area-pay">
+						<div class="order-title">
+							결제 수단
+						</div>
 						<table>
 							<tr>
-								<th>주문하시는 분</th>
 								<td>
-									<input type="text" name="O_name">
+									<input type="radio"> 무통장 입금
 								</td>
-							</tr>
-							<tr>
-								<th>휴대폰 번호</th>
 								<td>
-									<input type="tel" name="O_phone">
+									<input type="radio"> 신용카드
 								</td>
-							</tr>
-			<!-- 		<tr> -->
-			<!-- 			<th>이메일</th> -->
-			<!-- 			<td> -->
-			<!-- 				<input type="text" name="O_email"> -->
-			<!-- 			</td> -->
-			<!-- 		</tr> -->
-						</table>
-					</div>
-	<br><br>
-					택배 정보
-					<table>
-						<tr>
-							<th>받으시는 분</th>
-							<td>
-								<input type="text" name="D_name">
-							</td>
-						</tr>
-						<tr>
-							<th>주소</th>
-							<td>
-								<input type="text" name="D_zipcode">
-	<br>
-								<input type="text" name="D_address"><input type="text" name="D_addressD">
-	<!-- 					주소 API -->
-							</td>
-						</tr>
-						<tr>
-							<th>휴대폰 번호</th>
-							<td>
-								<input type="tel" name="D_phone">
-							</td>
-						</tr>
-						<tr>
-							<th>배송 메시지</th>
-							<td>
-								<input type="text" name="D_desc">
-							</td>
-						</tr>
-					</table>
-	<br><br>
-					결제 정보
-					<div class="base-table typeList">
-						<table>
-							<tr>
-								<th>총 주문 금액</th>
-								<th>총 할인+적립금 사용 금액</th>
-		<!-- 				할인/적립금 관련은 수정 예정 -->
-								<th>총 결제 예정 금액</th>
-							</tr>
-							<tr>
-								<td>${price+delivery }원</td>
-								<td>0원</td>
-								<td>${price+delivery }원</td>
 							</tr>
 						</table>
 					</div>
-	<br><br>
-					결제 수단
-					<table>
-						<tr>
-							<td>
-								<input type="radio"> 무통장 입금
-							</td>
-							<td>
-								<input type="radio"> 신용카드
-							</td>
-						</tr>
-					</table>
 	<br><br>
 					최종 결제 금액 0원
 	<br><br>

@@ -102,6 +102,7 @@
 .base-table {
 	border: 1px #999 solid;
 	border-right: 0;
+	border-bottom: 0;
 }
 .base-table table {
 	border-collapse: collapse;
@@ -118,6 +119,9 @@
 	border-right: 1px #999 solid;
 	border-top: 1px #999 solid;
 	padding: 10px 15px;
+}
+.base-table.typeList tr:last-child {
+	border-bottom: 1px #999 solid;
 }
 .base-table tfoot td {
 	padding: 15px 20px 17px;
@@ -143,7 +147,24 @@
 }
 
 /* order */
-.orderList table th, td {
-/* 	border-bottom: 1px #999 solid; */
+.order-area-pay {
+/* 	추가하기 */
 }
-/* class 입력하지 않은 곳도 적용되는 이유 찾기 */
+.order-title {
+	margin: 40px 0 10px 0px;
+}
+.orderList table th {
+	border-bottom: 1px #999 solid;
+	width: 200px;
+}
+.orderList table td {
+	border-bottom: 1px #999 solid;
+	padding: 8px 20px;
+}
+.orderList table {
+	border-right: 1px #999 solid;
+}
+input[type=text] {
+	height: 20px;
+	border: 1px solid #A6A6A6;
+}
