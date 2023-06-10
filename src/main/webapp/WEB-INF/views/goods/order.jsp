@@ -19,6 +19,24 @@
 		}
 	}
 </script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	function zip() {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+                var addr = '';
+                if (data.userSelectedType === 'R') {
+                    addr = data.roadAddress;
+                } else {
+                    addr = data.jibunAddress;
+                }
+                document.getElementById('D_zipcode').value = data.zonecode;
+                document.getElementById("D_address").value = addr;
+                document.getElementById("D_addressD").focus();
+	        }
+	    }).open();
+	}
+</script>
 <body>
 	<h2>GOODS SHOP</h2>
 	<div id="wrap">
@@ -122,9 +140,9 @@
 								<tr>
 									<th>주소</th>
 									<td>
-										<input type="text" name="D_zipcode">
+										<input type="text" id="D_zipcode" name="D_zipcode"><button type="button" onclick="zip()">우편번호 찾기</button>
 			<br>
-										<input type="text" name="D_address"><input type="text" name="D_addressD">
+										<input type="text" id="D_address" name="D_address"><input type="text" id="D_addressD" name="D_addressD">
 			<!-- 					주소 API -->
 									</td>
 								</tr>
