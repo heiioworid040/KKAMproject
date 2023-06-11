@@ -157,7 +157,7 @@ public class GoodsController {
 		OrderDTO orderDTO=new OrderDTO();
 		orderDTO.setU_id((String)session.getAttribute("id"));
 		
-		if(order.equals("orderDel")) {
+		if(order!=null) {
 			for(int i=0;i<ck.length;i++) {
 				orderDTO.setG_code(ck[i]);
 				goodsService.basketDel(orderDTO);
@@ -165,7 +165,7 @@ public class GoodsController {
 			return "redirect:/goods/order";
 		}else {
 			orderDTO.setO_name(request.getParameter("O_name"));
-			orderDTO.setO_phone(Integer.parseInt(request.getParameter("O_phone")));
+			orderDTO.setO_phone(Integer.parseInt(request.getParameter("O_phone1")+request.getParameter("O_phone2")+request.getParameter("O_phone3")));
 			orderDTO.setO_delivery(Integer.parseInt(request.getParameter("O_delivery")));
 			orderDTO.setO_price(Integer.parseInt(request.getParameter("O_price")));
 			orderDTO.setO_count(Integer.parseInt(request.getParameter("O_count")));
@@ -175,11 +175,10 @@ public class GoodsController {
 			orderDTO.setD_address(request.getParameter("D_address"));
 			orderDTO.setD_addressD(request.getParameter("D_addressD"));
 			orderDTO.setD_zipcode(Integer.parseInt(request.getParameter("D_zipcode")));
-			orderDTO.setD_phone(Integer.parseInt(request.getParameter("D_phone")));
+			orderDTO.setD_phone(Integer.parseInt(request.getParameter("D_phone1")+request.getParameter("D_phone2")+request.getParameter("D_phone3")));
 			orderDTO.setD_desc(request.getParameter("D_desc"));
 	
 			goodsService.orderAdd(orderDTO);
-			
 			//orderD 배열
 			for(int i=0;i<G_code.length;i++) {
 				String[] OD_price=request.getParameterValues("OD_price");
