@@ -148,7 +148,13 @@
 
 /* order */
 .order-area-pay {
-/* 	추가하기 */
+	overflow: hidden;
+	border: 1px #999 solid;
+}
+.order-area-pay2 {
+	float: right;
+	width: 50%;
+	border-left: 1px #999 solid;
 }
 .order-title {
 	margin: 40px 0 10px 0px;
@@ -166,5 +172,30 @@
 }
 input[type=text] {
 	height: 20px;
+	width: 250px;
 	border: 1px solid #A6A6A6;
+}
+input[type=tel] {
+	height: 20px;
+	width: 50px;
+	border: 1px solid #A6A6A6;
+}
+.order-tel {
+	color: #A6A6A6;
+}
+.order-radio {
+	float: left;
+	height: 100%;
+	padding: 10px 0 0 10px;
+}
+.order-submit {
+	overflow: hidden;
+	height: 100%;
+	padding: 10px;
+}
+.order-buyWrap {
+	float: left;
+	height: 50px;
+	width: 100%;
+	margin-top: 30px;
 }

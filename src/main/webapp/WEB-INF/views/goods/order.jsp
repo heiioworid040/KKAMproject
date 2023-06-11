@@ -113,7 +113,11 @@
 								<tr>
 									<th>휴대폰 번호</th>
 									<td>
-										<input type="text" name="O_phone">
+										<input type="tel" name="O_phone1">
+										<span class="order-tel">-</span>
+										<input type="tel" name="O_phone2">
+										<span class="order-tel">-</span>
+										<input type="tel" name="O_phone3">
 									</td>
 								</tr>
 				<!-- 		<tr> -->
@@ -149,7 +153,11 @@
 								<tr>
 									<th>휴대폰 번호</th>
 									<td>
-										<input type="text" name="D_phone">
+										<input type="tel" name="D_phone1">
+										<span class="order-tel">-</span>
+										<input type="tel" name="D_phone2">
+										<span class="order-tel">-</span>
+										<input type="tel" name="D_phone3">
 									</td>
 								</tr>
 								<tr>
@@ -181,25 +189,31 @@
 							</table>
 						</div>
 					</div>
-					<div class="order-area-pay">
+					<div class="order-area">
 						<div class="order-title">
 							결제 수단
 						</div>
-						<table>
-							<tr>
-								<td>
-									<input type="radio"> 무통장 입금
-								</td>
-								<td>
-									<input type="radio"> 신용카드
-								</td>
-							</tr>
-						</table>
+						<div class="order-area-pay">
+							<div class="order-radio">
+								<table>
+									<tr>
+										<td>
+											<input type="radio"> 무통장 입금
+										</td>
+										<td>
+											<input type="radio"> 신용카드
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="order-area-pay2">
+								<div class="order-submit">
+									최종 결제 금액 ${price+delivery }원
+									<input type="submit" value="결제하기" class="order-buyWrap order-orderAll">
+								</div>
+							</div>
+						</div>
 					</div>
-	<br><br>
-					최종 결제 금액 0원
-	<br><br>
-					<input type="submit" value="결제하기">
 				</form>
 			</div>
 		</div>
