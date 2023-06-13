@@ -46,6 +46,9 @@
 				<form name="basket">
 					<div class="base-table typeList">
 						<table>
+							<colgroup>
+								<col span="7" style="width: 14%" />
+							</colgroup>
 							<thead>
 								<tr>
 									<th><input type="checkbox" id="ckAll" onclick="check()"></th>
