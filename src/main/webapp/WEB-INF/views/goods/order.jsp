@@ -46,7 +46,8 @@
 					<div class="base-table typeList">
 						<table>
 							<colgroup>
-								<col span="7" style="width: 14%" />
+								<col style="width: 3%" />
+								<col span="6" style="width: 14%" />
 							</colgroup>
 							<thead>
 								<tr>
