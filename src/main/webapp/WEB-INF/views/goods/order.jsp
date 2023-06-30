@@ -148,7 +148,7 @@
 								<tr>
 									<th>주소</th>
 									<td>
-										<input type="text" id="D_zipcode" name="D_zipcode"><button type="button" onclick="zip()">우편번호 찾기</button>
+										<input type="text" id="D_zipcode" name="D_zipcode"><button type="button" onclick="zip()"  class="order-btn">우편번호 찾기</button>
 			<br>
 										<input type="text" id="D_address" name="D_address"><input type="text" id="D_addressD" name="D_addressD">
 			<!-- 					주소 API -->
