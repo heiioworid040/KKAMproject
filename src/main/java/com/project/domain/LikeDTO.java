@@ -32,6 +32,4 @@ public class LikeDTO extends GoodsDTO {
 	public void setL_date(Timestamp l_date) {
 		L_date = l_date;
 	}
-	
-	
 }
