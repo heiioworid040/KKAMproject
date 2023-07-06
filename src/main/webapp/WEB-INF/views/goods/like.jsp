@@ -32,16 +32,16 @@
 									<th>합계</th>
 								</tr>
 							</thead>
-							<c:forEach var="goods" items="${LikeList }" varStatus="c">
+							<c:forEach var="goods" items="${LikeList }">
 								<tbody>
 									<tr>
 										<td><input type="checkbox" id="ck" name="ck" value="${goods.g_code }"></td>
-										<td>
+										<%-- <td>
 											<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px" height="100px"><br>
 										</td>
-										<td>${goods.g_product }</td>
+										<td>${goods.g_product }</td> --%>
 										<td>${goods.g_code }<input type="hidden" name="G_code" value="${good.g_code }"></td>
-										<td>${goods.g_price }원</td>
+										<%-- <td>${goods.g_price }원</td> --%>
 									</tr>
 								</tbody>
 							</c:forEach>
