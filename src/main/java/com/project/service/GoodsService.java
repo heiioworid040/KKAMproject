@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.project.dao.GoodsDAO;
 import com.project.domain.BasketDTO;
 import com.project.domain.GoodsDTO;
+import com.project.domain.LikeDTO;
 import com.project.domain.OrderDTO;
 
 @Repository
@@ -44,7 +45,7 @@ public class GoodsService {
 			goodsDAO.basketAdd(basketDTO);
 		}else {
 			if(goodsDAO.maxB_count(basketDTO)!=null) {
-				//제한 수량 이상 구매 시 제한
+				//�젣�븳 �닔�웾 �씠�긽 援щℓ �떆 �젣�븳
 				basketDTO.setB_count(goodsDAO.maxB_count(basketDTO)+basketDTO.getB_count());
 				goodsDAO.basketUpdate(basketDTO);
 			}
@@ -69,6 +70,10 @@ public class GoodsService {
 	
 	public Integer basketAllCount(String id) {
 		return goodsDAO.basketAllCount(id);
+	}
+	
+	public List<LikeDTO> LikeList(String id) {
+		return goodsDAO.LikeList(id);
 	}
 	
 	public void orderAdd(OrderDTO orderDTO) {

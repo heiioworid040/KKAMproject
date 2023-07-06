@@ -57,6 +57,12 @@
 		select sum(B_count) from basket where U_id=#{id}
 	</select>
 	
+	<select id="likeList" resultType="com.project.domain.LikeDTO">
+		select L_num, U_id, G_code
+		from likes
+		where U_id=#{id}
+	</select>
+	
 	<insert id="ordersAdd">
 		insert into orders
 		values (#{O_code}, #{U_id}, #{O_name}, #{O_phone}, #{O_delivery}, #{O_price}, #{O_count}, #{O_date}) 

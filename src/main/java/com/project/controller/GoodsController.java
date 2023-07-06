@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.BasketDTO;
 import com.project.domain.GoodsDTO;
+import com.project.domain.LikeDTO;
 import com.project.domain.OrderDTO;
 import com.project.service.GoodsService;
 
@@ -39,7 +40,7 @@ public class GoodsController {
 	@RequestMapping(value = "/goods/form", method = RequestMethod.GET)
 	public String goodsForm(Model model) {
 		GoodsDTO goodsDTO=new GoodsDTO();
-		//검색 추가 예정
+		//寃��깋 異붽� �삁�젙
 		
 		List<GoodsDTO> GoodsList=goodsService.goodsList(goodsDTO);
 		
@@ -87,7 +88,7 @@ public class GoodsController {
 		basketDTO.setB_count(Integer.parseInt(request.getParameter("count")));
 		basketDTO.setB_date(Timestamp.valueOf(today));
 
-		//basketPro로 중복 코드 제거 예정
+		//basketPro濡� 以묐났 肄붾뱶 �젣嫄� �삁�젙
 		if(details!=null) {
 			goodsService.basketPro(basketDTO);
 		}else if(basket.equals("basketUp")) {
@@ -140,7 +141,7 @@ public class GoodsController {
 			delivery=2500;
 		}
 		
-		//장바구니 리스트로 수정 예정
+		//�옣諛붽뎄�땲 由ъ뒪�듃濡� �닔�젙 �삁�젙
 		model.addAttribute("details", details);
 		model.addAttribute("count", count);
 		model.addAttribute("price", price);
@@ -179,7 +180,7 @@ public class GoodsController {
 			orderDTO.setD_desc(request.getParameter("D_desc"));
 	
 			goodsService.orderAdd(orderDTO);
-			//orderD 배열
+			//orderD 諛곗뿴
 			for(int i=0;i<G_code.length;i++) {
 				String[] OD_price=request.getParameterValues("OD_price");
 				String[] OD_count=request.getParameterValues("OD_count");
@@ -192,6 +193,18 @@ public class GoodsController {
 			}
 			return "redirect:/goods/form";
 		}
+	}
+	
+	@RequestMapping(value = "/goods/like", method = RequestMethod.GET)
+	public String goodsLike(HttpSession session, Model model) {
+		String id=(String)session.getAttribute("id");
+		
+		List<LikeDTO> LikeList=goodsService.LikeList(id);
+		int price=goodsService.basketAllPrice(id);
+		
+		model.addAttribute("LikeList", LikeList);
+		model.addAttribute("price", price);
+		return "goods/like";
 	}
 
 	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)
@@ -208,7 +221,7 @@ public class GoodsController {
 		goodsDTO.setG_price(Integer.parseInt(request.getParameter("price")));
 		goodsDTO.setG_desc(request.getParameter("desc"));
 		
-		//파일 이름 수정 예정
+		//�뙆�씪 �씠由� �닔�젙 �삁�젙
 		UUID uuid=UUID.randomUUID();
 		String imgName=uuid.toString()+"_"+img.getOriginalFilename();
 		String imgSName=uuid.toString()+"_"+imgS.getOriginalFilename();

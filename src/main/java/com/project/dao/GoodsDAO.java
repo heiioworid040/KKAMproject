@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.project.domain.BasketDTO;
 import com.project.domain.BasketDTO.BasketQuery;
 import com.project.domain.GoodsDTO;
+import com.project.domain.LikeDTO;
 import com.project.domain.OrderDTO;
 
 @Repository
@@ -68,6 +69,10 @@ public class GoodsDAO {
 	
 	public void basketAllDel(BasketDTO basketDTO) {
 		sqlSession.delete(namespace+".basketAllDel", basketDTO);
+	}
+	
+	public List<LikeDTO> LikeList(String id) {
+		return sqlSession.selectList(namespace+".likeList", id);
 	}
 	
 	public void goodsWrite(GoodsDTO goodsDTO) {
