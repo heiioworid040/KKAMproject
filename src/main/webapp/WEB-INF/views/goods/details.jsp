@@ -22,13 +22,16 @@
 </script>
 <script>
 	function fun1(index) {
-		if(index==1) {
+		if(index == 1) {
 			document.details.method="get"
 			document.details.action="${pageContext.request.contextPath }/goods/order";
-		}else {
+		}else if(index == 2) {
 			document.details.method="post"
 			document.details.action="${pageContext.request.contextPath }/goods/basketPro";
-		}
+		}else {
+			document.details.method="get"
+				document.details.action="${pageContext.request.contextPath }/goods/like"; //찜 추가로 수정
+			}
 	}
 </script>
 <body>
@@ -104,7 +107,7 @@
 								<input type="hidden" name="details" value="details">
 								<input type="submit" value="구매하기" onclick="fun1(1)" class="details-buyWrap details-order">
 								<input type="submit" value="장바구니" onclick="fun1(2)" class="details-buyWrap details-basket">
-								<input type="button" value="찜" class="details-buyWrap details-like">
+								<input type="submit" value="찜" onclick="fun1(3)" class="details-buyWrap details-like">
 								<!-- 찜 버튼 까미 아이콘으로 수정 예정 -->
 							</div>
 						</div>
