@@ -212,6 +212,18 @@ public class GoodsController {
 		return "goods/goodsWrite";
 	}
 	
+	@RequestMapping(value = "/goods/likePro", method = RequestMethod.POST)
+	public String goodslikePro(HttpSession session, HttpServletRequest request, Model model) {
+		LikeDTO likeDTO=new LikeDTO();
+		likeDTO.setU_id((String)session.getAttribute("id"));
+		likeDTO.setG_code(request.getParameter("G_code"));
+		likeDTO.setL_date(Timestamp.valueOf(today));
+
+		goodsService.likePro(likeDTO);
+		
+		return "redirect:/goods/like";
+	}
+	
 	@RequestMapping(value = "/goods/goodsWritePro", method = RequestMethod.POST)
 	public String goodsWritePro(HttpServletRequest request, MultipartFile img, MultipartFile imgS)throws Exception {
 		GoodsDTO goodsDTO=new GoodsDTO();
