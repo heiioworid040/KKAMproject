@@ -63,6 +63,11 @@
 		where U_id=#{id}
 	</select>
 	
+	<insert id="likeAdd">
+		insert into likes
+		values(#{L_num}, #{U_id}, #{G_code}, #{L_date})
+	</insert>
+	
 	<insert id="ordersAdd">
 		insert into orders
 		values (#{O_code}, #{U_id}, #{O_name}, #{O_phone}, #{O_delivery}, #{O_price}, #{O_count}, #{O_date}) 
@@ -112,5 +117,9 @@
 	<select id="maxO_code" resultType="java.lang.Integer">
 		select max(cast(substring(O_code,9,3) as unsigned)) from orders
 		where date(O_date)=date(#{O_date})
+	</select>
+	
+	<select id="maxL_num" resultType="java.lang.Integer">
+		select max(L_num) from likes
 	</select>
 </mapper>
