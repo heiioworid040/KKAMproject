@@ -29,8 +29,8 @@
 			document.details.method="post"
 			document.details.action="${pageContext.request.contextPath }/goods/basketPro";
 		}else {
-			document.details.method="get"
-				document.details.action="${pageContext.request.contextPath }/goods/like"; //찜 추가로 수정
+			document.details.method="post"
+				document.details.action="${pageContext.request.contextPath }/goods/likePro";
 			}
 	}
 </script>
