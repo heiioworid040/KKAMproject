@@ -45,7 +45,7 @@ public class GoodsService {
 			goodsDAO.basketAdd(basketDTO);
 		}else {
 			if(goodsDAO.maxB_count(basketDTO)!=null) {
-				//�젣�븳 �닔�웾 �씠�긽 援щℓ �떆 �젣�븳
+				//제한 수량 이상 구매 시 제한
 				basketDTO.setB_count(goodsDAO.maxB_count(basketDTO)+basketDTO.getB_count());
 				goodsDAO.basketUpdate(basketDTO);
 			}
@@ -74,6 +74,15 @@ public class GoodsService {
 	
 	public List<LikeDTO> LikeList(String id) {
 		return goodsDAO.LikeList(id);
+	}
+	
+	public void likePro(LikeDTO likeDTO) {
+		if(goodsDAO.maxL_num()==null) {
+			likeDTO.setL_num(1);
+		}else {
+			likeDTO.setL_num(goodsDAO.maxL_num()+1);
+		}
+		goodsDAO.likeAdd(likeDTO);
 	}
 	
 	public void orderAdd(OrderDTO orderDTO) {

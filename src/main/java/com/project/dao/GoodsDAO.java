@@ -75,6 +75,10 @@ public class GoodsDAO {
 		return sqlSession.selectList(namespace+".likeList", id);
 	}
 	
+	public void likeAdd(LikeDTO likeDTO) {
+		sqlSession.insert(namespace+".likeAdd", likeDTO);
+	}
+	
 	public void goodsWrite(GoodsDTO goodsDTO) {
 		sqlSession.insert(namespace+".goodsWrite", goodsDTO);
 	}
@@ -105,5 +109,9 @@ public class GoodsDAO {
 	
 	public Integer maxO_code(OrderDTO orderDTO) {
 		return sqlSession.selectOne(namespace+".maxO_code", orderDTO);
+	}
+	
+	public Integer maxL_num() {
+		return sqlSession.selectOne(namespace+".maxL_num");
 	}
 }
