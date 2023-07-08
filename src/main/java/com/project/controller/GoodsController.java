@@ -40,7 +40,7 @@ public class GoodsController {
 	@RequestMapping(value = "/goods/form", method = RequestMethod.GET)
 	public String goodsForm(Model model) {
 		GoodsDTO goodsDTO=new GoodsDTO();
-		//寃��깋 異붽� �삁�젙
+		//검색 추가 예정
 		
 		List<GoodsDTO> GoodsList=goodsService.goodsList(goodsDTO);
 		
@@ -88,7 +88,7 @@ public class GoodsController {
 		basketDTO.setB_count(Integer.parseInt(request.getParameter("count")));
 		basketDTO.setB_date(Timestamp.valueOf(today));
 
-		//basketPro濡� 以묐났 肄붾뱶 �젣嫄� �삁�젙
+		//basketPro로 중복 코드 제거 예정
 		if(details!=null) {
 			goodsService.basketPro(basketDTO);
 		}else if(basket.equals("basketUp")) {
@@ -141,7 +141,7 @@ public class GoodsController {
 			delivery=2500;
 		}
 		
-		//�옣諛붽뎄�땲 由ъ뒪�듃濡� �닔�젙 �삁�젙
+		//장바구니 리스트로 수정 예정
 		model.addAttribute("details", details);
 		model.addAttribute("count", count);
 		model.addAttribute("price", price);
@@ -180,7 +180,7 @@ public class GoodsController {
 			orderDTO.setD_desc(request.getParameter("D_desc"));
 	
 			goodsService.orderAdd(orderDTO);
-			//orderD 諛곗뿴
+			//orderD 배열
 			for(int i=0;i<G_code.length;i++) {
 				String[] OD_price=request.getParameterValues("OD_price");
 				String[] OD_count=request.getParameterValues("OD_count");
@@ -206,22 +206,23 @@ public class GoodsController {
 		model.addAttribute("price", price);
 		return "goods/like";
 	}
-
-	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)
-	public String goodsWrite() {
-		return "goods/goodsWrite";
-	}
 	
+	//이미 추가된 상품일 경우 추가하기
 	@RequestMapping(value = "/goods/likePro", method = RequestMethod.POST)
 	public String goodslikePro(HttpSession session, HttpServletRequest request, Model model) {
 		LikeDTO likeDTO=new LikeDTO();
 		likeDTO.setU_id((String)session.getAttribute("id"));
 		likeDTO.setG_code(request.getParameter("G_code"));
 		likeDTO.setL_date(Timestamp.valueOf(today));
-
+		
 		goodsService.likePro(likeDTO);
 		
 		return "redirect:/goods/like";
+	}
+
+	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)
+	public String goodsWrite() {
+		return "goods/goodsWrite";
 	}
 	
 	@RequestMapping(value = "/goods/goodsWritePro", method = RequestMethod.POST)
@@ -233,7 +234,7 @@ public class GoodsController {
 		goodsDTO.setG_price(Integer.parseInt(request.getParameter("price")));
 		goodsDTO.setG_desc(request.getParameter("desc"));
 		
-		//�뙆�씪 �씠由� �닔�젙 �삁�젙
+		//파일 이름 수정 예정
 		UUID uuid=UUID.randomUUID();
 		String imgName=uuid.toString()+"_"+img.getOriginalFilename();
 		String imgSName=uuid.toString()+"_"+imgS.getOriginalFilename();
