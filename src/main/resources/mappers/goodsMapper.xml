@@ -15,7 +15,9 @@
 	</select>
 
 	<select id="basketList" resultType="com.project.domain.BasketDTO">
-		select b.G_code, G_imgS, G_product, G_price, B_count, G_stop from goods g join basket b on g.G_code=b.G_code
+		select b.G_code, G_imgS, G_product, G_price, B_count, G_stop
+		from goods g join basket b
+		on g.G_code=b.G_code
 		where U_id=#{id}
 		order by B_date
 	</select>
@@ -58,8 +60,9 @@
 	</select>
 	
 	<select id="likeList" resultType="com.project.domain.LikeDTO">
-		select L_num, U_id, G_code
-		from likes
+		select L_num, U_id, l.G_code, G_imgS, G_product, G_price
+		from likes l join goods g
+		on l.G_code = g.G_code
 		where U_id=#{id}
 	</select>
 	
