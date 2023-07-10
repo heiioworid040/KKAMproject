@@ -19,7 +19,7 @@
 						<table>
 							<colgroup>
 								<col style="width: 3%" />
-								<col span="6" style="width: 14%" />
+								<col span="4" style="width: 14%" />
 							</colgroup>
 							<thead>
 								<tr>
@@ -28,30 +28,21 @@
 									<th>상품정보</th>
 									<th>제품코드</th>
 									<th>판매가</th>
-									<th>수량</th>
-									<th>합계</th>
 								</tr>
 							</thead>
 							<c:forEach var="goods" items="${LikeList }">
 								<tbody>
 									<tr>
 										<td><input type="checkbox" id="ck" name="ck" value="${goods.g_code }"></td>
-										<%-- <td>
+										<td>
 											<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px" height="100px"><br>
 										</td>
-										<td>${goods.g_product }</td> --%>
+										<td>${goods.g_product }</td>
 										<td>${goods.g_code }<input type="hidden" name="G_code" value="${good.g_code }"></td>
-										<%-- <td>${goods.g_price }원</td> --%>
+										<td>${goods.g_price }원</td>
 									</tr>
 								</tbody>
 							</c:forEach>
-							<tfoot>
-								<tr>
-									<td colspan="7">
-										총 상품 금액 ${price } + 배송비 ${delivery }원 = 합계 금액 ${price+delivery }
-									</td>
-								</tr>
-							</tfoot>
 						</table>
 					</div>
 	<!-- 			상품 하나거나 0개면 historyback, 여러개면 해당 상품 삭제 -->
