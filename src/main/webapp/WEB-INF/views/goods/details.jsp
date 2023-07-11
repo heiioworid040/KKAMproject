@@ -107,7 +107,15 @@
 								<input type="hidden" name="details" value="details">
 								<input type="submit" value="구매하기" onclick="fun1(1)" class="details-buyWrap details-order">
 								<input type="submit" value="장바구니" onclick="fun1(2)" class="details-buyWrap details-basket">
-								<input type="submit" value="찜" onclick="fun1(3)" class="details-buyWrap details-like">
+								<!-- 아래 스크립트로 빼서 중복 코드 삭제하기  -->
+								<c:choose>
+									<c:when test="${like == null }">
+										<input type="submit" value="♡" onclick="fun1(3)" class="details-buyWrap details-like">
+									</c:when>
+									<c:otherwise>
+										<input type="submit" value="♥" onclick="fun1(3)" class="details-buyWrap details-like">
+									</c:otherwise>
+								</c:choose>
 								<!-- 찜 버튼 까미 아이콘으로 수정 예정 -->
 							</div>
 						</div>
