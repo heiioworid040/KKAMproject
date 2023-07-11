@@ -75,8 +75,16 @@ public class GoodsDAO {
 		return sqlSession.selectList(namespace+".likeList", id);
 	}
 	
+	public String likeSelect(LikeDTO likeDTO) {
+		return sqlSession.selectOne(namespace+".likeSelect", likeDTO);
+	}
+	
 	public void likeAdd(LikeDTO likeDTO) {
 		sqlSession.insert(namespace+".likeAdd", likeDTO);
+	}
+	
+	public void likeDel(LikeDTO likeDTO) {
+		sqlSession.delete(namespace + ".likeDel", likeDTO);
 	}
 	
 	public void goodsWrite(GoodsDTO goodsDTO) {

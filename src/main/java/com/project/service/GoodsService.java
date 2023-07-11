@@ -76,13 +76,21 @@ public class GoodsService {
 		return goodsDAO.LikeList(id);
 	}
 	
-	public void likePro(LikeDTO likeDTO) {
+	public String likeSelect(LikeDTO likeDTO) {
+		return goodsDAO.likeSelect(likeDTO);
+	}
+	
+	public void likeAdd(LikeDTO likeDTO) {
 		if(goodsDAO.maxL_num()==null) {
 			likeDTO.setL_num(1);
 		}else {
 			likeDTO.setL_num(goodsDAO.maxL_num()+1);
 		}
 		goodsDAO.likeAdd(likeDTO);
+	}
+	
+	public void likeDel(LikeDTO likeDTO) {
+		goodsDAO.likeDel(likeDTO);
 	}
 	
 	public void orderAdd(OrderDTO orderDTO) {

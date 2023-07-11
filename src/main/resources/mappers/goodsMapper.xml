@@ -66,10 +66,21 @@
 		where U_id=#{id}
 	</select>
 	
+	<select id="likeSelect" resultType="String">
+		select L_num
+		from likes
+		where U_id = #{U_id} and G_code = #{G_code}
+	</select>
+	
 	<insert id="likeAdd">
 		insert into likes
 		values(#{L_num}, #{U_id}, #{G_code}, #{L_date})
 	</insert>
+	
+	<delete id="likeDel">
+		delete from likes
+		where U_id = #{U_id} and G_code = #{G_code}
+	</delete>
 	
 	<insert id="ordersAdd">
 		insert into orders
