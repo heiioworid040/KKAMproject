@@ -49,9 +49,17 @@ public class GoodsController {
 	}
 	
 	@RequestMapping(value = "/goods/details", method = RequestMethod.GET)
-	public String goodsDetails(HttpServletRequest request, Model model) {
-		List<GoodsDTO> GoodsList=goodsService.goodsList(request.getParameter("G_code"));
+	public String goodsDetails(HttpSession session, HttpServletRequest request, Model model) {
+		String G_code = request.getParameter("G_code");
+		List<GoodsDTO> GoodsList=goodsService.goodsList(G_code);
 		
+		LikeDTO likeDTO=new LikeDTO();
+		likeDTO.setU_id((String)session.getAttribute("id"));
+		likeDTO.setG_code(G_code);
+		
+		String like = goodsService.likeSelect(likeDTO);
+		
+		model.addAttribute("like", like);
 		model.addAttribute("GoodsList", GoodsList);
 		return "goods/details";
 	}
@@ -207,7 +215,6 @@ public class GoodsController {
 		return "goods/like";
 	}
 	
-	//이미 추가된 상품일 경우 추가하기
 	@RequestMapping(value = "/goods/likePro", method = RequestMethod.POST)
 	public String goodslikePro(HttpSession session, HttpServletRequest request, Model model) {
 		LikeDTO likeDTO=new LikeDTO();
@@ -215,8 +222,15 @@ public class GoodsController {
 		likeDTO.setG_code(request.getParameter("G_code"));
 		likeDTO.setL_date(Timestamp.valueOf(today));
 		
-		goodsService.likePro(likeDTO);
+		String like = goodsService.likeSelect(likeDTO);
 		
+		if(like == null) {
+			goodsService.likeAdd(likeDTO);
+		}else {
+			goodsService.likeDel(likeDTO);
+		}
+		
+		//수정하기
 		return "redirect:/goods/like";
 	}
 
