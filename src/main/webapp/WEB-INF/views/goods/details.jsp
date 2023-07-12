@@ -30,8 +30,8 @@
 			document.details.action="${pageContext.request.contextPath }/goods/basketPro";
 		}else {
 			document.details.method="post"
-				document.details.action="${pageContext.request.contextPath }/goods/likePro";
-			}
+			document.details.action="${pageContext.request.contextPath }/goods/likePro";
+		}
 	}
 </script>
 <body>

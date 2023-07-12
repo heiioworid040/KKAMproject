@@ -217,9 +217,11 @@ public class GoodsController {
 	
 	@RequestMapping(value = "/goods/likePro", method = RequestMethod.POST)
 	public String goodslikePro(HttpSession session, HttpServletRequest request, Model model) {
+		String G_code = request.getParameter("G_code");
+		
 		LikeDTO likeDTO=new LikeDTO();
 		likeDTO.setU_id((String)session.getAttribute("id"));
-		likeDTO.setG_code(request.getParameter("G_code"));
+		likeDTO.setG_code(G_code);
 		likeDTO.setL_date(Timestamp.valueOf(today));
 		
 		String like = goodsService.likeSelect(likeDTO);
@@ -230,8 +232,7 @@ public class GoodsController {
 			goodsService.likeDel(likeDTO);
 		}
 		
-		//수정하기
-		return "redirect:/goods/like";
+		return "redirect:/goods/details?G_code=" + G_code;
 	}
 
 	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)
