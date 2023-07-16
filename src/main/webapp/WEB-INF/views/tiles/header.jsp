@@ -13,15 +13,15 @@
 			<tr>
 				<c:choose>
 					<c:when test="${id == null }">
-						<td>로그인</td>
-						<td>회원가입</td>
+						<td><a href="${pageContext.request.contextPath}/user/login">로그인</a></td>
+						<td><a href="${pageContext.request.contextPath}/user/join">회원가입</a></td>
 					</c:when>
 					<c:otherwise>
-						<td>로그아웃</td>
+						<td><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></td>
 					</c:otherwise>
 				</c:choose>
 						<td>마이페이지</td>
-						<td>장바구니</td>
+						<td><a href="${pageContext.request.contextPath}/goods/basket">장바구니</a></td>
 						<td>주문조회</td>
 			</tr>
 		</table>
