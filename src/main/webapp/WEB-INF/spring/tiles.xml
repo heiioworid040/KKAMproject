@@ -5,8 +5,8 @@
 	<!-- main layout -->
 	<definition name="layout" template="/WEB-INF/views/tiles/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
-		<put-attribute name="left" value="/WEB-INF/views/tiles/sidebar.jsp" />
-		<put-attribute name="foot" value="/WEB-INF/views/tiles/footer.jsp" />
+<!-- 		<put-attribute name="left" value="/WEB-INF/views/tiles/sidebar.jsp" /> -->
+<!-- 		<put-attribute name="foot" value="/WEB-INF/views/tiles/footer.jsp" /> -->
 	</definition>
 	
 	<definition name="/main" extends="layout"> 
