@@ -7,6 +7,26 @@
 <title>KKAMpage</title>
 <link href="${pageContext.request.contextPath }/resources/css/goods.css" rel="stylesheet" type="text/css">
 </head>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/script/jquery-3.6.3.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#imgS").on('change', function(){
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#previewImgS').attr('src', e.target.result);
+                }
+
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+	</script>
 <body>
 	<h2>GOODS SHOP</h2>
 	<div class="inner_container">
@@ -36,11 +56,11 @@
 				</tr>
 				<tr>
 					<th>상품썸네일</th>
-					<td><input type="text" name="imgSText"><br><button type="reset">초기화</button><input type="file" name="imgS"></td>
+					<td><img id="previewImgS" src="#" width="100px"><br><button type="reset">초기화</button><input type="file" id="imgS" name="imgS"></td>
 				</tr>
 				<tr>
 					<th>상품사진</th>
-					<td><input type="text" name="imgText"><br><button type="reset">초기화</button><input type="file" name="img"></td>
+					<td><img id="previewImg" src="#" width="100px"><br><button type="reset">초기화</button><input type="file" id="img" name="img"></td>
 				</tr>
 			</table>
 			
