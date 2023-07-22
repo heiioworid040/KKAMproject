@@ -4,13 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>KKAM</title>
-    
+<meta charset="UTF-8">
+<title>KKAM</title>
 <style>
+/* css파일 따로 빼기 */
     .header {
         background-color: black;
         color: white;
+    }
+    
+    .menu {
+    	
     }
     
     .footer {
@@ -25,6 +29,9 @@
     
     <!-- Page Contents -->
     <tiles:insertAttribute name="body" />
+    
+    <!-- Page Menu -->
+    <tiles:insertAttribute name="menu" />
     
 <!--     Page Footer -->
 <%--     <tiles:insertAttribute name="footer" /> --%>

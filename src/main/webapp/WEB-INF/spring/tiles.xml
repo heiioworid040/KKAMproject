@@ -5,7 +5,7 @@
 	<!-- main layout -->
 	<definition name="layout" template="/WEB-INF/views/tiles/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
-<!-- 		<put-attribute name="left" value="/WEB-INF/views/tiles/sidebar.jsp" /> -->
+		<put-attribute name="menu" value="/WEB-INF/views/tiles/menu.jsp" />
 <!-- 		<put-attribute name="foot" value="/WEB-INF/views/tiles/footer.jsp" /> -->
 	</definition>
 	
