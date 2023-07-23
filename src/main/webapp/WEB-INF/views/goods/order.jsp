@@ -67,7 +67,7 @@
 											<td rowspan='5'>
 												<img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px" height="100px"><br>
 											</td>
-											<td>${goods.g_product }</td>
+											<td><a href="${pageContext.request.contextPath }/goods/details?G_code=${goods.g_code }">${goods.g_product }</a></td>
 											<td>${goods.g_code }</td>
 											<td>${goods.g_price }</td>
 											<c:if test="${details!=null }">
