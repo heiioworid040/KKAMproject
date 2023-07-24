@@ -52,8 +52,7 @@
 							<thead>
 								<tr>
 									<th><input type="checkbox" id="ckAll" onclick="check()"></th>
-									<th>이미지</th>
-									<th>상품정보</th>
+									<th colspan='2'>상품</th>
 									<th>상품코드</th>
 									<th>판매가</th>
 									<th>수량</th>
