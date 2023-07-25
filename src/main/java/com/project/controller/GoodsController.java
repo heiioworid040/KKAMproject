@@ -235,12 +235,19 @@ public class GoodsController {
 		return "redirect:/goods/details?G_code=" + G_code;
 	}
 
-	@RequestMapping(value = "/goods/goodsWrite", method = RequestMethod.GET)
-	public String goodsWrite() {
-		return "goods/goodsWrite";
+	@RequestMapping(value = "/goods/write", method = RequestMethod.GET)
+	public String goodsWrite(HttpServletRequest request, Model model) {
+		String G_code = request.getParameter("G_code");
+		
+		if(G_code != null) {
+			List<GoodsDTO> GoodsList=goodsService.goodsList(G_code);
+			model.addAttribute("GoodsList", GoodsList);
+		}
+			
+		return "goods/write";
 	}
 	
-	@RequestMapping(value = "/goods/goodsWritePro", method = RequestMethod.POST)
+	@RequestMapping(value = "/goods/writePro", method = RequestMethod.POST)
 	public String goodsWritePro(HttpServletRequest request, MultipartFile img, MultipartFile imgS)throws Exception {
 		GoodsDTO goodsDTO=new GoodsDTO();
 		goodsDTO.setG_code(request.getParameter("code"));

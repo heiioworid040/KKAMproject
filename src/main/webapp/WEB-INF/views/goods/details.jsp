@@ -28,9 +28,12 @@
 		}else if(index == 2) {
 			document.details.method="post"
 			document.details.action="${pageContext.request.contextPath }/goods/basketPro";
-		}else {
+		}else if(index == 3) {
 			document.details.method="post"
 			document.details.action="${pageContext.request.contextPath }/goods/likePro";
+		}else {
+			document.details.method="get"
+			document.details.action="${pageContext.request.contextPath }/goods/write";
 		}
 	}
 </script>
@@ -46,6 +49,8 @@
 						</div>
 						<div class="details-area">
 							<div class="details-product">
+								<!-- 관리자일 때만 -->
+								<input type="submit" value="수정하기" onclick="fun1(4)">
 								<table class="details-table">
 									<tr>
 										<th colspan="2" style="padding-bottom:7px">

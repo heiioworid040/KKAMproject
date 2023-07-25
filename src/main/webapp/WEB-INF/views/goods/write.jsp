@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,42 +39,43 @@
 		<div class="contents">
 <!-- 관리자 계정 아닐 시 화면제어 추가 -->
 		<form action="${pageContext.request.contextPath }/goods/goodsWritePro" method="post" enctype="multipart/form-data">
-			<div class="base-table orderList">
-				<table>
-					<tr>
-						<th>상품코드</th>
-						<td><input type="text" name="code"></td>
-					</tr>
-					<tr>
-						<th>구매제한</th>
-						<td><input type="number" name="stop"></td>
-					</tr>
-					<tr>
-						<th>상품명</th>
-						<td><textarea name="product" style="resize: none; width: 250px; height: 200px"></textarea></td>
-					</tr>
-					<tr>
-						<th>상품가격</th>
-						<td><input type="text" name="price"></td>
-					</tr>
-					<tr>
-						<th>상품설명</th>
-						<td><input type="text" name="desc"></td>
-					</tr>
-					<tr>
-						<th>상품썸네일</th>
-						<td height="150px"><img id="previewImgS" src="#" width="100px"><br><button type="reset">초기화</button><input type="file" id="imgS" name="imgS"></td>
-					</tr>
-					<tr>
-						<th>상품사진</th>
-						<td height="150px"><img id="previewImg" src="#" width="100px"><br><button type="reset">초기화</button><input type="file" id="img" name="img"></td>
-					</tr>
-				</table>
-			</div>
-			
-			<button type="submit" class="btn_sub highlight submit">
-				업로드
-			</button>
+<%-- 			<c:forEach var="goods" items="${GoodsList }"> --%>
+				<div class="base-table orderList">
+					<table>
+						<tr>
+							<th>상품코드</th>
+<%-- 							<td><input type="text" name="code" value="${goods.g_code }"></td> --%>
+						</tr>
+						<tr>
+							<th>구매제한</th>
+							<td><input type="number" name="stop"></td>
+						</tr>
+						<tr>
+							<th>상품명</th>
+							<td><textarea name="product" style="resize: none; width: 250px; height: 200px"></textarea></td>
+						</tr>
+						<tr>
+							<th>상품가격</th>
+							<td><input type="text" name="price"></td>
+						</tr>
+						<tr>
+							<th>상품설명</th>
+							<td><input type="text" name="desc"></td>
+						</tr>
+						<tr>
+							<th>상품썸네일</th>
+							<td height="150px"><img id="previewImgS" src="#" width="100px"><br><button type="reset">초기화</button><input type="file" id="imgS" name="imgS"></td>
+						</tr>
+						<tr>
+							<th>상품사진</th>
+							<td height="150px"><img id="previewImg" src="#" width="100px"><br><button type="reset">초기화</button><input type="file" id="img" name="img"></td>
+						</tr>
+					</table>
+				</div>
+				<button type="submit" class="btn_sub highlight submit">
+					업로드
+				</button>
+<%-- 			</c:forEach> --%>
 		</form>
 		</div>
 	</div>
