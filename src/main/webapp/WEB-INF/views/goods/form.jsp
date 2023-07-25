@@ -13,7 +13,7 @@
 	<h2>GOODS SHOP</h2>
 	<div class="inner_container">
 		<div class="contents">
-			<form action="${pageContext.request.contextPath }/goods/goodsWrite" method="get">
+			<form action="${pageContext.request.contextPath }/goods/write" method="get">
 				<table>
 					<c:forEach var="goods" items="${GoodsList }">
 						<tr class="cont_img">
