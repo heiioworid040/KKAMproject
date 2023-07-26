@@ -39,28 +39,28 @@
 		<div class="contents">
 <!-- 관리자 계정 아닐 시 화면제어 추가 -->
 		<form action="${pageContext.request.contextPath }/goods/goodsWritePro" method="post" enctype="multipart/form-data">
-<%-- 			<c:forEach var="goods" items="${GoodsList }"> --%>
+			<c:forEach var="goods" items="${GoodsList }">
 				<div class="base-table orderList">
 					<table>
 						<tr>
 							<th>상품코드</th>
-<%-- 							<td><input type="text" name="code" value="${goods.g_code }"></td> --%>
+							<td><input type="text" name="code" value="${goods.g_code }"></td>
 						</tr>
 						<tr>
 							<th>구매제한</th>
-							<td><input type="number" name="stop"></td>
+							<td><input type="number" name="stop" value="${goods.g_stop }"></td>
 						</tr>
 						<tr>
 							<th>상품명</th>
-							<td><textarea name="product" style="resize: none; width: 250px; height: 200px"></textarea></td>
+							<td><textarea name="product" style="resize: none; width: 250px; height: 200px">${goods.g_product }</textarea></td>
 						</tr>
 						<tr>
 							<th>상품가격</th>
-							<td><input type="text" name="price"></td>
+							<td><input type="text" name="price" value="${goods.g_price }"></td>
 						</tr>
 						<tr>
 							<th>상품설명</th>
-							<td><input type="text" name="desc"></td>
+							<td><input type="text" name="desc" value="${goods.g_desc }"></td>
 						</tr>
 						<tr>
 							<th>상품썸네일</th>
@@ -75,7 +75,7 @@
 				<button type="submit" class="btn_sub highlight submit">
 					업로드
 				</button>
-<%-- 			</c:forEach> --%>
+			</c:forEach>
 		</form>
 		</div>
 	</div>
