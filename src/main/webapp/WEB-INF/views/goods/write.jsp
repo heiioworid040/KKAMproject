@@ -64,11 +64,11 @@
 						</tr>
 						<tr>
 							<th>상품썸네일</th>
-							<td height="150px"><img id="previewImgS" src="#" width="100px"><br><button type="reset">초기화</button><input type="file" id="imgS" name="imgS"></td>
+							<td height="150px"><img id="previewImgS" src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="100px"><br><button type="reset">초기화</button><input type="file" id="imgS" name="imgS"></td>
 						</tr>
 						<tr>
 							<th>상품사진</th>
-							<td height="150px"><img id="previewImg" src="#" width="100px"><br><button type="reset">초기화</button><input type="file" id="img" name="img"></td>
+							<td height="150px"><img id="previewImg" src="${pageContext.request.contextPath }/resources/upload/${goods.g_img }" width="100px"><br><button type="reset">초기화</button><input type="file" id="img" name="img"></td>
 						</tr>
 					</table>
 				</div>
