@@ -14,7 +14,7 @@
     }
     
     .menu {
-    	
+    	float: left;
     }
     
     .footer {

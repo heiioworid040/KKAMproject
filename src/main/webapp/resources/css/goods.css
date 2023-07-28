@@ -1,14 +1,13 @@
 @charset "UTF-8";
 #wrap {
 	width: 90%;
-	max-width: 1600px;
-	margin: 0 auto;
-	margin-top: 20px;
+	float: right;
 }
 .inner_container {
 	margin-left: 300px;
 }
 .contents {
+	width: 85%;
 	margin: 0 auto;
 	padding-top: 50px;
 }

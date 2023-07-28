@@ -13,6 +13,7 @@
 		<a href="${pageContext.request.contextPath}/gallery/form">갤러리</a>
 		<br>
 		<a href="${pageContext.request.contextPath}/notice/notice">게시판</a>
+		<br>
 		<a href="${pageContext.request.contextPath}/goods/form">굿즈샵</a>
 		<br>
 	</div>
