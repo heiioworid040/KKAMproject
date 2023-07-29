@@ -19,13 +19,17 @@ public class GoodsDAO {
 	@Inject
 	private SqlSession sqlSession;
 	private static final String namespace="com.project.mappers.goodsMapper";
-	
+//	중복 메서드 정리, 메서드 구분 예정
 	public List<GoodsDTO> goodsList(GoodsDTO goodsDTO) {
 		return sqlSession.selectList(namespace+".goodsList", goodsDTO);
 	}
 	
 	public List<GoodsDTO> goodsList(String G_code) {
 		return sqlSession.selectList(namespace+".goodsDetail", G_code);
+	}
+	
+	public GoodsDTO goods(String G_code) {
+		return sqlSession.selectOne(namespace+".goodsDetail", G_code);
 	}
 	
 	public List<BasketDTO> basketList(String id) {

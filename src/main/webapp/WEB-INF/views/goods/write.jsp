@@ -35,11 +35,11 @@
 	</script>
 <body>
 	<h2>GOODS SHOP</h2>
-	<div class="inner_container">
-		<div class="contents">
+	<div id="wrap">
+		<div class="inner_container">
+			<div class="contents">
 <!-- 관리자 계정 아닐 시 화면제어 추가 -->
-		<form action="${pageContext.request.contextPath }/goods/goodsWritePro" method="post" enctype="multipart/form-data">
-			<c:forEach var="goods" items="${GoodsList }">
+			<form action="${pageContext.request.contextPath }/goods/goodsWritePro" method="post" enctype="multipart/form-data">
 				<div class="base-table orderList">
 					<table>
 						<tr>
@@ -75,8 +75,8 @@
 				<button type="submit" class="btn_sub highlight submit">
 					업로드
 				</button>
-			</c:forEach>
-		</form>
+			</form>
+			</div>
 		</div>
 	</div>
 </body>

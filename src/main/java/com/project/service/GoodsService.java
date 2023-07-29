@@ -14,7 +14,7 @@ import com.project.domain.OrderDTO;
 
 @Repository
 public class GoodsService {
-	
+//	중복 메서드 정리, 메서드 구분 예정
 	@Inject
 	private GoodsDAO goodsDAO;
 	
@@ -24,6 +24,10 @@ public class GoodsService {
 	
 	public List<GoodsDTO> goodsList(String G_code) {
 		return goodsDAO.goodsList(G_code);
+	}
+	
+	public GoodsDTO goods(String G_code) {
+		return goodsDAO.goods(G_code);
 	}
 	
 	public List<BasketDTO> basketList(String id) {

@@ -240,8 +240,11 @@ public class GoodsController {
 		String G_code = request.getParameter("G_code");
 		
 		if(G_code != null) {
-			List<GoodsDTO> GoodsList=goodsService.goodsList(G_code);
-			model.addAttribute("GoodsList", GoodsList);
+			GoodsDTO goodsDTO = goodsService.goods(G_code);
+			model.addAttribute("goods", goodsDTO);
+		}else {
+			GoodsDTO goodsEmptyDTO = new GoodsDTO();
+			model.addAttribute("goods", goodsEmptyDTO);
 		}
 			
 		return "goods/write";
