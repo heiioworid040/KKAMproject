@@ -11,25 +11,27 @@
 </head>
 <body>
 	<h2>GOODS SHOP</h2>
-	<div class="inner_container">
-		<div class="contents">
-			<form action="${pageContext.request.contextPath }/goods/write" method="get">
-				<table>
-					<c:forEach var="goods" items="${GoodsList }">
-						<tr class="cont_img">
-							<td>
-								<a href="${pageContext.request.contextPath }/goods/details?G_code=${goods.g_code }"><img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="300px" height="300px"></a><br>
-								<span>${goods.g_product }</span><br>
-								<span>${goods.g_price }</span>
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
-	
-				<button type="submit" class="btn_sub highlight submit">
-					글쓰기
-				</button>
-			</form>
+	<div id="wrap">
+		<div class="inner_container">
+			<div class="contents">
+				<form action="${pageContext.request.contextPath }/goods/write" method="get">
+					<table>
+						<c:forEach var="goods" items="${GoodsList }">
+							<tr class="cont_img">
+								<td>
+									<a href="${pageContext.request.contextPath }/goods/details?G_code=${goods.g_code }"><img src="${pageContext.request.contextPath }/resources/upload/${goods.g_imgS }" width="300px" height="300px"></a><br>
+									<span>${goods.g_product }</span><br>
+									<span>${goods.g_price }</span>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+		
+					<button type="submit" class="btn_sub highlight submit">
+						글쓰기
+					</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </body>

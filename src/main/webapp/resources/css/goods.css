@@ -14,7 +14,7 @@
 .cont_img {
 	width: 300px;
 	float: left;
-	margin: 30px;
+	margin: 0 30px 30px 30px;
 }
 
 /* details */
