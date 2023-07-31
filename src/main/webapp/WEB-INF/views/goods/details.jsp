@@ -21,19 +21,20 @@
 	});
 </script>
 <script>
+	function setFormAttributes(method, action) {
+	    document.details.method = method;
+	    document.details.action = action;
+	}
+
 	function fun1(index) {
 		if(index == 1) {
-			document.details.method="get"
-			document.details.action="${pageContext.request.contextPath }/goods/order";
+			setFormAttributes("get", "${pageContext.request.contextPath }/goods/order");
 		}else if(index == 2) {
-			document.details.method="post"
-			document.details.action="${pageContext.request.contextPath }/goods/basketPro";
+			setFormAttributes("post", "${pageContext.request.contextPath }/goods/basketPro");
 		}else if(index == 3) {
-			document.details.method="post"
-			document.details.action="${pageContext.request.contextPath }/goods/likePro";
+			setFormAttributes("post", "${pageContext.request.contextPath }/goods/likePro");
 		}else {
-			document.details.method="get"
-			document.details.action="${pageContext.request.contextPath }/goods/write";
+			setFormAttributes("get", "${pageContext.request.contextPath }/goods/write");
 		}
 	}
 </script>
