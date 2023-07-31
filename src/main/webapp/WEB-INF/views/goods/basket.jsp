@@ -11,11 +11,11 @@
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/script/jquery-3.6.3.js"></script>
 <script>
-		function updateCount(G_code, count, basket){
-			$.post("${pageContext.request.contextPath}/goods/basketPro", { G_code: G_code, count: count, basket: basket }, function() {
-				document.basket.submit();
-			});
-		};
+	function updateCount(G_code, count, basket){
+		$.post("${pageContext.request.contextPath}/goods/basketPro", { G_code: G_code, count: count, basket: basket }, function() {
+			document.basket.submit();
+		});
+	};
 		
 	$(document).ready(function(){
 		$('#order, #orderAll').click(function(){
