@@ -9,6 +9,36 @@
 <title>KKAMpage</title>
 <link href="${pageContext.request.contextPath }/resources/css/goods.css" rel="stylesheet" type="text/css">
 </head>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/script/jquery-3.6.3.js"></script>
+<script>
+	function setFormAttributes(method, action) {
+	    document.like.method = method;
+	    document.like.action = action;
+	}
+	
+	// 각 컨트롤러 수정하여 기능 완성하기
+	function fun1(index) {
+		if(index == 1) {
+			setFormAttributes("get", "${pageContext.request.contextPath }/goods/order");
+		}else if(index == 2) {
+			setFormAttributes("post", "${pageContext.request.contextPath }/goods/basketPro");
+		}else {
+			setFormAttributes("post", "${pageContext.request.contextPath }/goods/likePro");
+		}
+	};
+	
+// 		장바구니 담기 or 삭제하기 기능 추가 예정
+
+</script>
+<script>
+	function check() {
+		if($("input:checked[id='ckAll']").prop("checked")) {
+			$("input[id=ck]").prop("checked", true); 
+		}else {
+			$("input[id=ck]").prop("checked", false); 
+		}
+	}
+</script>
 <body>
 	<h2>GOODS SHOP</h2>
 	<div id="wrap">
@@ -46,13 +76,13 @@
 				</div>
 <!-- 			상품 하나거나 0개면 historyback, 여러개면 해당 상품 삭제 -->
 				<div class="base-button">
-					<button type="submit" id="likeDel" name="like" value="likeDel" class="order-btn">삭제하기</button>
-					<button type="submit" id="likeMove" name="like" value="likeMove" class="order-btn">장바구니 담기</button>
+					<button type="submit" name="like" value="likeDel" onclick="fun1(3)" class="order-btn">삭제하기</button>
+					<button type="submit" name="like" value="likeMove" onclick="fun1(2)" class="order-btn">장바구니 담기</button>
 				</div>
 <br><br>
 				<div class="details-buyArea">
-					<button type="submit" id="orderAll" name="like" value="orderAll" class="details-buyWrap order-orderAll">전체 상품 주문</button>
-					<button type="submit" id="order" name="like" value="order" class="details-buyWrap order-order">선택 상품 주문</button>
+					<button type="submit" name="like" value="orderAll" onclick="fun1(1)" class="details-buyWrap order-orderAll">전체 상품 주문</button>
+					<button type="submit" name="like" value="order" onclick="fun1(1)" class="details-buyWrap order-order">선택 상품 주문</button>
 				</div>
 			</form>
 		</div>

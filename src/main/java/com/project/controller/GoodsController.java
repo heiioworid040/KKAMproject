@@ -114,39 +114,46 @@ public class GoodsController {
 
 	@RequestMapping(value = "/goods/order", method = RequestMethod.GET)
 	public String goodsOrder(@RequestParam(value = "ck", required = false) List<String> ck, HttpSession session, HttpServletRequest request, Model model) {
-		String details=request.getParameter("details");
-		String basket=request.getParameter("basket");
-		String id=(String)session.getAttribute("id");
+		String details = request.getParameter("details");
+		String like = request.getParameter("like");
+		String basket = request.getParameter("basket");
+		String id = (String)session.getAttribute("id");
 		
-		int count=0;
-		int price=0;
-		int delivery=0;
+		int count = 0;
+		int price = 0;
+		int delivery = 0;
 		
-		if(details!=null) {
-			String G_code=request.getParameter("G_code");
-			count=Integer.parseInt(request.getParameter("count"));
-			price=Integer.parseInt(request.getParameter("price"))*count;
+		if(details != null) {
+			String G_code = request.getParameter("G_code");
+			count = Integer.parseInt(request.getParameter("count"));
+			price = Integer.parseInt(request.getParameter("price"))*count;
 
-			List<GoodsDTO> GoodsList=goodsService.goodsList(G_code);
+			List<GoodsDTO> GoodsList = goodsService.goodsList(G_code);
 			model.addAttribute("GoodsList", GoodsList);
 
-			GoodsDTO goodsDTO=new GoodsDTO();
+			GoodsDTO goodsDTO = new GoodsDTO();
 			goodsDTO.setG_code(request.getParameter(G_code));
+		}else if(like != null) {
+			if(like.equals("order")) {
+				// 선택 찜 상품 주문
+			}else {
+				// 모든 찜 상품 주문
+			}
 		}else {
 			List<BasketDTO> BasketList;
 			if(basket.equals("order")) {
-				BasketList=goodsService.basketList(id, ck);
+				BasketList = goodsService.basketList(id, ck);
 			}else {
-				BasketList=goodsService.basketList(id);
+				BasketList = goodsService.basketList(id);
 			}
-			price=goodsService.basketAllPrice(id);
-			count=goodsService.basketAllCount(id);
+			price = goodsService.basketAllPrice(id);
+			count = goodsService.basketAllCount(id);
 			
 			model.addAttribute("GoodsList", BasketList);
 		}
 		
-		if(price<100000) {
-			delivery=2500;
+		if(price < 100000) {
+			delivery = 2500;
 		}
 		
 		//장바구니 리스트로 수정 예정
