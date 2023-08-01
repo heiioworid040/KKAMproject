@@ -115,7 +115,6 @@ public class GoodsController {
 	@RequestMapping(value = "/goods/order", method = RequestMethod.GET)
 	public String goodsOrder(@RequestParam(value = "ck", required = false) List<String> ck, HttpSession session, HttpServletRequest request, Model model) {
 		String details = request.getParameter("details");
-		String like = request.getParameter("like");
 		String basket = request.getParameter("basket");
 		String id = (String)session.getAttribute("id");
 		
@@ -133,12 +132,6 @@ public class GoodsController {
 
 			GoodsDTO goodsDTO = new GoodsDTO();
 			goodsDTO.setG_code(request.getParameter(G_code));
-		}else if(like != null) {
-			if(like.equals("order")) {
-				// 선택 찜 상품 주문
-			}else {
-				// 모든 찜 상품 주문
-			}
 		}else {
 			List<BasketDTO> BasketList;
 			if(basket.equals("order")) {
@@ -214,7 +207,7 @@ public class GoodsController {
 	public String goodsLike(HttpSession session, Model model) {
 		String id=(String)session.getAttribute("id");
 		
-		List<LikeDTO> LikeList=goodsService.LikeList(id);
+		List<LikeDTO> LikeList=goodsService.likeList(id);
 		int price=goodsService.basketAllPrice(id);
 		
 		model.addAttribute("LikeList", LikeList);

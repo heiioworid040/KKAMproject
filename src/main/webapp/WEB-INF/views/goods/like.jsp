@@ -19,8 +19,6 @@
 	// 각 컨트롤러 수정하여 기능 완성하기
 	function fun1(index) {
 		if(index == 1) {
-			setFormAttributes("get", "${pageContext.request.contextPath }/goods/order");
-		}else if(index == 2) {
 			setFormAttributes("post", "${pageContext.request.contextPath }/goods/basketPro");
 		}else {
 			setFormAttributes("post", "${pageContext.request.contextPath }/goods/likePro");
@@ -76,13 +74,8 @@
 				</div>
 <!-- 			상품 하나거나 0개면 historyback, 여러개면 해당 상품 삭제 -->
 				<div class="base-button">
-					<button type="submit" name="like" value="likeDel" onclick="fun1(3)" class="order-btn">삭제하기</button>
-					<button type="submit" name="like" value="likeMove" onclick="fun1(2)" class="order-btn">장바구니 담기</button>
-				</div>
-<br><br>
-				<div class="details-buyArea">
-					<button type="submit" name="like" value="orderAll" onclick="fun1(1)" class="details-buyWrap order-orderAll">전체 상품 주문</button>
-					<button type="submit" name="like" value="order" onclick="fun1(1)" class="details-buyWrap order-order">선택 상품 주문</button>
+					<button type="submit" name="like" value="likeDel" onclick="fun1(2)" class="order-btn">삭제하기</button>
+					<button type="submit" name="like" value="likeMove" onclick="fun1(1)" class="order-btn">장바구니 담기</button>
 				</div>
 			</form>
 		</div>
