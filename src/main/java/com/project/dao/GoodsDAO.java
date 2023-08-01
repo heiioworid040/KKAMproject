@@ -36,7 +36,6 @@ public class GoodsDAO {
 		return sqlSession.selectList(namespace+".basketList", id);
 	}
 	
-	
 	public List<BasketDTO> basketList(String id, List<String> ck) {
 		BasketQuery query = new BasketQuery(id, ck);
 		return sqlSession.selectList(namespace+".basketCkList", query);
@@ -75,7 +74,7 @@ public class GoodsDAO {
 		sqlSession.delete(namespace+".basketAllDel", basketDTO);
 	}
 	
-	public List<LikeDTO> LikeList(String id) {
+	public List<LikeDTO> likeList(String id) {
 		return sqlSession.selectList(namespace+".likeList", id);
 	}
 	
