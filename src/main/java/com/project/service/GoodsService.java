@@ -76,8 +76,8 @@ public class GoodsService {
 		return goodsDAO.basketAllCount(id);
 	}
 	
-	public List<LikeDTO> LikeList(String id) {
-		return goodsDAO.LikeList(id);
+	public List<LikeDTO> likeList(String id) {
+		return goodsDAO.likeList(id);
 	}
 	
 	public String likeSelect(LikeDTO likeDTO) {
