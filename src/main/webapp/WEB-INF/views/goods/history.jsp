@@ -25,8 +25,8 @@
 					<c:forEach var="goods" items="${GoodsList }" varStatus="c">
 						<tbody>
 							<tr>
-								<td><a href="${pageContext.request.contextPath }/goods/histroyDetails?O_code=${goods.o_code }">${goods.o_code }</a></td>
-								<td>${goods.o_date }<input type="hidden" name="O_code" value="${good.o_code }"></td>
+								<td><a href="${pageContext.request.contextPath }/goods/historyDetail?O_code=${goods.o_code }">${goods.o_code }</a></td>
+								<td>${goods.o_date }</td>
 								<td>${goods.o_price + goods.o_delivery }원</td>
 							</tr>
 						</tbody>
