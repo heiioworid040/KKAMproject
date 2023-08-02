@@ -66,6 +66,20 @@
 		order by O_date desc
 	</select>
 	
+	<select id="orderGList" resultType="com.project.domain.OrderDTO">
+		select g.G_imgS, g.G_product, g.G_code, od.OD_count, od.OD_price
+		from goods g join ordersd od
+		on g.G_code = od.G_code
+		where od.O_code = #{O_code}
+	</select>
+	
+	<select id="orderDetail" resultType="com.project.domain.OrderDTO">
+		select o.O_name, o.O_phone, o.O_delivery, o.O_price, o.O_count, d.D_name, d.D_address, d.D_addressD, d.D_zipcode, d.D_phone, d.D_desc
+		from orders o join delivery d
+		on o.O_code = d.O_code
+		where o.O_code = #{O_code}
+	</select>
+	
 	<select id="likeList" resultType="com.project.domain.LikeDTO">
 		select L_num, U_id, l.G_code, G_imgS, G_product, G_price
 		from likes l join goods g

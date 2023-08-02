@@ -80,6 +80,14 @@ public class GoodsService {
 		return goodsDAO.orderList(id);
 	}
 	
+	public List<OrderDTO> orderGList(String O_code) {
+		return goodsDAO.orderGList(O_code);
+	}
+	
+	public OrderDTO orderDetail(String O_code) {
+		return goodsDAO.orderDetail(O_code);
+	}
+	
 	public List<LikeDTO> likeList(String id) {
 		return goodsDAO.likeList(id);
 	}

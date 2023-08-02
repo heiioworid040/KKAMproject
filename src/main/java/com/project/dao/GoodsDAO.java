@@ -61,6 +61,14 @@ public class GoodsDAO {
 		return sqlSession.selectList(namespace+".orderList", id);
 	}
 	
+	public List<OrderDTO> orderGList(String O_code) {
+		return sqlSession.selectList(namespace+".orderGList", O_code);
+	}
+
+	public OrderDTO orderDetail(String O_code) {
+		return sqlSession.selectOne(namespace+".orderDetail", O_code);
+	}
+	
 	public void orderAdd(OrderDTO orderDTO) {
 		sqlSession.insert(namespace+".ordersAdd", orderDTO);
 		sqlSession.insert(namespace+".deliveryAdd", orderDTO);

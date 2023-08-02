@@ -213,6 +213,19 @@ public class GoodsController {
 		return "goods/history";
 	}
 	
+	@RequestMapping(value = "/goods/historyDetail", method = RequestMethod.GET)
+	public String goodsOrderHistroyDetail(HttpServletRequest request, Model model) {
+		String O_code = request.getParameter("O_code");
+		List<OrderDTO> GoodsList = goodsService.orderGList(O_code);
+		OrderDTO orderDetail = goodsService.orderDetail(O_code);
+		
+		model.addAttribute("GoodsList", GoodsList);
+		model.addAttribute("order", orderDetail);
+		model.addAttribute("O_code", O_code);
+		
+		return "goods/historyDetail";
+	}
+	
 	@RequestMapping(value = "/goods/like", method = RequestMethod.GET)
 	public String goodsLike(HttpSession session, Model model) {
 		String id=(String)session.getAttribute("id");
