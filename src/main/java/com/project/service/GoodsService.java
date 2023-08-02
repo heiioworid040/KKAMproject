@@ -76,6 +76,10 @@ public class GoodsService {
 		return goodsDAO.basketAllCount(id);
 	}
 	
+	public List<OrderDTO> orderList(String id) {
+		return goodsDAO.orderList(id);
+	}
+	
 	public List<LikeDTO> likeList(String id) {
 		return goodsDAO.likeList(id);
 	}
@@ -134,9 +138,5 @@ public class GoodsService {
 	public void goodsWrite(GoodsDTO goodsDTO) {
 		goodsDAO.goodsWrite(goodsDTO);
 	}
-
-//	public List<OrderDTO> orderList(OrderDTO orderDTO) {
-//		return goodsDAO.orderList(orderDTO);
-//	}
 	
 }

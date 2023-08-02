@@ -203,6 +203,16 @@ public class GoodsController {
 		}
 	}
 	
+	@RequestMapping(value = "/goods/history", method = RequestMethod.GET)
+	public String goodsOrderHistroy(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("id");
+		List<OrderDTO> GoodsList = goodsService.orderList(id);
+		
+		model.addAttribute("GoodsList", GoodsList);
+		
+		return "goods/history";
+	}
+	
 	@RequestMapping(value = "/goods/like", method = RequestMethod.GET)
 	public String goodsLike(HttpSession session, Model model) {
 		String id=(String)session.getAttribute("id");

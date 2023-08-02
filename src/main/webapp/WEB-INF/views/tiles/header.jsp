@@ -22,7 +22,7 @@
 				</c:choose>
 						<td>마이페이지</td>
 						<td><a href="${pageContext.request.contextPath}/goods/basket">장바구니</a></td>
-						<td>주문조회</td>
+						<td><a href="${pageContext.request.contextPath}/goods/history">주문조회</a></td>
 						<td><a href="${pageContext.request.contextPath}/goods/like">찜목록</a></td>
 			</tr>
 		</table>

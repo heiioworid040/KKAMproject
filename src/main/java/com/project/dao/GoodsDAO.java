@@ -56,6 +56,10 @@ public class GoodsDAO {
 	public Integer basketAllCount(String id) {
 		return sqlSession.selectOne(namespace+".basketAllCount", id);
 	}
+
+	public List<OrderDTO> orderList(String id) {
+		return sqlSession.selectList(namespace+".orderList", id);
+	}
 	
 	public void orderAdd(OrderDTO orderDTO) {
 		sqlSession.insert(namespace+".ordersAdd", orderDTO);
@@ -125,4 +129,5 @@ public class GoodsDAO {
 	public Integer maxL_num() {
 		return sqlSession.selectOne(namespace+".maxL_num");
 	}
+
 }

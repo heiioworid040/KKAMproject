@@ -59,6 +59,13 @@
 		select sum(B_count) from basket where U_id=#{id}
 	</select>
 	
+	<select id="orderList" resultType="com.project.domain.OrderDTO">
+		select *
+		from orders
+		where U_id = #{id}
+		order by O_date desc
+	</select>
+	
 	<select id="likeList" resultType="com.project.domain.LikeDTO">
 		select L_num, U_id, l.G_code, G_imgS, G_product, G_price
 		from likes l join goods g
