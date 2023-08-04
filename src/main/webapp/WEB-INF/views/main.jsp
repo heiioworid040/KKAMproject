@@ -31,6 +31,8 @@
 	<button type="button" onclick="location.href='${pageContext.request.contextPath}/notice/write'">글쓰기</button>
 	<button type="button" onclick="location.href='${pageContext.request.contextPath}/notice/notice'">글목록</button>
 	<button type="button" onclick="location.href='${pageContext.request.contextPath}/gallery/form'">갤러리</button>
+	<button type="button" onclick="location.href='${pageContext.request.contextPath}/goods/history'">주문조회</button>
+	<button type="button" onclick="location.href='${pageContext.request.contextPath}/goods/like'">찜하기</button>
 	
 </body>
 </html>
