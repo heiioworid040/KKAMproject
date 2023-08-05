@@ -75,7 +75,7 @@
 <!-- 			상품 하나거나 0개면 historyback, 여러개면 해당 상품 삭제 -->
 				<div class="base-button">
 					<button type="submit" name="like" value="likeDel" onclick="fun1(2)" class="order-btn">삭제하기</button>
-					<button type="submit" name="like" value="likeMove" onclick="fun1(1)" class="order-btn">장바구니 담기</button>
+					<button type="submit" name="basket" value="basketAdd" onclick="fun1(1)" class="order-btn">장바구니 담기</button>
 				</div>
 			</form>
 		</div>
