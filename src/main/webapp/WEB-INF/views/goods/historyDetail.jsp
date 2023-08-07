@@ -13,11 +13,11 @@
 	<h2>GOODS SHOP</h2>
 	<div id="wrap">
 		<div class="contents">
-			<form action="${pageContext.request.contextPath }/goods/orderPro" method="post">
+			<form action="${pageContext.request.contextPath }/goods/order" method="get">
 				<div class="base-table typeList">
 					<table>
 						<tr>
-							<th>${O_code }</th>
+							<th>${O_code }<input type="hidden" name="O_code" value="${O_code }"></th>
 	<%-- 					<th>${O_date }</th> --%>
 						</tr>
 					</table>
@@ -50,7 +50,7 @@
 					</table>
 				</div>
 				<div class="base-button">
-					<button type="submit" id="orderAdd" name="order" value="orderAdd" class="order-btn">재주문하기</button>
+					<button type="submit" name="historyD" value="historyD" class="order-btn">재주문하기</button>
 				</div>
 				<div class="order-area">
 					<div class="order-title">

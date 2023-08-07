@@ -115,6 +115,7 @@ public class GoodsController {
 	@RequestMapping(value = "/goods/order", method = RequestMethod.GET)
 	public String goodsOrder(@RequestParam(value = "ck", required = false) List<String> ck, HttpSession session, HttpServletRequest request, Model model) {
 		String details = request.getParameter("details");
+		String historyD = request.getParameter("historyD");
 		String basket = request.getParameter("basket");
 		String id = (String)session.getAttribute("id");
 		
@@ -132,6 +133,11 @@ public class GoodsController {
 
 			GoodsDTO goodsDTO = new GoodsDTO();
 			goodsDTO.setG_code(request.getParameter(G_code));
+		}else if(historyD != null) {
+			String O_code = request.getParameter("O_code");
+			
+			List<OrderDTO> GoodsList = goodsService.orderGList(O_code);
+			model.addAttribute("GoodsList", GoodsList);
 		}else {
 			List<BasketDTO> BasketList;
 			if(basket.equals("order")) {
