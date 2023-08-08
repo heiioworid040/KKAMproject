@@ -67,7 +67,7 @@
 	</select>
 	
 	<select id="orderGList" resultType="com.project.domain.OrderDTO">
-		select g.G_imgS, g.G_product, g.G_code, od.OD_count, od.OD_price
+		select g.G_imgS, g.G_product, g.G_code, g.G_price, od.OD_count, od.OD_price
 		from goods g join ordersd od
 		on g.G_code = od.G_code
 		where od.O_code = #{O_code}
