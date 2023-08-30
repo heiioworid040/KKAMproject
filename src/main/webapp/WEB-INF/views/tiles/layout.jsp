@@ -18,8 +18,8 @@
     }
     
     .footer {
-/*         background-color : ; */
-/*         height : 100px; */
+		background-color : black;
+		height : 100px;
     }
 </style>
 </head>
@@ -34,6 +34,6 @@
     <tiles:insertAttribute name="menu" />
     
 <!--     Page Footer -->
-<%--     <tiles:insertAttribute name="footer" /> --%>
+    <tiles:insertAttribute name="footer" />
 </body>
 </html>
